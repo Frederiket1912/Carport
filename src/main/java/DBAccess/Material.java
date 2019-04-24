@@ -10,5 +10,30 @@ package DBAccess;
  * @author frede
  */
 public class Material {
-    
+    private int materialId;
+    private String name;
+    private int msrp;
+    private int costPrice;
+
+    public Material(String name, int msrp, int costPrice) {
+        this.name = name;
+        this.msrp = msrp;
+        this.costPrice = costPrice;
+    }
+
+    public int getMaterialId() {
+        return materialId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMsrp() {
+        return msrp;
+    }
+
+    public int getCostPrice() {
+        return costPrice;
+    }
 }

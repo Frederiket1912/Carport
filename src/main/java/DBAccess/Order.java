@@ -22,5 +22,78 @@ public class Order {
     private int shedLength;
     private String customerComment;
     private int totalCost;
+    private int totalSale;
     private String status;
+
+    public Order(int employeeId, int customerId, int carportHeight, int carportWidth, int carportLength, String roofType, int roofAngle, int shedWidth, int shedLength, String customerComment, int totalCost, int totalSale, String status) {
+        this.employeeId = employeeId;
+        this.customerId = customerId;
+        this.carportHeight = carportHeight;
+        this.carportWidth = carportWidth;
+        this.carportLength = carportLength;
+        this.roofType = roofType;
+        this.roofAngle = roofAngle;
+        this.shedWidth = shedWidth;
+        this.shedLength = shedLength;
+        this.customerComment = customerComment;
+        this.totalCost = totalCost;
+        this.totalSale = totalSale;
+        this.status = status;
+    }
+
+    public int getTotalSale() {
+        return totalSale;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public int getCarportHeight() {
+        return carportHeight;
+    }
+
+    public int getCarportWidth() {
+        return carportWidth;
+    }
+
+    public int getCarportLength() {
+        return carportLength;
+    }
+
+    public String getRoofType() {
+        return roofType;
+    }
+
+    public int getRoofAngle() {
+        return roofAngle;
+    }
+
+    public int getShedWidth() {
+        return shedWidth;
+    }
+
+    public int getShedLength() {
+        return shedLength;
+    }
+
+    public String getCustomerComment() {
+        return customerComment;
+    }
+
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }
