@@ -25,7 +25,7 @@ public class Order {
     private int totalSale;
     private String status;
 
-    public Order(int employeeId, int customerId, int carportHeight, int carportWidth, int carportLength, String roofType, int roofAngle, int shedWidth, int shedLength, String customerComment, int totalCost, int totalSale, String status) {
+    public Order(int employeeId, int customerId, int carportHeight, int carportWidth, int carportLength, String roofType, int roofAngle, int shedWidth, int shedLength, String customerComment, int totalCost, int totalSale) {
         this.employeeId = employeeId;
         this.customerId = customerId;
         this.carportHeight = carportHeight;
@@ -37,8 +37,7 @@ public class Order {
         this.shedLength = shedLength;
         this.customerComment = customerComment;
         this.totalCost = totalCost;
-        this.totalSale = totalSale;
-        this.status = status;
+        this.totalSale = totalSale;;
     }
 
     public int getTotalSale() {

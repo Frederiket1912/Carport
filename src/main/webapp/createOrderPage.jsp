@@ -18,12 +18,11 @@
             Carport length in cm:<input type="text" name="carportlength"/><br/><br/>
             Carport width in cm:<input type="text" name="carportwidth"/><br/><br/>
             Carport height in cm:<input type="text" name="carportheight"/><br/><br/>
-            <%--Roof type:<select id="rooftype" name="rooftype">
+            Roof type:<select id="rooftype" name="rooftype">
                 <option value="fladt">Fladt tag</option>
                 <option value="med rejsning">Tag med rejsning</option>
-            </select><br/><br/> --%>
+            </select><br/><br/> 
             Roof angle:<select name="roofangle">
-                <option value="fladt">Fladt tag</option>
                 <option value="15">15 grader</option>
                 <option value="20">20 grader</option>
                 <option value="25">25 grader</option>

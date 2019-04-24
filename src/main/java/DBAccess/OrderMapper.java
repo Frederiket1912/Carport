@@ -48,20 +48,8 @@ public class OrderMapper {
     
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
-//        try {
-//        Customer c = new Customer("name", "email", "address", 0, "phonenumber");
-//        om.createCustomer(c);
-//        } catch (CarportException ex){
-//                System.out.println(ex.getMessage());
-//        }
-//        try {
-//        Employee e = new Employee("password", "email", "name");
-//        om.createEmployee(e);
-//        } catch (CarportException ex){
-//                System.out.println(ex.getMessage());
-//        }
         try {
-        Order o = new Order(2, 2, 2, 2, 2, "roofType", 2, 2, 2, "customerComment", 2, 2, "status");
+        Order o = new Order(2, 2, 2, 2, 2, "roofType", 2, 2, 2, "customerComment", 2, 2);
         om.createOrder(o);
         } catch (CarportException ex){
             System.out.println(ex.getMessage());

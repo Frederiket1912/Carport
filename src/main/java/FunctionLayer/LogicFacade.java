@@ -18,8 +18,8 @@ import DBAccess.OrderMapper;
  */
 public class LogicFacade {
     
-    public Order createOrder(int employeeId, int customerId, int carportHeight, int carportWidth, int carportLength, String roofType, int roofAngle, int shedWidth, int shedLength, String customerComment, int totalCost, int totalSale, String status) throws CarportException{
-        Order order = new Order(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale, status);
+    public Order createOrder(int employeeId, int customerId, int carportHeight, int carportWidth, int carportLength, String roofType, int roofAngle, int shedWidth, int shedLength, String customerComment, int totalCost, int totalSale) throws CarportException{
+        Order order = new Order(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
         OrderMapper om = new OrderMapper();
         om.createOrder(order);
         return order;
@@ -30,6 +30,12 @@ public class LogicFacade {
         CustomerMapper cm = new CustomerMapper();
         cm.createCustomer(customer);
         return customer;
+    }
+    
+    public int getCustomerId(Customer customer) throws CarportException{
+        CustomerMapper cm = new CustomerMapper();
+        int customerId = cm.getCustomerId(customer);
+        return customerId;
     }
     
     public Employee createEmployee(String password, String email, String name) throws CarportException{
