@@ -29,6 +29,8 @@ public abstract class Command {
 
         commands = new HashMap<>();
         commands.put("createOrder", new CommandCreateOrder());
+        commands.put("Customers", new CommandCustomers());
+        commands.put("SearchCustomers", new CommandGetCustomer());
 
        c = commands.getOrDefault(origin, new CommandUnknown());
         

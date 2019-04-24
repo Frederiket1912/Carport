@@ -10,6 +10,11 @@ package DBAccess;
  * @author frede
  */
 public class Customer {
+
+    @Override
+    public String toString() {
+        return "Customer{" + "customerId=" + customerId + ", name=" + name + ", email=" + email + ", address=" + address + ", zipcode=" + zipcode + ", phonenumber=" + phonenumber + '}';
+    }
     private int customerId;
     private String name;
     private String email;

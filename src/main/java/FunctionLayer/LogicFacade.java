@@ -11,6 +11,7 @@ import DBAccess.Employee;
 import DBAccess.EmployeeMapper;
 import DBAccess.Order;
 import DBAccess.OrderMapper;
+import java.util.ArrayList;
 
 /**
  *
@@ -43,5 +44,17 @@ public class LogicFacade {
         EmployeeMapper em = new EmployeeMapper();
         em.createEmployee(employee);
         return employee;
+    }
+    
+    public ArrayList<Customer> Customerlist() throws CarportException{
+        CustomerMapper cm = new CustomerMapper();
+        ArrayList<Customer> CL = cm.Customerlist();
+        return CL;
+        
+    }
+    public Customer getCustomer(String email) throws CarportException{
+        CustomerMapper cm = new CustomerMapper();
+        Customer c = cm.getCustomer(email);
+        return c;
     }
 }
