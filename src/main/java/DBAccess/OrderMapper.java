@@ -43,21 +43,19 @@ public class OrderMapper {
         }
     }
     
-    public void createCustomer( Order order ) throws OrderException {
+    public void createCustomer( Customer customer ) throws CarportException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "insert into `Orders` (email, width, length, height, 2x4Bricks, 2x2Bricks, 2x1Bricks) values (?, ?, ?, ?, ?, ?, ?);";
+            String SQL = "insert into Customer (`name`, Email, Adresse, Zipcode, Phonenumber) values (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, order.getEmail() );
-            ps.setInt( 2, order.getWidth());
-            ps.setInt( 3, order.getLength());
-            ps.setInt( 4, order.getHeight());
-            ps.setInt( 5, order.getBricks2x4());
-            ps.setInt( 6, order.getBricks2x2());
-            ps.setInt( 7, order.getBricks2x1());
+            ps.setString( 1, customer.getName());
+            ps.setString( 2, customer.getEmail());
+            ps.setString( 3, customer.getAddress());
+            ps.setInt( 4, customer.getZipcode());
+            ps.setString( 5, customer.getPhonenumber());
             ps.executeUpdate();
         } catch ( SQLException | ClassNotFoundException ex ) {
-            throw new OrderException( ex.getMessage() );
+            throw new CarportException( ex.getMessage() );
         }
     }
     
