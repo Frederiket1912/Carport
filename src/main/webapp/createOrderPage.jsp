@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hello createOrderPage!</h1>
-        <form method="post">
+        <form action="FrontController" method="post">
             <h3> Please add carport specifications </h3>
             Carport length in cm:<input type="text" name="carportlength"/><br/><br/>
             Carport width in cm:<input type="text" name="carportwidth"/><br/><br/>

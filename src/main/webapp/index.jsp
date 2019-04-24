@@ -4,6 +4,7 @@
     Author     : frede
 --%>
 
+<%@page import="DBAccess.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +14,10 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <% Order order = (Order) request.getAttribute("order");
+        String str = order.getCustomerComment();
+        out.print(str);
+            %>
+            
     </body>
 </html>
