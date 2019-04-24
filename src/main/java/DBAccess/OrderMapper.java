@@ -59,11 +59,36 @@ public class OrderMapper {
         }
     }
     
-    public static void main(String[] args) throws CarportException {
+    public void createEmployee( Employee employee ) throws CarportException {
         try {
+            Connection con = DBConnector.connection();
+            String SQL = "insert into Employee (`Password`, Email, `Name`) values (?, ?, ?);";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setString( 1, employee.getPassword());
+            ps.setString( 2, employee.getEmail());
+            ps.setString( 3, employee.getName());
+            ps.executeUpdate();
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new CarportException( ex.getMessage() );
+        }
+    }
+    
+    public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
+//        try {
+//        Customer c = new Customer("name", "email", "address", 0, "phonenumber");
+//        om.createCustomer(c);
+//        } catch (CarportException ex){
+//                System.out.println(ex.getMessage());
+//        }
+//        try {
+//        Employee e = new Employee("password", "email", "name");
+//        om.createEmployee(e);
+//        } catch (CarportException ex){
+//                System.out.println(ex.getMessage());
+//        }
+        try {
         Order o = new Order(2, 2, 2, 2, 2, "roofType", 2, 2, 2, "customerComment", 2, 2, "status");
-        System.out.println("kom her til");
         om.createOrder(o);
         } catch (CarportException ex){
             System.out.println(ex.getMessage());
