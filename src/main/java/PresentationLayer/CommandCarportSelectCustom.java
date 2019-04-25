@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,7 +21,8 @@ public class CommandCarportSelectCustom extends Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
         String roofType = request.getParameter("rooftype");
-        request.setAttribute("rooftype", roofType);
+        HttpSession session = request.getSession();
+        session.setAttribute("rooftype", roofType);
         String shed = request.getParameter("shed");
         request.setAttribute("shed", shed);
         request.getRequestDispatcher("createOrderPage.jsp").forward(request, response);

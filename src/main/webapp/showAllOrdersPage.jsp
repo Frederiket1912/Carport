@@ -16,12 +16,12 @@
     <body>
         <h1>Hello All Orders Page!</h1>
         <table> 
-            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Customer Id</th><th>Status</th></tr></thead> <tbody>
+            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Customer Id</th><th>Status</th><th>Sales price</th></tr></thead> <tbody>
                 <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
                             for (Order order : orders) {
                         %>
                 <tr>
-                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= order.getCustomerId()%></td> <td><%= order.getStatus()%></td>
+                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= order.getCustomerId()%></td> <td><%= order.getStatus()%></td> <td><%= order.getTotalSale()%></td>
                 </tr>
                 <%
                     }

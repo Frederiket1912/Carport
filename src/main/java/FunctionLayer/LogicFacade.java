@@ -26,6 +26,18 @@ public class LogicFacade {
         return order;
     }
     
+    public ArrayList<Order> getAllOrders() throws CarportException{
+        OrderMapper om = new OrderMapper();
+        ArrayList<Order> orders = om.getAllOrders();
+        return orders;
+    }
+    
+    public Order getPremadeOrder(int orderId) throws CarportException{
+        OrderMapper om = new OrderMapper();
+        Order order = om.getPremadeOrder(orderId);
+        return order;
+    }
+    
     public Customer createCustomer(String name, String email, String address, int zipcode, String phonenumber) throws CarportException{
         Customer customer = new Customer(name, email, address, zipcode, phonenumber);
         CustomerMapper cm = new CustomerMapper();

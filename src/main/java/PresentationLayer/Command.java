@@ -35,6 +35,7 @@ public abstract class Command {
         commands.put("Customers", new CommandCustomers());
         commands.put("SearchCustomers", new CommandGetCustomer());
         commands.put("carportSelectCustom", new CommandCarportSelectCustom());
+        commands.put("carportSelectPremade", new CommandCarportSelectPremade());
         
 
 
