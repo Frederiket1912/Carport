@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,7 +33,8 @@ public class CommandCarportSelectPremade extends Command {
         int carportHeight = order.getCarportHeight();
         request.setAttribute("carportheight", carportHeight);
         String roofType = order.getRoofType();
-        request.setAttribute("rooftype", roofType);
+        HttpSession session = request.getSession();
+        session.setAttribute("rooftype", roofType);
         int roofAngle = order.getRoofAngle();
         request.setAttribute("roofangle", roofAngle);
         int shedWidth = order.getShedWidth();

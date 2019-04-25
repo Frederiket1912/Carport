@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Order Page</title>
         <style>
-            <%  String roofType = (String) request.getAttribute("rooftype");
+            <%  String roofType = (String) session.getAttribute("rooftype");
                 if (roofType.equals("fladt")) {
             %>
             #roofangle {display:none;}
