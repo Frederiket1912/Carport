@@ -14,10 +14,13 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <% Order order = (Order) request.getAttribute("order");
-        String str = order.getCustomerComment();
-        out.print(str);
-            %>
-            
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToCreateOrder"/>
+            <input type="submit" value="Go to create order page"/>
+        </form> <br>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToSeeOrders"/>
+            <input type="submit" value="Go to see orders page"/>
+        </form> <br>
     </body>
 </html>

@@ -42,6 +42,10 @@
             Customer comment:<br/> <textarea name="customercomment" rows="6" cols="50"></textarea><br/><br/>
             <input type="hidden" name="command" value="createOrder">
             <input type="submit" value="Save order"/>  
-        </form>
+        </form> <br/><br/>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToIndex"/>
+            <input type="submit" value="Go back to index"/>
+        </form> <br>
     </body>
 </html>

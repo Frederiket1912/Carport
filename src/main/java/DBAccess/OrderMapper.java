@@ -8,7 +8,9 @@ package DBAccess;
 import FunctionLayer.CarportException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.sql.Statement;
 
 /**
@@ -43,17 +45,37 @@ public class OrderMapper {
         }
     }
     
+    public ArrayList<Order> getAllOrders() throws CarportException{
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "select * from `Order`;";
+            ArrayList<Order> orders = new ArrayList<>();
+            ResultSet rs = con.createStatement().executeQuery(SQL);
+            while (rs.next()){
+                orders.add(new Order(rs.getInt("OrderID"), rs.getInt("EmployeeID"), rs.getInt("CustomerID"), rs.getInt("carport-height"),
+                        rs.getInt("carport-width"), rs.getInt("carport-length"), rs.getString("rooftype"), rs.getInt("roofangle"),
+                        rs.getInt("shed-width"), rs.getInt("shed-length"), rs.getString("CustomerComment"), rs.getInt("totalCost"),
+                        rs.getInt("TotalSale"), rs.getString("Status")));
+            }
+            return orders;
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new CarportException( ex.getMessage() );
+        }
+    }
+    
     
     
     
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
-        try {
-        Order o = new Order(2, 2, 2, 2, 2, "roofType", 2, 2, 2, "customerComment", 2, 2);
-        om.createOrder(o);
-        } catch (CarportException ex){
-            System.out.println(ex.getMessage());
-        }
+//        try {
+//        Order o = new Order(2, 2, 2, 2, 2, "roofType", 2, 2, 2, "customerComment", 2, 2);
+//        om.createOrder(o);
+//        } catch (CarportException ex){
+//            System.out.println(ex.getMessage());
+//        }
+        ArrayList<Order> arr = om.getAllOrders();
+        System.out.println(arr.size());
     }
     
 }
