@@ -29,7 +29,7 @@
                 <option value="fladt">Flat roof</option>
                 <option value="med rejsning">Roof with height</option>
             </select><br/><br/>
-            Shed y/n:<select id="shed" name="shed">
+            Shed:<select id="shed" name="shed">
                 <option value="shed">With shed</option>
                 <option value="noshed">No shed</option>
             </select><br/><br/>
