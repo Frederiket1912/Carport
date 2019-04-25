@@ -10,6 +10,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Order Page</title>
+        <style>
+            <%  String roofType = (String) request.getAttribute("rooftype");
+                if (roofType.equals("fladt")) {
+            %>
+            #roofangle {display:none;}
+            <%}
+            %>
+            <%  String shed = (String) request.getAttribute("shed");
+                if (shed.equals("noshed")) {
+            %>
+            #shed {display:none;}
+            <%}
+            %>
+        </style>
     </head>
     <body>
         <h1>Hello createOrderPage!</h1>
@@ -18,10 +32,7 @@
             Carport length in cm:<input type="text" name="carportlength"/><br/><br/>
             Carport width in cm:<input type="text" name="carportwidth"/><br/><br/>
             Carport height in cm:<input type="text" name="carportheight"/><br/><br/>
-            Roof type:<select id="rooftype" name="rooftype">
-                <option value="fladt">Fladt tag</option>
-                <option value="med rejsning">Tag med rejsning</option>
-            </select><br/><br/> 
+            <div id="roofangle">
             Roof angle:<select name="roofangle">
                 <option value="15">15 grader</option>
                 <option value="20">20 grader</option>
@@ -31,8 +42,11 @@
                 <option value="40">40 grader</option>
                 <option value="45">45 grader</option>
             </select><br/><br/>
+            </div>
+            <div id="shed">
             Shed width in cm:<input type="text" name="shedwidth"/><br/><br/>
             Shed length in cm:<input type="text" name="shedlength"/><br/><br/>
+            </div>
             <h3> Please add customer information </h3>
             Customer name:<input type="text" name="customername"/><br/><br/>
             Customer email:<input type="text" name="customeremail"/><br/><br/>

@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author frede
  */
-public class CommandGoToCreateOrder extends Command {
+public class CommandGoToCarportSelect extends Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
-        request.getRequestDispatcher("createOrderPage.jsp").forward(request, response);
+        request.getRequestDispatcher("carportSelectPage.jsp").forward(request, response);
     }
     
 }

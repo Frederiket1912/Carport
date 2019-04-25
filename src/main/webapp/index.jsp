@@ -15,8 +15,8 @@
     <body>
         <h1>Hello World!</h1>
         <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToCreateOrder"/>
-            <input type="submit" value="Go to create order page"/>
+            <input type="hidden" name="command" value="goToCarportSelect"/>
+            <input type="submit" value="Go to carport selection"/>
         </form> <br>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToSeeOrders"/>
