@@ -54,6 +54,10 @@ public class CustomerMapper {
             try {
             Connection con = DBConnector.connection();
             String SQL = "select * from `Customer` where Email ='" + email + "';";
+            ResultSet rs = con.createStatement().executeQuery(SQL);
+            while(rs.next()){
+                c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"));
+            }
             return c;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException(ex.getMessage());
@@ -81,8 +85,9 @@ public class CustomerMapper {
         try {
             CustomerMapper cm = new CustomerMapper();
             //Customer customer = new Customer("name", "test", "address", 0, "phonenumber");
-            ArrayList<Customer> Customerlist = cm.Customerlist();
-            System.out.println(Customerlist);
+            //ArrayList<Customer> Customerlist = cm.Customerlist();
+            
+            System.out.println(cm.getCustomer("test"));
             // System.out.println(cm.getCustomerId(customer));
         } catch (CarportException ex) {
             System.out.println(ex.getMessage());
