@@ -26,7 +26,7 @@ public class CommandGetCustomer extends Command{
         Customer c = lf.getCustomer(request.getParameter("customeremail"));
         
         request.setAttribute("c", c);
-        request.getRequestDispatcher("Customer.jsp").forward(request, response);
+        request.getRequestDispatcher("CustomerView.jsp").forward(request, response);
     }
     
 }

@@ -13,29 +13,22 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Kunde oversigt</h1>
+        
+        
         <form name="SearchCustomer" action="FrontController" method="POST">
-                        Customer email:<input type="text" name="customeremail"
-                        <input type="hidden" name="command" value="SearchCustomers">
-                        <input type="submit" value="Search Customers">
-                    </form>
+            <input type="text" name="customeremail" value="Søg">
+            <input type="hidden" name="command" value="SearchCustomers">
+            <input type="submit" value="Søg">
+        </form>
         
-         <form name="Customers" action="FrontController" method="POST">
-                        <input type="hidden" name="command" value="Customers">
-                        <input type="submit" value="See All Customers">
-                    </form>
         
-         <table class="table table-striped">
-                <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Address</th><th>Zipcode</th><th>Phonenumber</th></tr></thead> <tbody>
-                    <%
-                        Customer c = (Customer)request.getAttribute("c");
-            %>
-             <tr>
-                    <td><%= c.getCustomerId()%></td><td><%= c.getName()%></td><td><%= c.getEmail()%></td><td><%= c.getAddress()%></td><td><%= c.getZipcode()%></td><td><%= c.getPhonenumber()%>
-                </tr>
-                <%
-                    }
+        <br/><br/>
+        
+        <form name="Customers" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="Customers">
+            <input type="submit" value="See All Customers">
+        </form>
 
-                %>
     </body>
 </html>
