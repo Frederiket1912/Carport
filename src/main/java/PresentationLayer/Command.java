@@ -29,7 +29,7 @@ public abstract class Command {
 
         commands = new HashMap<>();
         commands.put("createOrder", new CommandCreateOrder());
-        commands.put("goToCarportSelect", new CommandGoToCarportSelect());
+        commands.put("login", new CommandLogin());
         commands.put("goToSeeOrders", new CommandGoToSeeOrders());
         commands.put("goToIndex", new CommandGoToIndex());
         commands.put("Customers", new CommandCustomers());

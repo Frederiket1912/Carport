@@ -35,6 +35,11 @@
             </select><br/><br/>
             <input type="hidden" name="command" value="carportSelectCustom">
             <input type="submit" value="Submit"/> 
-        </form>
+        </form>       
+        <h3>Go to see all orders page</h3>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToSeeOrders"/>
+            <input type="submit" value="Go to see orders page"/>
+        </form> <br>
     </body>
 </html>

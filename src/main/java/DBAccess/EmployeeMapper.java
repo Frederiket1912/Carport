@@ -8,6 +8,7 @@ package DBAccess;
 import FunctionLayer.CarportException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -30,4 +31,34 @@ public class EmployeeMapper {
             throw new CarportException( ex.getMessage() );
         }
     }
+    
+    public Employee login( String email, String password ) throws CarportException {
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "SELECT * FROM Employee "
+                    + "WHERE Email=? AND Password=?";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setString( 1, email );
+            ps.setString( 2, password );
+            ResultSet rs = ps.executeQuery();
+            if ( rs.next() ) {
+                String name = rs.getString( "Name" );
+                int employeeId = rs.getInt("EmployeeID");
+                Employee employee = new Employee(employeeId, password, email, name);
+                return employee;
+            } else {
+                throw new CarportException( "Could not validate user" );
+            }
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new CarportException(ex.getMessage());
+        }
+    }
+    
+    public static void main(String[] args) throws CarportException {
+        EmployeeMapper em = new EmployeeMapper();
+        Employee employee = em.login("email", "password");
+        System.out.println(employee.getName());
+    }
+            
+            
 }

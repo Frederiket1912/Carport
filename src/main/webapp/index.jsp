@@ -13,14 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Hello Login Page!</h1>
+        <h3>Login </h3> <br>
         <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToCarportSelect"/>
-            <input type="submit" value="Go to carport selection"/>
-        </form> <br>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToSeeOrders"/>
-            <input type="submit" value="Go to see orders page"/>
-        </form> <br>
+            Email:<input type="text" name="email"/><br/><br/>
+            Password:<input type="password" name="password"/><br/><br/>
+            <input type="hidden" name="command" value="login">
+            <input type="submit" value="login"/>  
+        </form>
     </body>
 </html>

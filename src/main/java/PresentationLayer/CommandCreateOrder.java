@@ -48,12 +48,9 @@ public class CommandCreateOrder extends Command {
             Customer customer = lf.createCustomer(customerName, customerEmail, customerAddress, customerZipcode, customerPhonenumber);
             int customerId = lf.getCustomerId(customer);
             int totalSale = Integer.parseInt(request.getParameter("salesprice"));
-            //virker ikke før vi har login og gemmer en employee i session
-            /*HttpSession session = request.getSession();
-        Employee employee = (Employee) session.getAttribute("employee");
-        int employeeId = employee.getEmployeeId();*/
+            Employee employee = (Employee) session.getAttribute("employee");
+            int employeeId = employee.getEmployeeId();
             //placeholder værdier
-            int employeeId = 1;
             int totalCost = 100;
             Order order = lf.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
             request.setAttribute("order", order);
@@ -61,7 +58,7 @@ public class CommandCreateOrder extends Command {
             request.getRequestDispatcher("ErrorPage.jsp").forward(request, response);
             //throw new CarportException("there was an error in one or more of the input fields, please check them again");
         }
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("carportSelectPage.jsp").forward(request, response);
     }
 
 }

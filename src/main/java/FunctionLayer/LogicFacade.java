@@ -58,6 +58,12 @@ public class LogicFacade {
         return employee;
     }
     
+    public Employee login(String email, String password) throws CarportException{
+        EmployeeMapper em = new EmployeeMapper();
+        Employee employee = em.login(email, password);
+        return employee;
+    }
+    
     public ArrayList<Customer> Customerlist() throws CarportException{
         CustomerMapper cm = new CustomerMapper();
         ArrayList<Customer> CL = cm.Customerlist();
