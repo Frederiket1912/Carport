@@ -96,10 +96,26 @@ public class OrderMapper {
             throw new CarportException(ex.getMessage());
         }
     }
+    
+    public Order getOrder(int orderId) throws CarportException{
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "select * from `Order` where OrderID = " + orderId + ";";
+            ResultSet rs = con.createStatement().executeQuery(SQL);
+            rs.next();
+            Order order = new Order(rs.getInt("OrderID"), rs.getInt("EmployeeID"), rs.getInt("CustomerID"), rs.getInt("carport-height"),
+                    rs.getInt("carport-width"), rs.getInt("carport-length"), rs.getString("rooftype"), rs.getInt("roofangle"),
+                    rs.getInt("shed-width"), rs.getInt("shed-length"), rs.getString("CustomerComment"), rs.getInt("totalCost"),
+                    rs.getInt("TotalSale"), rs.getString("Status"));
+            return order;
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new CarportException(ex.getMessage());
+        }
+    }
 
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
-        System.out.println(om.getOrdersFromCustomer(1).get(1).getCarportHeight());
+        System.out.println(om.getOrder(2).getRoofType());
 
     }
 

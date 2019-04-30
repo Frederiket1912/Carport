@@ -29,9 +29,55 @@
         <h1>Hello createOrderPage!</h1>
         <form action="FrontController" method="post">
             <h3> Please add carport specifications </h3>
-            Carport length in cm:<input type="text" name="carportlength" value="<%= request.getAttribute("carportlength")%>"/><br/><br/>
-            Carport width in cm:<input type="text" name="carportwidth" value="<%= request.getAttribute("carportwidth")%>"/><br/><br/>
-            Carport height in cm:<input type="text" name="carportheight" value="<%= request.getAttribute("carportheight")%>"/><br/><br/>
+            Carport length:<select name="carportlength">
+                <% if (request.getAttribute("carportlength") != null) { %>
+                <option value="${requestScope.carportlength}" selected hidden>${requestScope.carportlength} cm</option>) 
+                <% }%>
+                <option value="240">240 cm </option>
+                <option value="270">270 cm </option>
+                <option value="300">300 cm </option>
+                <option value="330">330 cm </option>
+                <option value="360">360 cm </option>
+                <option value="390">390 cm </option>
+                <option value="420">420 cm </option>
+                <option value="450">450 cm </option>
+                <option value="480">480 cm </option>
+                <option value="510">510 cm </option>
+                <option value="540">540 cm </option>
+                <option value="570">570 cm </option>
+                <option value="600">600 cm </option>
+                <option value="630">630 cm </option>
+                <option value="660">660 cm </option>
+                <option value="690">690 cm </option>
+                <option value="720">720 cm </option>
+                <option value="750">750 cm </option>
+                <option value="780">780 cm </option>
+            </select><br/><br/>
+            Carport width:<select name="carportwidth">
+                <% if (request.getAttribute("carportwidth") != null) { %>
+                <option value="${requestScope.carportwidth}" selected hidden>${requestScope.carportwidth} cm</option>) 
+                <% }%>
+                <option value="240">240 cm </option>
+                <option value="270">270 cm </option>
+                <option value="300">300 cm </option>
+                <option value="330">330 cm </option>
+                <option value="360">360 cm </option>
+                <option value="390">390 cm </option>
+                <option value="420">420 cm </option>
+                <option value="450">450 cm </option>
+                <option value="480">480 cm </option>
+                <option value="510">510 cm </option>
+                <option value="540">540 cm </option>
+                <option value="570">570 cm </option>
+                <option value="600">600 cm </option>
+                <option value="630">630 cm </option>
+                <option value="660">660 cm </option>
+                <option value="690">690 cm </option>
+                <option value="720">720 cm </option>
+                <option value="750">750 cm </option>
+                <option value="780">780 cm </option>
+            </select><br/><br/>
+            The height to roof inside carport is always 225cm, total height of carport depends on roof angle and carport width<br/><br/>
             <div id="roofangle">
                 Roof angle:<select name="roofangle">
                     <% if (request.getAttribute("roofangle") != null) { %>
@@ -47,8 +93,52 @@
                 </select><br/><br/>
             </div>
             <div id="shed">
-                Shed width in cm:<input type="text" name="shedwidth" value="<%= request.getAttribute("shedwidth")%>"/><br/><br/>
-                Shed length in cm:<input type="text" name="shedlength" value="<%= request.getAttribute("shedlength")%>"/><br/><br/>
+                Shed width:<select name="shedwidth">
+                    <% if (request.getAttribute("shedwidth") != null) { %>
+                    <option value="${requestScope.shedwidth}" selected hidden>${requestScope.shedwidth} cm</option>) 
+                    <% }%>
+                    <option value="210">210 cm </option>
+                    <option value="240">240 cm </option>
+                    <option value="270">270 cm </option>
+                    <option value="300">300 cm </option>
+                    <option value="330">330 cm </option>
+                    <option value="360">360 cm </option>
+                    <option value="390">390 cm </option>
+                    <option value="420">420 cm </option>
+                    <option value="450">450 cm </option>
+                    <option value="480">480 cm </option>
+                    <option value="510">510 cm </option>
+                    <option value="540">540 cm </option>
+                    <option value="570">570 cm </option>
+                    <option value="600">600 cm </option>
+                    <option value="630">630 cm </option>
+                    <option value="660">660 cm </option>
+                    <option value="690">690 cm </option>
+                    <option value="720">720 cm </option>
+                </select><br/><br/>
+                Shed length:<select name="shedlength">
+                    <% if (request.getAttribute("shedlength") != null) { %>
+                    <option value="${requestScope.shedlength}" selected hidden>${requestScope.shedlength} cm</option>) 
+                    <% }%>
+                    <option value="210">210 cm </option>
+                    <option value="240">240 cm </option>
+                    <option value="270">270 cm </option>
+                    <option value="300">300 cm </option>
+                    <option value="330">330 cm </option>
+                    <option value="360">360 cm </option>
+                    <option value="390">390 cm </option>
+                    <option value="420">420 cm </option>
+                    <option value="450">450 cm </option>
+                    <option value="480">480 cm </option>
+                    <option value="510">510 cm </option>
+                    <option value="540">540 cm </option>
+                    <option value="570">570 cm </option>
+                    <option value="600">600 cm </option>
+                    <option value="630">630 cm </option>
+                    <option value="660">660 cm </option>
+                    <option value="690">690 cm </option>
+                    <option value="720">720 cm </option>
+                </select><br/><br/>
             </div>
             <h3> Please add customer information </h3>
             Customer name:<input type="text" name="customername"/><br/><br/>

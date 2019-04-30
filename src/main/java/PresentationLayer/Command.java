@@ -36,8 +36,9 @@ public abstract class Command {
         commands.put("SearchCustomers", new CommandGetCustomer());
         commands.put("carportSelectCustom", new CommandCarportSelectCustom());
         commands.put("carportSelectPremade", new CommandCarportSelectPremade());
+        commands.put("seeDrawing", new CommandSeeDrawing());
         
-
+        
 
        c = commands.getOrDefault(origin, new CommandUnknown());
         

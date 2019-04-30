@@ -16,7 +16,7 @@
         <form action="FrontController" method="post">
             <h3> Select premade carport </h3>
             <select id="premadeCarport" name="premadeCarport">
-                <option value="1">CARPORT ENKELT 3,60X7,20M CAR01HR MED REDSKABSRUM 3,20X2,20M</option>
+                <option value="1">CARPORT ENKELT 3,60X7,20M CAR01HR MED REDSKABSRUM 3,60X2,20M</option>
                 <option value="2">CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING</option>
                 <option value="3">CARPORT ENKELT 3,00X6,00 M CAR01R FLADT TAG MED REDSKABSRUM 1,50X2,70 M</option>
             </select><br/><br/>

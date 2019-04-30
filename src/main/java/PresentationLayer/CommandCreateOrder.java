@@ -10,6 +10,7 @@ import DBAccess.Employee;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.RoofBuilder;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,6 @@ public class CommandCreateOrder extends Command {
         try {
             int carportLength = Integer.parseInt(request.getParameter("carportlength"));
             int carportWidth = Integer.parseInt(request.getParameter("carportwidth"));
-            int carportHeight = Integer.parseInt(request.getParameter("carportheight"));
             HttpSession session = request.getSession();
             String roofType = (String) session.getAttribute("rooftype");
             int roofAngle;
@@ -38,6 +38,8 @@ public class CommandCreateOrder extends Command {
             }
             int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             int shedLength = Integer.parseInt(request.getParameter("shedlength"));
+            RoofBuilder rb = new RoofBuilder();
+            int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
             String customerEmail = request.getParameter("customeremail");
             String customerAddress = request.getParameter("customeraddress");

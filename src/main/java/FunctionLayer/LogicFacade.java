@@ -26,6 +26,12 @@ public class LogicFacade {
         return order;
     }
     
+    public Order getOrder(int orderId) throws CarportException{
+        OrderMapper om = new OrderMapper();
+        Order order = om.getOrder(orderId);
+        return order;
+    }
+    
     public ArrayList<Order> getAllOrders() throws CarportException{
         OrderMapper om = new OrderMapper();
         ArrayList<Order> orders = om.getAllOrders();
