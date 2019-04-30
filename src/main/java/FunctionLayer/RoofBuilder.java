@@ -54,7 +54,6 @@ public class RoofBuilder {
     public Double getCarportHeight(int carportWidth, int roofAngle){
         int katete = carportWidth/2;
         double hypotenuse = katete/Math.cos(Math.toRadians(roofAngle));
-        System.out.println(hypotenuse);
         double height = Math.sin(Math.toRadians(roofAngle))*hypotenuse+225;
         return height;
     }

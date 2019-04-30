@@ -17,15 +17,13 @@
     <body>
         <% Order order = (Order) request.getAttribute("order");
             int length = order.getCarportLength();
-           int width = order.getCarportWidth();
+            int width = order.getCarportWidth();
             int shedLength = order.getShedLength();
             int shedWidth = order.getShedWidth();
-            PoleBuilder pb = new PoleBuilder();
-            double distance = pb.getDistanceBetweenPoles(length);
+            double distance = (Double) request.getAttribute("distance");
             double x = 10 + distance;
             int numberOfBoards = length / 210 - 1;
-            RoofBuilder rb = new RoofBuilder();
-            int carportHeight = rb.getCarportHeight(order.getCarportWidth(), order.getRoofAngle()).intValue();
+            Double carportHeight = (Double) request.getAttribute("carportheight");
         %>
         <svg height="<%= width + 50%>" width="<%= length + 150%>" transform="translate(50,50)">
         <!--firkant der viser skuret -->
@@ -54,7 +52,7 @@
         <% x += (distance + 10);
             }%>
         </svg><br/><br/><br/>
-        Total height of carport: <%= carportHeight %> cm
+        Total height of carport: <%= Math.round(carportHeight*10)/10.0 %> cm
          <h3>Go to see all orders page</h3>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToSeeOrders"/>

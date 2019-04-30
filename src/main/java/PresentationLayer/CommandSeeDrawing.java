@@ -8,6 +8,8 @@ package PresentationLayer;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.PoleBuilder;
+import FunctionLayer.RoofBuilder;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +23,21 @@ public class CommandSeeDrawing extends Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
+        System.out.println("1");
         LogicFacade lf = new LogicFacade();
-            int orderId = Integer.parseInt(request.getParameter("orderId"));
-            Order order = lf.getOrder(orderId);
-            request.setAttribute("order", order);
-            request.getRequestDispatcher("technicalDrawing.jsp").forward(request, response);
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
+        Order order = lf.getOrder(orderId);
+        System.out.println("2");
+        request.setAttribute("order", order);
+        PoleBuilder pb = new PoleBuilder();
+        double distance = pb.getDistanceBetweenPoles(order.getCarportLength());
+        request.setAttribute("distance", distance);
+        System.out.println("3");
+        RoofBuilder rb = new RoofBuilder();
+        Double carportHeight = rb.getCarportHeight(order.getCarportWidth(), order.getRoofAngle());
+        System.out.println("carportheight: " + carportHeight);
+        request.setAttribute("carportheight", carportHeight);
+        request.getRequestDispatcher("technicalDrawing.jsp").forward(request, response);
     }
-    
+
 }
