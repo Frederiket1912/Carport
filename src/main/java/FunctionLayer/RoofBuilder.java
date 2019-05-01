@@ -15,7 +15,8 @@ public class RoofBuilder {
         //+15 pga 15cm tagudhæng i hver side af carporten
         int katete = carportWidth/2+15;
         double hypotenuse = katete/Math.cos(Math.toRadians(roofAngle));
-        double roofArea = (carportLength+15)*hypotenuse*2;
+        //+30 fordi taget skal have et 30cm udhæng på gavlene i hver ende
+        double roofArea = (carportLength+30)*hypotenuse*2;
         return roofArea;
     }
     
