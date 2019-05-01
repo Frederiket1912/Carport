@@ -9,6 +9,8 @@ import DBAccess.Customer;
 import DBAccess.CustomerMapper;
 import DBAccess.Employee;
 import DBAccess.EmployeeMapper;
+import DBAccess.LineItem;
+import DBAccess.LineItemMapper;
 import DBAccess.Material;
 import DBAccess.MaterialMapper;
 import DBAccess.Order;
@@ -103,18 +105,27 @@ public class LogicFacadeImplementation implements LogicFacade {
         Customer c = cm.getCustomer(email);
         return c;
     }
-    
+
     @Override
-    public Material getMaterial(int materialId) throws CarportException{
+    public Material getMaterial(int materialId) throws CarportException {
         MaterialMapper mm = new MaterialMapper();
         Material material = mm.getMaterial(materialId);
         return material;
     }
-    
+
     @Override
     public ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException {
-    OrderMapper om = new OrderMapper();
-    ArrayList<Order> OfC = om.getOrdersFromCustomer(customerId);
-    return OfC;
+        OrderMapper om = new OrderMapper();
+        ArrayList<Order> OfC = om.getOrdersFromCustomer(customerId);
+        return OfC;
+    }
+
+    @Override
+    public LineItem createLineItem(int materialId, int orderId, int qty, int length,
+            int width, int height, String comment) throws CarportException {
+        LineItemMapper lim = new LineItemMapper();
+        LineItem lineItem = new LineItem(materialId, orderId, qty, length, width, height, comment);
+        lim.createLineItem(lineItem);
+        return lineItem;
     }
 }

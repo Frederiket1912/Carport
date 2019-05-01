@@ -9,6 +9,7 @@ import DBAccess.Customer;
 import DBAccess.CustomerMapper;
 import DBAccess.Employee;
 import DBAccess.EmployeeMapper;
+import DBAccess.LineItem;
 import DBAccess.Material;
 import DBAccess.MaterialMapper;
 import DBAccess.Order;
@@ -51,4 +52,7 @@ public interface LogicFacade {
     Material getMaterial(int materialId) throws CarportException;
     
     ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException;
+    
+    LineItem createLineItem(int materialId, int orderId, int qty, int length, int width, int height, String comment)throws CarportException;
+            
 }

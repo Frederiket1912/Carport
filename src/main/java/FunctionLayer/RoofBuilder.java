@@ -61,6 +61,5 @@ public class RoofBuilder {
     
     public static void main(String[] args) {
         RoofBuilder rb = new RoofBuilder();
-        System.out.println(rb.getCarportHeight(360, 25));
     }
 }
