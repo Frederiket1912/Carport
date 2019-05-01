@@ -6,6 +6,8 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportException;
+import FunctionLayer.LogicFacade;
+import FunctionLayer.LogicFacadeImplementation;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -22,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
-
+private LogicFacade logic = new LogicFacadeImplementation();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +39,8 @@ public class FrontController extends HttpServlet {
         try
         {
             Command c = Command.from(request);
-            c.execute(request, response);
+            String t = c.execute(request, logic);
+            request.getRequestDispatcher(t).forward(request, response);
         }
         catch ( CarportException ex ) {
             request.setAttribute( "error", ex.getMessage() );

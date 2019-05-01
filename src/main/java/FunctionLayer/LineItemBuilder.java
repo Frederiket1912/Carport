@@ -16,8 +16,12 @@ import java.util.ArrayList;
  */
 public class LineItemBuilder {
     
-    public ArrayList<LineItem> buildLineItems(Order order) throws CarportException{
+   /* public ArrayList<LineItem> buildLineItems(Order order) throws CarportException{
         ArrayList<LineItem> lineItems = new ArrayList<>();
+        
+    }
+    
+    
         int carportWidth = order.getCarportWidth();
         int carportLength = order.getCarportLength();
         String roofType = order.getRoofType();
@@ -26,7 +30,7 @@ public class LineItemBuilder {
         int shedLength = order.getShedLength();
         int orderId = order.getOrderId();
         RoofBuilder rb = new RoofBuilder();
-        LogicFacade lf = new LogicFacade();
+        LogicFacade lf = new LogicFacadeImplementation();
         if (roofType.equals("fladt")){
             //dividere med 10.000 for at få areal i m2
             double roofArea = rb.getRoofArea(carportLength, carportWidth, roofAngle)/10000;
@@ -35,5 +39,5 @@ public class LineItemBuilder {
             LineItem lineItem = new LineItem(material.getMaterialId(), orderId, 0, carportLength+60, carportWidth+30, 0, material.getName());
             lineItems.add(lineItem);
         }
-    }
+    }*/
 }

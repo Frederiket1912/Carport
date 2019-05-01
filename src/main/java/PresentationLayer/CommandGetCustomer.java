@@ -22,14 +22,13 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandGetCustomer extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
-        LogicFacade lf = new LogicFacade();
-        Customer c = lf.getCustomer(request.getParameter("customeremail"));
-        ArrayList<Order> OfC = lf.getOrdersFromCustomer(c.getCustomerId());
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+        Customer c = logic.getCustomer(request.getParameter("customeremail"));
+        ArrayList<Order> OfC = logic.getOrdersFromCustomer(c.getCustomerId());
         
         request.setAttribute("oc", OfC);
         request.setAttribute("c", c);
-        request.getRequestDispatcher("CustomerView.jsp").forward(request, response);
+        return "CustomerView.jsp";
     }
     
 }

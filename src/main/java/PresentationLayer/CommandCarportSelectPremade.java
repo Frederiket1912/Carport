@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import DBAccess.Customer;
+import DBAccess.Employee;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
@@ -22,10 +23,9 @@ import javax.servlet.http.HttpSession;
 public class CommandCarportSelectPremade extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         int premadeId = Integer.parseInt(request.getParameter("premadeCarport"));
-        LogicFacade lf = new LogicFacade();
-        Order order = lf.getPremadeOrder(premadeId);
+        Order order = logic.getPremadeOrder(premadeId);
         int carportLength = order.getCarportLength();
         request.setAttribute("carportlength", carportLength);
         int carportWidth = order.getCarportWidth();
@@ -41,16 +41,9 @@ public class CommandCarportSelectPremade extends Command {
         request.setAttribute("shedwidth", shedWidth);
         int shedLength = order.getShedLength();
         request.setAttribute("shedlength", shedLength);
-        //virker ikke før vi har login og gemmer en employee i session
-        /*HttpSession session = request.getSession();
-        Employee employee = (Employee) session.getAttribute("employee");
-        int employeeId = employee.getEmployeeId();*/
-        //placeholder værdier
-        int employeeId = 1;
-        int totalCost = 100;
         int totalSale = order.getTotalSale();
         request.setAttribute("totalsale", totalSale);
-        request.getRequestDispatcher("createPremadeOrderPage.jsp").forward(request, response);
+        return "createPremadeOrderPage.jsp";
     }
     
 }

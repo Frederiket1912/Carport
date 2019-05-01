@@ -22,14 +22,14 @@ import javax.servlet.http.HttpSession;
 public class CommandLogin extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
         EmployeeMapper em = new EmployeeMapper();
         Employee employee = em.login(email, password);
         HttpSession session = request.getSession();
         session.setAttribute( "employee", employee );
-        request.getRequestDispatcher("carportSelectPage.jsp").forward(request, response);
+        return "carportSelectPage.jsp";
     }
     
 }

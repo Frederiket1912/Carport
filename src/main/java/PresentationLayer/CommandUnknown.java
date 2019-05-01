@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportException;
+import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandUnknown extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         request.setAttribute("error", "unknown command");
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        return "index.jsp";
     }
     
 }

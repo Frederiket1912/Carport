@@ -22,11 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandGoToSeeOrders extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
-        LogicFacade lf = new LogicFacade();
-        ArrayList<Order> orders = lf.getAllOrders();
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+        ArrayList<Order> orders = logic.getAllOrders();
         request.setAttribute("orders", orders);
-        request.getRequestDispatcher("showAllOrdersPage.jsp").forward(request, response);
+        return "showAllOrdersPage.jsp";
     }
     
 }

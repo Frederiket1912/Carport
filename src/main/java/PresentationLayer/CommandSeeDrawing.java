@@ -22,22 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandSeeDrawing extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
-        System.out.println("1");
-        LogicFacade lf = new LogicFacade();
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
-        Order order = lf.getOrder(orderId);
-        System.out.println("2");
+        Order order = logic.getOrder(orderId);
         request.setAttribute("order", order);
         PoleBuilder pb = new PoleBuilder();
         double distance = pb.getDistanceBetweenPoles(order.getCarportLength());
         request.setAttribute("distance", distance);
-        System.out.println("3");
         RoofBuilder rb = new RoofBuilder();
         Double carportHeight = rb.getCarportHeight(order.getCarportWidth(), order.getRoofAngle());
-        System.out.println("carportheight: " + carportHeight);
         request.setAttribute("carportheight", carportHeight);
-        request.getRequestDispatcher("technicalDrawing.jsp").forward(request, response);
+        return "technicalDrawing.jsp";
     }
 
 }

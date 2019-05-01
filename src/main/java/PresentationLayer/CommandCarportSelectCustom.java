@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportException;
+import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,13 +20,13 @@ import javax.servlet.http.HttpSession;
 public class CommandCarportSelectCustom extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         String roofType = request.getParameter("rooftype");
         HttpSession session = request.getSession();
         session.setAttribute("rooftype", roofType);
         String shed = request.getParameter("shed");
         request.setAttribute("shed", shed);
-        request.getRequestDispatcher("createOrderPage.jsp").forward(request, response);
+        return "createOrderPage.jsp";
     }
     
 }

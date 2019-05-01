@@ -21,12 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandCustomers extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
-        LogicFacade lf = new LogicFacade();
-        ArrayList<Customer> CL = lf.Customerlist();
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+        ArrayList<Customer> CL = logic.Customerlist();
         
         request.setAttribute("CL", CL);
-        request.getRequestDispatcher("CustomerList.jsp").forward(request, response);
+        return "CustomerList.jsp";
     }
     
 }

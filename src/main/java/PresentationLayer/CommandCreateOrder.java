@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 public class CommandCreateOrder extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         try {
             int carportLength = Integer.parseInt(request.getParameter("carportlength"));
             int carportWidth = Integer.parseInt(request.getParameter("carportwidth"));
@@ -46,21 +46,20 @@ public class CommandCreateOrder extends Command {
             int customerZipcode = Integer.parseInt(request.getParameter("customerzipcode"));
             String customerPhonenumber = request.getParameter("customerphonenumber");
             String customerComment = request.getParameter("customercomment");
-            LogicFacade lf = new LogicFacade();
-            Customer customer = lf.createCustomer(customerName, customerEmail, customerAddress, customerZipcode, customerPhonenumber);
-            int customerId = lf.getCustomerId(customer);
+            Customer customer = logic.createCustomer(customerName, customerEmail, customerAddress, customerZipcode, customerPhonenumber);
+            int customerId = logic.getCustomerId(customer);
             int totalSale = Integer.parseInt(request.getParameter("salesprice"));
             Employee employee = (Employee) session.getAttribute("employee");
             int employeeId = employee.getEmployeeId();
             //placeholder værdier
             int totalCost = 100;
-            Order order = lf.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
+            Order order = logic.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
             request.setAttribute("order", order);
         } catch (NumberFormatException ex) {
-            request.getRequestDispatcher("ErrorPage.jsp").forward(request, response);
+            return "ErrorPage.jsp";
             //throw new CarportException("there was an error in one or more of the input fields, please check them again");
         }
-        request.getRequestDispatcher("carportSelectPage.jsp").forward(request, response);
+        return "carportSelectPage.jsp";
     }
 
 }
