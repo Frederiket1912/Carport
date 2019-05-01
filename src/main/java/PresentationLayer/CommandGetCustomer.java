@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import DBAccess.Customer;
+import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
@@ -24,7 +25,9 @@ public class CommandGetCustomer extends Command{
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CarportException {
         LogicFacade lf = new LogicFacade();
         Customer c = lf.getCustomer(request.getParameter("customeremail"));
+        ArrayList<Order> OfC = lf.getOrdersFromCustomer(c.getCustomerId());
         
+        request.setAttribute("oc", OfC);
         request.setAttribute("c", c);
         request.getRequestDispatcher("CustomerView.jsp").forward(request, response);
     }

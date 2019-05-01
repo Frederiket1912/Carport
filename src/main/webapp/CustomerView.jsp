@@ -4,6 +4,8 @@
     Author     : frederik
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="DBAccess.Order"%>
 <%@page import="DBAccess.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,6 +32,28 @@
                 <td><%=c.getCustomerId()%> </td><td><%=c.getName()%></td><td><%=c.getEmail()%></td><td><%=c.getAddress()%></td><td><%=c.getZipcode()%></td><td><%=c.getPhonenumber()%></td>
 
             </tr>
+            
+        <table class="table table-striped">
+            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Customer Id</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
+                <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
+                            for (Order order : orders) {
+                        %>
+                <tr>
+                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= order.getCustomerId()%></td> <td><%= order.getStatus()%></td> <td><%= order.getTotalSale()%></td> 
+                    <td>
+                        <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="seeDrawing">
+                        <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
+                        <input type="submit" value="See drawing">
+                        </form>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </tbody>
+        </table> <br/><br/>
+            
     </body>
 </table>
 </body>

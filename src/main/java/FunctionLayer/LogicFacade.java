@@ -81,4 +81,10 @@ public class LogicFacade {
         Customer c = cm.getCustomer(email);
         return c;
     }
+    
+    public ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException {
+    OrderMapper om = new OrderMapper();
+    ArrayList<Order> OfC = om.getOrdersFromCustomer(customerId);
+    return OfC;
+    }
 }
