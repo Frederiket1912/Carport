@@ -84,9 +84,16 @@ public class LogicFacade {
         return c;
     }
     
+
     public Material getMaterial(int materialId) throws CarportException{
         MaterialMapper mm = new MaterialMapper();
         Material material = mm.getMaterial(materialId);
         return material;
+    }
+    
+    public ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException {
+    OrderMapper om = new OrderMapper();
+    ArrayList<Order> OfC = om.getOrdersFromCustomer(customerId);
+    return OfC;
     }
 }

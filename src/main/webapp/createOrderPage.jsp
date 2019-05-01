@@ -50,7 +50,7 @@
                 <option value="750">750 cm </option>
                 <option value="780">780 cm </option>
             </select><br/><br/>
-            Carport width:<select name="carporwidth">
+            Carport width:<select name="carportwidth">
                 <option value="240">240 cm </option>
                 <option value="270">270 cm </option>
                 <option value="300">300 cm </option>

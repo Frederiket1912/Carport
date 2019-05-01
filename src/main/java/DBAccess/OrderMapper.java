@@ -115,7 +115,9 @@ public class OrderMapper {
 
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
-        System.out.println(om.getOrder(2).getRoofType());
+        Order o = new Order(1,1,1,1,1,1,"1",1,1,1,"1",1,1,"1");
+        om.createOrder(o);
+        
 
     }
 

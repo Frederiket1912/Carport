@@ -57,6 +57,7 @@ public class CustomerMapper {
             ResultSet rs = con.createStatement().executeQuery(SQL);
             while(rs.next()){
                 c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"));
+                c.setCustomerId(rs.getInt("CustomerID"));
             }
             return c;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -72,6 +73,7 @@ public class CustomerMapper {
             ResultSet rs = con.createStatement().executeQuery(query);
             while (rs.next()) {
                 Customer c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"));
+                c.setCustomerId(rs.getInt("CustomerID"));
                 Customerlist.add(c);
             }
             return Customerlist;

@@ -33,6 +33,10 @@ public class Customer {
     public int getCustomerId() {
         return customerId;
     }
+    
+    public void setCustomerId(int i){
+        this.customerId = i;
+    }
 
     public String getName() {
         return name;
