@@ -15,6 +15,13 @@ public class Material {
     private int msrp;
     private int costPrice;
 
+    public Material(int materialId, String name, int msrp, int costPrice) {
+        this.materialId = materialId;
+        this.name = name;
+        this.msrp = msrp;
+        this.costPrice = costPrice;
+    }
+
     public Material(String name, int msrp, int costPrice) {
         this.name = name;
         this.msrp = msrp;

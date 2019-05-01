@@ -9,6 +9,8 @@ import DBAccess.Customer;
 import DBAccess.CustomerMapper;
 import DBAccess.Employee;
 import DBAccess.EmployeeMapper;
+import DBAccess.Material;
+import DBAccess.MaterialMapper;
 import DBAccess.Order;
 import DBAccess.OrderMapper;
 import java.util.ArrayList;
@@ -80,5 +82,11 @@ public class LogicFacade {
         CustomerMapper cm = new CustomerMapper();
         Customer c = cm.getCustomer(email);
         return c;
+    }
+    
+    public Material getMaterial(int materialId) throws CarportException{
+        MaterialMapper mm = new MaterialMapper();
+        Material material = mm.getMaterial(materialId);
+        return material;
     }
 }
