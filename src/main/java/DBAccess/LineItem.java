@@ -14,12 +14,12 @@ public class LineItem {
      private int materialId;
      private int orderId;
      private int qty;
-     private int length;
-     private int width;
-     private int height;
+     private double length;
+     private double width;
+     private double height;
      private String comment;
 
-    public LineItem(int materialId, int orderId, int qty, int length, int width, int height, String comment) {
+    public LineItem(int materialId, int orderId, int qty, double length, double width, double height, String comment) {
         this.materialId = materialId;
         this.orderId = orderId;
         this.qty = qty;
@@ -45,15 +45,15 @@ public class LineItem {
         return qty;
     }
 
-    public int getLength() {
+    public double getLength() {
         return length;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 

@@ -25,9 +25,9 @@ public class LineItemMapper {
             ps.setInt(1, lineItem.getMaterialId());
             ps.setInt(2, lineItem.getOrderId());
             ps.setInt(3, lineItem.getQty());
-            ps.setInt(4, lineItem.getLength());
-            ps.setInt(5, lineItem.getWidth());
-            ps.setInt(6, lineItem.getHeight());
+            ps.setDouble(4, lineItem.getLength());
+            ps.setDouble(5, lineItem.getWidth());
+            ps.setDouble(6, lineItem.getHeight());
             ps.setString(7, lineItem.getComment());
             ps.executeUpdate();
         } catch ( SQLException | ClassNotFoundException ex ) {
