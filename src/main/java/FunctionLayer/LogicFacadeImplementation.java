@@ -61,12 +61,15 @@ public class LogicFacadeImplementation implements LogicFacade {
     }
 
     @Override
-    public Customer createCustomer(String name, String email, String address,
+    public boolean createCustomer(String name, String email, String address,
             int zipcode, String phonenumber) throws CarportException {
-        Customer customer = new Customer(name, email, address, zipcode, phonenumber);
         CustomerMapper cm = new CustomerMapper();
-        cm.createCustomer(customer);
-        return customer;
+        try {
+            cm.createCustomer(name, email, address, zipcode, phonenumber);
+            return true;
+        } catch (CarportException ex) {
+            return false;
+        }
     }
 
     @Override
@@ -103,6 +106,13 @@ public class LogicFacadeImplementation implements LogicFacade {
     public Customer getCustomer(String email) throws CarportException {
         CustomerMapper cm = new CustomerMapper();
         Customer c = cm.getCustomer(email);
+        return c;
+    }
+
+    @Override
+    public Customer getCustomerID(int ID) throws CarportException {
+        CustomerMapper cm = new CustomerMapper();
+        Customer c = cm.getCustomerID(ID);
         return c;
     }
 

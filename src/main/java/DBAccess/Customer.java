@@ -22,22 +22,19 @@ public class Customer {
     private int zipcode;
     private String phonenumber;
 
-    public Customer(String name, String email, String address, int zipcode, String phonenumber) {
+    public Customer(String name, String email, String address, int zipcode, String phonenumber, int customerId) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.zipcode = zipcode;
         this.phonenumber = phonenumber;
+        this.customerId = customerId;
     }
 
     public int getCustomerId() {
         return customerId;
     }
     
-    public void setCustomerId(int i){
-        this.customerId = i;
-    }
-
     public String getName() {
         return name;
     }

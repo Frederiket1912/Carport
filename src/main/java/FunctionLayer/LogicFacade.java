@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * @author frede
  */
 public interface LogicFacade {
-    
+
     Order createOrder(
             int employeeId, int customerId,
             int carportHeight, int carportWidth, int carportLength,
@@ -35,7 +35,7 @@ public interface LogicFacade {
 
     Order getPremadeOrder(int orderId) throws CarportException;
 
-    Customer createCustomer(String name, String email, String address,
+    boolean createCustomer(String name, String email, String address,
             int zipcode, String phonenumber) throws CarportException;
 
     int getCustomerId(Customer customer) throws CarportException;
@@ -47,12 +47,13 @@ public interface LogicFacade {
     ArrayList<Customer> Customerlist() throws CarportException;
 
     Customer getCustomer(String email) throws CarportException;
-    
+
+    public Customer getCustomerID(int ID) throws CarportException;
 
     Material getMaterial(int materialId) throws CarportException;
-    
+
     ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException;
-    
-    LineItem createLineItem(int materialId, int orderId, int qty, int length, int width, int height, String comment)throws CarportException;
-            
+
+    LineItem createLineItem(int materialId, int orderId, int qty, int length, int width, int height, String comment) throws CarportException;
+
 }

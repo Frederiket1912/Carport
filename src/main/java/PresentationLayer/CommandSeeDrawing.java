@@ -5,6 +5,7 @@
  */
 package PresentationLayer;
 
+import DBAccess.Customer;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
@@ -32,6 +33,8 @@ public class CommandSeeDrawing extends Command {
         RoofBuilder rb = new RoofBuilder();
         Double carportHeight = rb.getCarportHeight(order.getCarportWidth(), order.getRoofAngle());
         request.setAttribute("carportheight", carportHeight);
+        Customer customer = logic.getCustomerID(order.getCustomerId());
+        request.setAttribute("customer", customer);
         return "technicalDrawing.jsp";
     }
 

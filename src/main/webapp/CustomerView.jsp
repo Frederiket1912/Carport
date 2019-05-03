@@ -33,7 +33,7 @@
 
             </tr>
             
-        <table class="table table-striped">
+        <table id=order class="table table-striped">
             <thead><tr><th>Order Id</th><th>Employee Id</th><th>Customer Id</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
                 <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
                             for (Order order : orders) {
@@ -56,5 +56,8 @@
             
     </body>
 </table>
+<script>
+
+</script>
 </body>
 </html>

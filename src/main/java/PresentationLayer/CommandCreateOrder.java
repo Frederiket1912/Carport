@@ -46,8 +46,9 @@ public class CommandCreateOrder extends Command {
             int customerZipcode = Integer.parseInt(request.getParameter("customerzipcode"));
             String customerPhonenumber = request.getParameter("customerphonenumber");
             String customerComment = request.getParameter("customercomment");
-            Customer customer = logic.createCustomer(customerName, customerEmail, customerAddress, customerZipcode, customerPhonenumber);
-            int customerId = logic.getCustomerId(customer);
+            logic.createCustomer(customerName, customerEmail, customerAddress, customerZipcode, customerPhonenumber);
+            Customer customer = logic.getCustomer(request.getParameter("customeremail"));
+            int customerId = customer.getCustomerId();
             int totalSale = Integer.parseInt(request.getParameter("salesprice"));
             Employee employee = (Employee) session.getAttribute("employee");
             int employeeId = employee.getEmployeeId();

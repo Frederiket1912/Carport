@@ -19,16 +19,17 @@ import java.util.ArrayList;
  */
 public class CustomerMapper {
 
-    public void createCustomer(Customer customer) throws CarportException {
+    public void createCustomer(String name, String email, String address,
+            int zipcode, String phonenumber) throws CarportException {
         try {
             Connection con = DBConnector.connection();
             String SQL = "insert into Customer (`name`, Email, Adresse, Zipcode, Phonenumber) values (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, customer.getName());
-            ps.setString(2, customer.getEmail());
-            ps.setString(3, customer.getAddress());
-            ps.setInt(4, customer.getZipcode());
-            ps.setString(5, customer.getPhonenumber());
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, address);
+            ps.setInt(4, zipcode);
+            ps.setString(5, phonenumber);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException(ex.getMessage());
@@ -48,16 +49,30 @@ public class CustomerMapper {
             throw new CarportException(ex.getMessage());
         }
     }
-    
-        public Customer getCustomer(String email) throws CarportException {
+
+    public Customer getCustomer(String email) throws CarportException {
         Customer c = null;
-            try {
+        try {
             Connection con = DBConnector.connection();
             String SQL = "select * from `Customer` where Email ='" + email + "';";
             ResultSet rs = con.createStatement().executeQuery(SQL);
-            while(rs.next()){
-                c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"));
-                c.setCustomerId(rs.getInt("CustomerID"));
+            while (rs.next()) {
+                c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"), rs.getInt("CustomerID"));
+            }
+            return c;
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new CarportException(ex.getMessage());
+        }
+    }
+
+    public Customer getCustomerID(int ID) throws CarportException {
+        Customer c = null;
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "select * from `Customer` where CustomerID ='" + ID + "';";
+            ResultSet rs = con.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"), rs.getInt("CustomerID"));
             }
             return c;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -72,8 +87,7 @@ public class CustomerMapper {
             String query = "select * from `Customer`;";
             ResultSet rs = con.createStatement().executeQuery(query);
             while (rs.next()) {
-                Customer c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"));
-                c.setCustomerId(rs.getInt("CustomerID"));
+                Customer c = new Customer(rs.getString("name"), rs.getString("Email"), rs.getString("Adresse"), rs.getInt("Zipcode"), rs.getString("Phonenumber"), rs.getInt("CustomerID"));
                 Customerlist.add(c);
             }
             return Customerlist;
@@ -88,7 +102,7 @@ public class CustomerMapper {
             CustomerMapper cm = new CustomerMapper();
             //Customer customer = new Customer("name", "test", "address", 0, "phonenumber");
             //ArrayList<Customer> Customerlist = cm.Customerlist();
-            
+
             System.out.println(cm.getCustomer("test"));
             // System.out.println(cm.getCustomerId(customer));
         } catch (CarportException ex) {
