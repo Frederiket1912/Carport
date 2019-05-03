@@ -11,10 +11,15 @@ package FunctionLayer;
  */
 public class RoofBuilder {
     
-    public double getRoofArea(int carportLength, int carportWidth, int roofAngle){
+    public Double getRafterSideLength(int carportWidth, int roofAngle){
         //+15 pga 15cm tagudhæng i hver side af carporten
         int katete = carportWidth/2+15;
         double hypotenuse = katete/Math.cos(Math.toRadians(roofAngle));
+        return hypotenuse;
+    }
+    
+    public Double getRoofArea(int carportLength, int carportWidth, int roofAngle){
+        double hypotenuse = getRafterSideLength(carportWidth, roofAngle);
         //+30 fordi taget skal have et 30cm udhæng på gavlene i hver ende
         double roofArea = (carportLength+30)*hypotenuse*2;
         return roofArea;
