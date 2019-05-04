@@ -37,7 +37,7 @@ public class LineItemMapper {
     
     public static void main(String[] args) throws CarportException {
         LineItemMapper lim = new LineItemMapper();
-        LineItem lineItem = new LineItem(1, 2, 0, 0, 0, 0, "comment");
+        LineItem lineItem = new LineItem(1, 2, 0, 1.1, 1.2, 1.3, "comment");
         lim.createLineItem(lineItem);
     }
 }
