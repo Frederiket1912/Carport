@@ -32,9 +32,12 @@ public class CommandSeeDrawing extends Command {
         request.setAttribute("distance", distance);
         RoofBuilder rb = new RoofBuilder();
         Double carportHeight = rb.getCarportHeight(order.getCarportWidth(), order.getRoofAngle());
+        Double sideRafterLength = rb.getRafterSideLength(order.getCarportWidth(), order.getRoofAngle());
+        request.setAttribute("siderafterlength", sideRafterLength);
         request.setAttribute("carportheight", carportHeight);
         Customer customer = logic.getCustomerID(order.getCustomerId());
         request.setAttribute("customer", customer);
+        
         return "technicalDrawing.jsp";
     }
 
