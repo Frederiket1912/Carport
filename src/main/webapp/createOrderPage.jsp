@@ -17,7 +17,7 @@
             #roofangle {display:none;}
             <%}
             %>
-            <%  String shed = (String) request.getAttribute("shed");
+            <%  String shed = (String) session.getAttribute("shed");
                 if (shed.equals("noshed")) {
             %>
             #shed {display:none;}
@@ -27,6 +27,12 @@
     </head>
     <body>
         <h1>Hello createOrderPage!</h1>
+        <% String error = (String) request.getAttribute("error");
+            if (error != null) {
+                out.println("<H2>Error!!</h2>");
+                out.println(error);
+            }
+        %>
         <form action="FrontController" method="post">
             <h3> Please add carport specifications </h3>
               Carport length:<select name="carportlength">

@@ -7,6 +7,7 @@ package PresentationLayer;
 
 import DBAccess.Customer;
 import DBAccess.Employee;
+import DBAccess.Material;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
@@ -59,7 +60,8 @@ public class CommandCreateOrder extends Command {
             Order newestOrder = logic.getNewestOrder();
             request.setAttribute("newestorder", newestOrder);
         } catch (NumberFormatException ex) {
-            return "ErrorPage.jsp";
+            request.setAttribute("error", "There was an error in one or more of the input fields, please check them again");
+            return "createOrderPage.jsp";
             //throw new CarportException("there was an error in one or more of the input fields, please check them again");
         }
         return "carportSelectPage.jsp";

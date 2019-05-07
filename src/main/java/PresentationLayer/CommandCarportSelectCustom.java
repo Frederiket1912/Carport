@@ -25,7 +25,7 @@ public class CommandCarportSelectCustom extends Command {
         HttpSession session = request.getSession();
         session.setAttribute("rooftype", roofType);
         String shed = request.getParameter("shed");
-        request.setAttribute("shed", shed);
+        session.setAttribute("shed", shed);
         return "createOrderPage.jsp";
     }
     
