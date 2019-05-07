@@ -47,5 +47,10 @@
             <input type="hidden" name="command" value="goToSeeOrders"/>
             <input type="submit" value="Go to see orders page"/>
         </form> <br>
+        <h3>Go to materials page</h3>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToMaterials"/>
+            <input type="submit" value="Go to materials page"/>
+        </form> <br>
     </body>
 </html>

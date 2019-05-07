@@ -53,6 +53,12 @@ public interface LogicFacade {
     public Customer getCustomerID(int ID) throws CarportException;
 
     Material getMaterial(int materialId) throws CarportException;
+    
+    void createMaterial( Material material ) throws CarportException;
+    
+    void editMaterial(int materialId, String newName, int newMSRP, int newCostPrice) throws CarportException;
+    
+    ArrayList<Material> getAllMaterials() throws CarportException;
 
     ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException;
    

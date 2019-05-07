@@ -38,6 +38,11 @@ public abstract class Command {
         commands.put("carportSelectCustom", new CommandCarportSelectCustom());
         commands.put("carportSelectPremade", new CommandCarportSelectPremade());
         commands.put("seeDrawing", new CommandSeeDrawing());
+        commands.put("goToMaterials", new CommandGoToMaterials());
+        commands.put("goToEditMaterial", new CommandGoToEditMaterial());
+        commands.put("editMaterial", new CommandEditMaterial());
+        commands.put("goToCarportSelect", new CommandGoToCarportSelect());
+        commands.put("createMaterial", new CommandCreateMaterial());
         
         
 
