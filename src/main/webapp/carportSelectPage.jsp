@@ -4,6 +4,7 @@
     Author     : frede
 --%>
 
+<%@page import="DBAccess.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,12 @@
             </select><br/><br/>
             <input type="hidden" name="command" value="carportSelectCustom">
             <input type="submit" value="Submit"/> 
-        </form>       
+        </form>
+        <%  Order newestOrder = (Order) request.getAttribute("newestorder");
+            if (null != newestOrder) {
+                out.println("<h3>You just created an order with ID: "+ newestOrder.getOrderId() +"</h3>");
+            }
+        %>
         <h3>Go to see all orders page</h3>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToSeeOrders"/>

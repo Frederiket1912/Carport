@@ -112,12 +112,20 @@ public class OrderMapper {
             throw new CarportException(ex.getMessage());
         }
     }
+    
+    public Order getNewestOrder() throws CarportException {
+        ArrayList<Order> orders = getAllOrders();
+        Order order = orders.get(0);
+        for (Order o : orders) {
+            if (o.getOrderId() > order.getOrderId()) order = o;
+        }
+        return order;
+    }
 
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
-        Order o = new Order(1,1,1,1,1,1,"1",1,1,1,"1",1,1,"1");
-        om.createOrder(o);
-        
+        Order o = om.getNewestOrder();
+        System.out.println(o.getOrderId());
 
     }
 

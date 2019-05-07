@@ -56,6 +56,8 @@ public class CommandCreateOrder extends Command {
             int totalCost = 100;
             Order order = logic.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
             request.setAttribute("order", order);
+            Order newestOrder = logic.getNewestOrder();
+            request.setAttribute("newestorder", newestOrder);
         } catch (NumberFormatException ex) {
             return "ErrorPage.jsp";
             //throw new CarportException("there was an error in one or more of the input fields, please check them again");

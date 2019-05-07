@@ -59,6 +59,13 @@ public class LogicFacadeImplementation implements LogicFacade {
         Order order = om.getPremadeOrder(orderId);
         return order;
     }
+    
+    @Override
+    public Order getNewestOrder() throws CarportException{
+        OrderMapper om = new OrderMapper();
+        Order order = om.getNewestOrder();
+        return order;
+    }
 
     @Override
     public boolean createCustomer(String name, String email, String address,

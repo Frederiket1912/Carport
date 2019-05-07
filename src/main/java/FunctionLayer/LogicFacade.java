@@ -34,6 +34,8 @@ public interface LogicFacade {
     ArrayList<Order> getAllOrders() throws CarportException;
 
     Order getPremadeOrder(int orderId) throws CarportException;
+    
+    Order getNewestOrder()throws CarportException;
 
     boolean createCustomer(String name, String email, String address,
             int zipcode, String phonenumber) throws CarportException;
