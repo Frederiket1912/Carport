@@ -54,6 +54,18 @@ public class EmployeeMapper {
         }
     }
     
+    public void deleteEmployee(int employeeId) throws CarportException{
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "delete from Employee where EmployeeID=?;";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setInt( 1, employeeId);
+            ps.executeUpdate();
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new CarportException( ex.getMessage() );
+        }
+    }
+    
     public static void main(String[] args) throws CarportException {
         EmployeeMapper em = new EmployeeMapper();
         Employee employee = em.login("email", "password");

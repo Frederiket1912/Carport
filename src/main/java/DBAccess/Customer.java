@@ -22,6 +22,14 @@ public class Customer {
     private int zipcode;
     private String phonenumber;
 
+    public Customer(String name, String email, String address, int zipcode, String phonenumber) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.phonenumber = phonenumber;
+    }
+
     public Customer(String name, String email, String address, int zipcode, String phonenumber, int customerId) {
         this.name = name;
         this.email = email;

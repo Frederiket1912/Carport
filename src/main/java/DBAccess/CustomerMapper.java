@@ -95,6 +95,18 @@ public class CustomerMapper {
             throw new CarportException(ex.getMessage());
         }
     }
+    
+    public void deleteCustomer(int customerId) throws CarportException{
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "delete from Customer where CustomerID=?;";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setInt( 1, customerId);
+            ps.executeUpdate();
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new CarportException( ex.getMessage() );
+        }
+    }
 
     public static void main(String[] args) {
 
