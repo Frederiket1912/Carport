@@ -18,8 +18,10 @@ public class LineItem {
      private double width;
      private double height;
      private String comment;
+     private Material material;
 
-    public LineItem(int materialId, int orderId, int qty, double length, double width, double height, String comment) {
+    public LineItem(int LineItemId, int materialId, int orderId, int qty, double length, double width, double height, String comment) {
+        this.lineItemId = LineItemId;
         this.materialId = materialId;
         this.orderId = orderId;
         this.qty = qty;
@@ -27,6 +29,12 @@ public class LineItem {
         this.width = width;
         this.height = height;
         this.comment = comment;
+        
+    }
+
+    @Override
+    public String toString() {
+        return "LineItem{" + "lineItemId=" + lineItemId + ", materialId=" + materialId + ", orderId=" + orderId + ", qty=" + qty + ", length=" + length + ", width=" + width + ", height=" + height + ", comment=" + comment + '}';
     }
 
     public int getLineItemId() {

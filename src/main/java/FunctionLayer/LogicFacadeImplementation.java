@@ -157,11 +157,16 @@ public class LogicFacadeImplementation implements LogicFacade {
     }
 
     @Override
-    public LineItem createLineItem(int materialId, int orderId, int qty, double length,
+    public void createLineItem(int materialId, int orderId, int qty, double length,
             double width, double height, String comment) throws CarportException {
         LineItemMapper lim = new LineItemMapper();
-        LineItem lineItem = new LineItem(materialId, orderId, qty, length, width, height, comment);
-        lim.createLineItem(lineItem);
-        return lineItem;
+        lim.createLineItem(materialId, orderId, qty, length, width, height, comment);
+    }
+    @Override
+    public ArrayList<LineItem> getFullListofMaterial (int OrderID) throws CarportException{
+        LineItemMapper lim = new LineItemMapper();
+        ArrayList<LineItem> LT = new ArrayList();
+        LT = lim.FullListofMaterial(OrderID);
+        return LT;
     }
 }

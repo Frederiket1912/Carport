@@ -4,11 +4,15 @@
     Author     : frede
 --%>
 
+<%@page import="FunctionLayer.LogicFacadeImplementation"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DBAccess.LineItem"%>
 <%@page import="DBAccess.Customer"%>
 <%@page import="FunctionLayer.RoofBuilder"%>
 <%@page import="DBAccess.Order"%>
 <%@page import="FunctionLayer.PoleBuilder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <% Order order = (Order) request.getAttribute("order");
@@ -23,9 +27,11 @@
         Customer customer = (Customer) request.getAttribute("customer");
         Double sideRafterLength = (Double) request.getAttribute("siderafterlength");
         int roofAngle = order.getRoofAngle();
+        LogicFacadeImplementation lf = new LogicFacadeImplementation();
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>JSP Page</title>
         <style>
             <% if (shedLength == 0) {
@@ -185,6 +191,24 @@
         <input type="hidden" name="command" value="goToSeeOrders"/>
         <input type="submit" value="Go to see orders page"/>
     </form>
+    
+            <table id=order class="table table-striped">
+            <thead><tr><th>Item ID</th><th>Material ID</th><th>Order ID</th><th>Qty</th><th>Length</th><th>Comment</th></tr></thead> <tbody>
+                <% ArrayList<LineItem> LT = (ArrayList<LineItem>) request.getAttribute("LT");
+                            for (LineItem LineItem : LT) {
+                        %>
+                <tr>
+                    <td><%= LineItem.getLineItemId()%></td> <td><%= lf.getMaterial(LineItem.getMaterialId()).getName() %></td> <td><%= LineItem.getOrderId()%></td> <td><%= LineItem.getQty() %></td> <td><%= LineItem.getLength() %></td><td><%= LineItem.getComment()%></td> 
+                    
+                </tr>
+                <%
+                    }
+                %>
+            </tbody>
+        </table> <br/><br/>
+            
+    </body>
+</table>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script>

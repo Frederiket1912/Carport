@@ -97,17 +97,17 @@ public class LineItemBuilder {
         lf.createLineItem(battens.getMaterialId(), orderId, numberOfBattens.intValue(), battensLength, 3.8, 7.3, battens.getName());
     }
 
-    //laver lineitem af brædder til skur
-    public void boardLineItemBuilder(Order order) throws CarportException {
-        int orderId = order.getOrderId();
-        int shedWidth = order.getShedWidth();
-        int shedLength = order.getShedLength();
-        int shedArea = sb.getAreaOfShedWalls(shedLength, shedWidth);
-        int numberOfBoards = sb.getNumberOfBoards(shedArea);
-        //material 3 er brædder
-        Material board = lf.getMaterial(3);
-        lf.createLineItem(board.getMaterialId(), orderId, numberOfBoards, 225, 15, 2.5, board.getName());
-    }
+//    //laver lineitem af brædder til skur
+//    public void boardLineItemBuilder(Order order) throws CarportException {
+//        int orderId = order.getOrderId();
+//        int shedWidth = order.getShedWidth();
+//        int shedLength = order.getShedLength();
+//        int shedArea = sb.getAreaOfShedWalls(shedLength, shedWidth);
+//        int numberOfBoards = sb.getNumberOfBoards(shedArea);
+//        //material 3 er brædder
+//        Material board = lf.getMaterial(3);
+//        lf.createLineItem(board.getMaterialId(), orderId, numberOfBoards, 225, 15, 2.5, board.getName());
+//    }
 
     //laver lineitem af stolper
     public void poleLineItemBuilder(Order order) throws CarportException {

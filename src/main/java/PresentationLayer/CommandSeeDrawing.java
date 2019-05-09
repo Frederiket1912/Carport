@@ -6,12 +6,14 @@
 package PresentationLayer;
 
 import DBAccess.Customer;
+import DBAccess.LineItem;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.PoleBuilder;
 import FunctionLayer.RoofBuilder;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,6 +39,8 @@ public class CommandSeeDrawing extends Command {
         request.setAttribute("carportheight", carportHeight);
         Customer customer = logic.getCustomerID(order.getCustomerId());
         request.setAttribute("customer", customer);
+        ArrayList<LineItem> LT = logic.getFullListofMaterial(orderId);
+        request.setAttribute("LT", LT);
         
         return "technicalDrawing.jsp";
     }
