@@ -63,6 +63,11 @@ public class MaterialMapper {
     
     public void editMaterial(int materialId, String newName, int newMSRP, int newCostPrice) throws CarportException{
         try {
+            getMaterial(materialId);
+        } catch (CarportException ex){
+            throw new CarportException("The material you are trying to edit does not exist");
+        }
+        try {
             Connection con = DBConnector.connection();
             String SQL = "update Material set `Name`=?, MSRP=?, `costPrice`=? where `Material_ID`="+materialId+";";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
@@ -79,7 +84,10 @@ public class MaterialMapper {
     
     public static void main(String[] args) throws CarportException {
         MaterialMapper mm = new MaterialMapper();
-        ArrayList<Material> materials = mm.getAllMaterials();
-        System.out.println(materials.size());
+//        Material material = mm.getMaterial(1);
+//        System.out.println(material.getName());
+//        ArrayList<Material> materials = mm.getAllMaterials();
+//        System.out.println(materials.size());
+    mm.editMaterial(1, "test", 3, 3);
     }
 }

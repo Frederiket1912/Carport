@@ -31,6 +31,7 @@
             <% if (shedLength == 0) {
             %>
             #shedwall {display:none;}
+            #shedmeasurements {display:none;}
             <%}
             %>
         </style>
@@ -50,8 +51,8 @@
         <polygon points="0 0, 5 1.5, 0 3" fill="black" />
     </marker>
     </defs>
-    <!-- if statement udkommenterer alt om skuret hvis shedLength er 0 -->
-    <% if(shedLength == 0) out.print("<!--"); %>
+    <!-- shedmeasurements bliver skjult hvis carporten ikke har et skur -->
+    <g id ="shedmeasurements">
     <rect x="<%= length - shedLength%>" y="0" height="<%= shedWidth%>" width="<%= shedLength%>" style="fill: #D3D3D3" />
     <text x="<%= length - (shedLength / 2)%>" y="35" font-family="Verdana" font-size="13px" text-anchor="middle" alignment-baseline="middle"> Shed length: <%= shedLength%>cm </text>
     <text x="<%= length - shedLength - 25%>" y="<%= (shedWidth + 20) / 2%>" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle" transform="rotate(270,<%=length - shedLength - 25%>,<%= (shedWidth + 20) / 2%>)"> Shed width: <%= shedWidth%>cm </text>
@@ -59,7 +60,7 @@
           marker-end="url(#endarrow)" marker-start="url(#startarrow)" />
     <line x1="<%= length - shedLength - 10%>" y1="25" x2="<%= length - shedLength - 10%>" y2="<%=shedWidth - 25%>" stroke="#000" stroke-width="3" 
           marker-end="url(#endarrow)" marker-start="url(#startarrow)" />
-    <% if(shedLength == 0) out.print("-->"); %>
+    </g>
     <!-- siderne på carporten hvor stolperne går til -->
     <rect x="0" y="0" height="10" width="<%= length%> " style="fill: #808080"/>
     <rect x="0" y="<%= width - 10%>" height="10" width="<%= length%> " style="fill: #808080"/>       

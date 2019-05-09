@@ -20,8 +20,8 @@ public class RoofBuilder {
     
     public Double getRoofArea(int carportLength, int carportWidth, int roofAngle){
         double hypotenuse = getRafterSideLength(carportWidth, roofAngle);
-        //+30 fordi taget skal have et 30cm udhæng på gavlene i hver ende
-        double roofArea = (carportLength+30)*hypotenuse*2;
+        //+60 fordi taget skal have et 30cm udhæng på gavlene i hver ende
+        double roofArea = (carportLength+60)*hypotenuse*2;
         return roofArea;
     }
     
@@ -58,8 +58,7 @@ public class RoofBuilder {
     
     //base height på alle carporte er 225cm
     public Double getCarportHeight(int carportWidth, int roofAngle){
-        int katete = carportWidth/2;
-        double hypotenuse = katete/Math.cos(Math.toRadians(roofAngle));
+        double hypotenuse = getRafterSideLength(carportWidth, roofAngle);
         double height = Math.sin(Math.toRadians(roofAngle))*hypotenuse+225;
         return height;
     }

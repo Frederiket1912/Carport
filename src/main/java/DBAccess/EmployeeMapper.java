@@ -68,8 +68,12 @@ public class EmployeeMapper {
     
     public static void main(String[] args) throws CarportException {
         EmployeeMapper em = new EmployeeMapper();
-        Employee employee = em.login("email", "password");
-        System.out.println(employee.getName());
+        try{
+        Employee employee = em.login("wrong", "wrong");
+        System.out.println(employee.getEmployeeId());
+        }catch (CarportException ex){
+            System.out.println(ex.getMessage());
+        }
     }
             
             

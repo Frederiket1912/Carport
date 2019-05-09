@@ -112,10 +112,10 @@ public class CustomerMapper {
 
         try {
             CustomerMapper cm = new CustomerMapper();
-            //Customer customer = new Customer("name", "test", "address", 0, "phonenumber");
+            Customer customer = new Customer("name", "1", "address", 0, "phonenumber");
             //ArrayList<Customer> Customerlist = cm.Customerlist();
-
-            System.out.println(cm.getCustomer("test"));
+            int i = cm.getCustomerId(customer);
+            System.out.println(i);
             // System.out.println(cm.getCustomerId(customer));
         } catch (CarportException ex) {
             System.out.println(ex.getMessage());
