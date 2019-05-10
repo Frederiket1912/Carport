@@ -28,7 +28,7 @@ public class MaterialCalc {
     }
     
     public void BuildDoor(Order o) throws CarportException{
-        lf.createLineItem(28,o.getOrderId(), 1, 420, 0, 0, "til z på bagside af dør");
+        lf.createLineItem(28,o.getOrderId(), 1, 540, 0, 0, "til z på bagside af dør");
         lf.createLineItem(17, o.getOrderId(), 1, 0, 0, 0, "til dør i skur");
         lf.createLineItem(18, o.getOrderId(), 2, 0, 0, 0, "til dør i skur");
     }
@@ -57,7 +57,7 @@ public class MaterialCalc {
         return skruer;
     }
     
-    public int buildRoofStructure(Order o, int amountofPremadeRafters) throws CarportException{
+    public int buildAngleRoofStructure(Order o, int amountofPremadeRafters) throws CarportException{
         double sidelength = rb.getRafterSideLength(o.getCarportLength(), o.getRoofAngle());
         int actualLength = (int)sidelength +1;
         int amountofRafters = actualLength/30;
@@ -88,13 +88,35 @@ public class MaterialCalc {
         return skruer;
     }
     
+    public int buildFlatRoof(Order o) throws CarportException{
+        int area = (o.getCarportLength()) * (o.getCarportWidth());
+        int amountOfPlastmo = rb.getAmountOfPlastmo(area);
+        lf.createLineItem(29, o.getOrderId(), amountOfPlastmo , 600, 100, 0, "tagplader monteres på spær");
+        return amountOfPlastmo;
+    }
+    
+    public void buildFlatRoofStructure(Order o) throws CarportException{
+       int amountofRafters = o.getCarportLength()/100;
+       lf.createLineItem(5, o.getOrderId(), amountofRafters, 0, 0, 0, "");
+       lf.createLineItem(50, o.getOrderId(), 4, o.getCarportWidth()+30, 0, 0, "understernbrædder til for & bag ende");
+       lf.createLineItem(50, o.getOrderId(), 4, o.getCarportLength()+30, 0, 0, "understernbrædder til siderne");
+       lf.createLineItem(51, o.getOrderId(), 2, o.getCarportWidth(), 0, 0, "oversternbrædder til forenden");
+       lf.createLineItem(51, o.getOrderId(), 4, o.getCarportWidth(), 0, 0, "oversternbrædder til siderne");
+       int skruer = amountofRafters * 10;
+       if (skruer / 200 == 0) {
+            lf.createLineItem(25, o.getOrderId(), 1, 0, 0, 0, "til montering af stern & spær");
+        } else {
+            lf.createLineItem(25, o.getOrderId(), skruer / 200 + 1, 0, 0, 0, "til montering af stern & spær");
+        }
+    }
+    
     
     public static void main(String[] args) throws CarportException {
         LogicFacade lf = new LogicFacadeImplementation();
         MaterialCalc ms = new MaterialCalc();
          RoofBuilder rb = new RoofBuilder();
         Order o = lf.getOrder(8);
-
+        ms.buildFlatRoofStructure(o);
         int hej[] = ms.buildGable(o);
         System.out.println(hej[0]);
         System.out.println(hej[1]);

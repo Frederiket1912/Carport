@@ -25,6 +25,15 @@ public class RoofBuilder {
         return roofArea;
     }
     
+    // en plade plastmo er 100x600 men overlapper 20cm på begge led
+    public int getAmountOfPlastmo(int area){
+        int PlastmoSize = 80*580;
+        int amountOfPlastmo = area/PlastmoSize;
+        
+        // giver en extra med, så der er plads til fejl
+        return amountOfPlastmo + 1;
+    }
+    
     public int getAmountOfRoofTiles(int roofArea){
         //tager udgangspunkt i Højslev Vingetegl (ikke dem fog bruger)
         //målene på teglene er 40,5cm i længden og 24,7cm i bredden, men de overlapper hinanden
