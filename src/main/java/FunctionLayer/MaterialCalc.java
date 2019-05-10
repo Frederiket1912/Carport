@@ -5,8 +5,7 @@
  */
 package FunctionLayer;
 
-import DBAccess.LineItem;
-import DBAccess.LineItemMapper;
+
 import DBAccess.Order;
 
 /**

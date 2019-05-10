@@ -62,20 +62,26 @@ public class CarportMalcBuilder {
         }
 
         //Udregner alle pakker med skruer
-        if (BeslagSkruer / 250 == 0) {
-            lf.createLineItem(21, o.getOrderId(), 1, 0, 0, 0, "Til montering af universalbeslag + toplægte");
-        } else {
-            lf.createLineItem(21, o.getOrderId(), BeslagSkruer / 250 + 1, 0, 0, 0, "Til montering af universalbeslag + toplægte");
+        if (!(BeslagSkruer == 0)) {
+            if (BeslagSkruer / 250 == 0) {
+                lf.createLineItem(21, o.getOrderId(), 1, 0, 0, 0, "Til montering af universalbeslag + toplægte");
+            } else {
+                lf.createLineItem(21, o.getOrderId(), BeslagSkruer / 250 + 1, 0, 0, 0, "Til montering af universalbeslag + toplægte");
+            }
         }
-        if (x45x50mm / 350 == 0) {
-            lf.createLineItem(25, o.getOrderId(), 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
-        } else {
-            lf.createLineItem(25, o.getOrderId(), x45x50mm / 350 + 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
+        if (!(x45x50mm == 0)) {
+            if (x45x50mm / 350 == 0) {
+                lf.createLineItem(25, o.getOrderId(), 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
+            } else {
+                lf.createLineItem(25, o.getOrderId(), x45x50mm / 350 + 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
+            }
         }
-        if (x45x70mm / 250 == 0) {
-            lf.createLineItem(26, o.getOrderId(), 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
-        } else {
-            lf.createLineItem(26, o.getOrderId(), x45x70mm / 250 + 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
+        if (!(x45x70mm == 0)) {
+            if (x45x70mm / 250 == 0) {
+                lf.createLineItem(26, o.getOrderId(), 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
+            } else {
+                lf.createLineItem(26, o.getOrderId(), x45x70mm / 250 + 1, 0, 0, 0, "til montering af inderste bræt ved beklædning");
+            }
         }
 
     }
