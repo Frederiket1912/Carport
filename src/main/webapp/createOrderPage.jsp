@@ -148,8 +148,8 @@
             <input type="submit" value="Save order"/>  
         </form> <br/><br/>
         <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToIndex"/>
-            <input type="submit" value="Go back to index"/>
+            <input type="hidden" name="command" value="goToCarportSelect"/>
+            <input type="submit" value="Go back to manu"/>
         </form> <br>
     </body>
 </html>
