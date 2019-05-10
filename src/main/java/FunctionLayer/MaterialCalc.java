@@ -49,9 +49,9 @@ public class MaterialCalc {
         lf.createLineItem(6, o.getOrderId(), 6, o.getShedLength(), 0, 0, "Løsholter til længden");
         lf.createLineItem(6, o.getOrderId(), 6, o.getShedWidth(), 0, 0, "Løsholter til bredde");
         lf.createLineItem(19, o.getOrderId(), 24, 0, 0, 0, "Vinkelbeslag til løsholter");
-        lf.createLineItem(4, o.getOrderId(), pb.getAmountOfPoles(o.getShedLength())-1, 300, 0, 0, "Stolper til skur");
-        lf.createLineItem(23, o.getOrderId(), (pb.getAmountOfPoles(o.getCarportLength())-1)*2, 0, 0, 0, "Bolt til Rem på stolper");
-        lf.createLineItem(24, o.getOrderId(), (pb.getAmountOfPoles(o.getCarportLength())-1)*2, 0, 0, 0, "Skive til bolt");
+        lf.createLineItem(4, o.getOrderId(), 4, 300, 0, 0, "Stolper til skur");
+        lf.createLineItem(23, o.getOrderId(), 4*2, 0, 0, 0, "Bolt til Rem på stolper");
+        lf.createLineItem(24, o.getOrderId(), 4*2, 0, 0, 0, "Skive til bolt");
         // returnere først antal beslagskruer, bagefter antal 4,5x50mm skruer og til sidst 4,5x70mm skruer.
         int[] skruer ={24 * 8, ((amountofBoards/2)*3), ((amountofBoards/2)*6)};
         return skruer;
@@ -115,7 +115,7 @@ public class MaterialCalc {
         LogicFacade lf = new LogicFacadeImplementation();
         MaterialCalc ms = new MaterialCalc();
          RoofBuilder rb = new RoofBuilder();
-        Order o = lf.getOrder(8);
+        Order o = lf.getOrder(55);
         ms.buildFlatRoofStructure(o);
         int hej[] = ms.buildGable(o);
         System.out.println(hej[0]);

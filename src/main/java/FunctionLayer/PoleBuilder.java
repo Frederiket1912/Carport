@@ -30,6 +30,7 @@ public class PoleBuilder {
         return amountOfPoles.intValue();
     }
     
+    
     public static void main(String[] args) throws CarportException {
         PoleBuilder pb = new PoleBuilder();
         System.out.println(pb.getAmountOfPoles(720));

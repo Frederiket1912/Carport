@@ -26,7 +26,7 @@ public class CarportMalcBuilder {
         
 
         // returnere først antal beslagskruer, bagefter antal 4,5x50mm skruer og til sidst 4,5x70mm skruer.
-        if(o.getShedWidth() == 0){
+        if(!(o.getShedWidth() == 0)){
             int[] BlandetSkruer = mc.buildShed(o);
             BeslagSkruer += BlandetSkruer[0];
             x45x50mm += BlandetSkruer[1];
@@ -47,7 +47,7 @@ public class CarportMalcBuilder {
             //Returnere antal beslagskruer til at montere lægter på spær.
             BeslagSkruer += mc.buildAngleRoofStructure(o, amountofPremadeRafters);
         }else{
-        
+            mc.buildFlatRoofStructure(o);
             int plader = mc.buildFlatRoof(o);
             int amountofRafters = o.getCarportLength()/100;
             
@@ -59,7 +59,7 @@ public class CarportMalcBuilder {
             } else {
             lf.createLineItem(30, o.getOrderId(), PlastmoSkruer / 200 + 1, 0, 0, 0, "Skruer til tagplader");
             
-            mc.buildFlatRoofStructure(o);
+            
         }
         }
 
