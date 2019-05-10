@@ -23,8 +23,7 @@ public class PoleBuilder {
     }
     
     public int getAmountOfPoles(int carportLength) throws CarportException{
-        if (carportLength <= 19.4) throw new CarportException("carport length is too short to place poles");
-        //man dividere længden med 210 fordi der minimum skal være 200cm mellem hver stolpe og stolperne i sig selv er 10cm
+        //man dividere længden med 209.7 fordi der minimum skal være 200cm mellem hver stolpe og stolperne i sig selv er 9.7cm
         //man ligger 1 til fordi den ikke tager højde for at side skal starte med en stople
         //man ganger med 2 for at få antal stolper for begge sider af carporten
         Double amountOfPoles = ((carportLength-9.7)/209.7+1)*2;

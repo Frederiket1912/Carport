@@ -37,8 +37,16 @@ public class CommandCreateOrder extends Command {
             } else {
                 roofAngle = Integer.parseInt((String) request.getParameter("roofangle"));
             }
-            int shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
-            int shedLength = Integer.parseInt(request.getParameter("shedlength"));
+            int shedWidth;
+            int shedLength;
+            if (session.getAttribute("shed").equals("noshed")){
+                shedWidth = 0;
+                shedLength = 0;
+            }
+            else{
+            shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
+            shedLength = Integer.parseInt(request.getParameter("shedlength"));
+            }
             RoofBuilder rb = new RoofBuilder();
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");

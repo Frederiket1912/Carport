@@ -199,7 +199,16 @@
     <text x="100" y="<%=225*2+160%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">lodrette streger er brædderne på indersiden. De vanrette streger er brædder som de øvrige  </text>
     <text x="100" y="<%=225*2+180%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">brædder skal skrues fast i.  </text>
     </svg>
+    <!--svg der viser konstruktionen af en dør til skuret -->
+    <svg height="400" width="300">
+    <!-- loop der placere brædderne på indersiden af døren -->
+     <%for (double i = 0; i < shedWidth+50-9.7; i++) {%>
+          <rect x="<%=i*2%>" y="<%=50*2%>" height="<%=225*2%>" width="<%=6*2%>"  style="fill: #696969" />  
+        <%}
+    %>
+    </svg>
     </div>
+    
 
     <h3>Go to see all orders page</h3>
     <form action="FrontController" method="post">
