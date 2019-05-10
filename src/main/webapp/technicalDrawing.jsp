@@ -26,7 +26,8 @@
         int shedWidth = order.getShedWidth();
         double distance = (Double) request.getAttribute("distance");
         double x = 10 + distance;
-        int numberOfBoards = length / 210 - 1;
+        Double boards = (length / 209.7 - 1);
+        int numberOfBoards = boards.intValue();
         Double carportHeight = (Double) request.getAttribute("carportheight");
         Customer customer = (Customer) request.getAttribute("customer");
         Double sideRafterLength = (Double) request.getAttribute("siderafterlength");
@@ -49,7 +50,7 @@
     <body>
         Customer name: <%=customer.getName()%><br><br>
         <!--svg der viser carporten set oppefra -->
-        <svg class=hidden height="<%= width + 50%>" width="<%= length + 200%>" transform="translate(50,50)">
+        <svg class=hidden height="<%= width + 150%>" width="<%= length + 400%>" transform="translate(50,50)">
         <!--enderne på pilene --> 
         <defs>
     <marker id="startarrow" markerWidth="5" markerHeight="3" 
@@ -66,21 +67,21 @@
     <rect x="<%= length - shedLength%>" y="0" height="<%= shedWidth%>" width="<%= shedLength%>" style="fill: #D3D3D3" />
     <text x="<%= length - (shedLength / 2)%>" y="35" font-family="Verdana" font-size="13px" text-anchor="middle" alignment-baseline="middle"> Shed length: <%= shedLength%>cm </text>
     <text x="<%= length - shedLength - 25%>" y="<%= (shedWidth + 20) / 2%>" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle" transform="rotate(270,<%=length - shedLength - 25%>,<%= (shedWidth + 20) / 2%>)"> Shed width: <%= shedWidth%>cm </text>
-    <line x1="<%= length - shedLength + 15%>" y1="20" x2="<%= length - 15%>" y2="20" stroke="#000" stroke-width="3" 
+    <line x1="<%= length - shedLength + 15%>" y1="20" x2="<%= length - 25%>" y2="20" stroke="#000" stroke-width="3" 
           marker-end="url(#endarrow)" marker-start="url(#startarrow)" />
     <line x1="<%= length - shedLength - 10%>" y1="25" x2="<%= length - shedLength - 10%>" y2="<%=shedWidth - 25%>" stroke="#000" stroke-width="3" 
           marker-end="url(#endarrow)" marker-start="url(#startarrow)" />
     </g>
     <!-- siderne på carporten hvor stolperne går til -->
-    <rect x="0" y="0" height="10" width="<%= length%> " style="fill: #808080"/>
-    <rect x="0" y="<%= width - 10%>" height="10" width="<%= length%> " style="fill: #808080"/>       
-    <rect x="0" y="0" height="<%= width%>" width="10" style="fill: #808080"/>
-    <rect x="<%= length - 10%>" y="0" height="<%= width%>" width="10" style="fill: #808080"/>
+    <rect x="0" y="0" height="9.7" width="<%= length%> " style="fill: #808080"/>
+    <rect x="0" y="<%= width - 9.7%>" height="9.7" width="<%= length%> " style="fill: #808080"/>       
+    <rect x="0" y="0" height="<%= width%>" width="9.7" style="fill: #808080"/>
+    <rect x="<%= length - 9.7%>" y="0" height="<%= width%>" width="9.7" style="fill: #808080"/>
     <!--stolperne i hjørnerne af carporten -->
-    <rect x="0" y="0" height="10" width="10" style="fill: #000000"/>
-    <rect x="<%= length - 10%>" y="0" height="10" width="10" style="fill: #000000"/>
-    <rect x="0" y="<%= width - 10%>" height="10" width="10" style="fill: #000000"/>
-    <rect x="<%= length - 10%>" y="<%= width - 10%>" height="10" width="10" style="fill: #000000"/> 
+    <rect x="0" y="0" height="9.7" width="9.7" style="fill: #000000"/>
+    <rect x="<%= length - 9.7%>" y="0" height="9.7" width="9.7" style="fill: #000000"/>
+    <rect x="0" y="<%= width - 9.7%>" height="9.7" width="9.7" style="fill: #000000"/>
+    <rect x="<%= length - 9.7%>" y="<%= width - 9.7%>" height="9.7" width="9.7" style="fill: #000000"/> 
     <!--tekst der beskriver målene på carporten -->
     <text x="<%= (length) / 2%>" y="<%= width + 25%>" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">Length: <%= length%>cm </text>
     <text x="<%= length + 25%>" y="<%= width / 2%>" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle" transform="rotate(90,<%=length + 25%>,<%= width / 2%>)"> Width: <%= width%>cm </text>
@@ -95,10 +96,12 @@
     <!--loop der placere stolperne -->
     <%
             for (int i = 0; i < numberOfBoards; i++) {%>      
-    <rect x="<%= x%>" y="0" height="10" width="10" style="fill: #000000"/>
-    <rect x="<%= x%>" y="<%= width - 10%>" height="10" width="10" style="fill: #000000"/>
-    <% x += (distance + 10);
+    <rect x="<%= x%>" y="0" height="9.7" width="9.7" style="fill: #000000"/>
+    <rect x="<%= x%>" y="<%= width - 10%>" height="9.7" width="9.7" style="fill: #000000"/>
+    <% x += (distance + 9.7);
             }%>
+    <!--tekst der beskriver tegningen -->
+    <text x="10" y="<%=width+50%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">Tegningen viser en grundplan af carporten. De sorte fikanter er stolperne.  </text>
     </svg><br/><br/><br/>
     <button>Save image</button><br><br>
     <canvas id="canvas" height="<%= width + 50%>" width="<%= length + 150%>" display:none></canvas>
@@ -138,13 +141,16 @@
     <text x="80" y="<%= (carportHeight + carportHeight - 225) / 2%>" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  225cm </text> 
     <text x="<%= width + 90%>" y="<%= carportHeight / 2%>" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  <%= Math.round(carportHeight * 10) / 10.0%> cm </text>
     <text x="100" y="<%=(carportHeight - 225 + endpointY) / 2%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">  <%= roofAngle%>°</text>  
+    <!--buet linje der viser tagets hældning -->
     <path d="M 100 <%= carportHeight - 225%> A75 75, 0, 0, 0, <%= endpointX%> <%= endpointY%> Z" fill="black" stroke="black" stroke-width="3" /> 
-
+    <!--tekst der beskriver tegningen -->
+    <text x="20" y="<%=carportHeight+20%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">Tegningen viser carporten set fra gavlen.</text>
+    </svg>
     
     <div id ="shedwall">
     </svg>
     <!--svg der viser skurets væg set indefra (mest for at kunne se hvordan brædderne skal sættes på) -->
-    <svg height="<%=(225+50)*2%>" width="<%=(shedWidth+50)*2%>">
+    <svg height="<%=(225+50)*2+150%>" width="<%=(shedWidth+250)*2%>">
     <!--enderne på pilene --> 
         <defs>
     <marker id="startarrow" markerWidth="5" markerHeight="3" 
@@ -156,37 +162,42 @@
         <polygon points="0 0, 5 1.5, 0 3" fill="black" />
     </marker>
     </defs>
-    <!--loop der placere brædderne på indersiden, i+21 fordi brædderne er 15cm og der skal være 6cm mellemrum -->
-    <%for (int i = 60; i < shedWidth+50-10;) {%>
-          <rect x="<%=i*2%>" y="<%=50*2%>" height="<%=225*2%>" width="<%=15*2%>"  style="fill: #C0C0C0" />  
-        <%i+=21;}
+    <!--loop der placere brædderne på indersiden, i+16 fordi brædderne er 10cm og der skal være 6cm mellemrum -->
+    <%for (double i = 59.7; i < shedWidth+50-9.7;) {%>
+          <rect x="<%=i*2%>" y="<%=50*2%>" height="<%=225*2%>" width="<%=10*2%>"  style="fill: #C0C0C0" />  
+        <%i+=16;}
     %>
     <!--loop der placere brædderne på ydersiden af skuret -->
-    <%for (int i = 75; i < shedWidth+50-10;) {%>
+    <%for (double i = 69.7; i < shedWidth+50-9.7;) {%>
           <rect x="<%=i*2%>" y="<%=50*2%>" height="<%=225*2%>" width="<%=6*2%>"  style="fill: #696969" />  
-        <%i+=21;}
+        <%i+=16;}
     %>
     <!-- stolperne i hver side af skurvæggen -->
-    <rect x="<%=(shedWidth+50-10)*2%>" y ="<%=50*2%>" width="<%=10*2%>" height="<%=225*2%>" style="fill: #000000"/>
-    <rect x="<%=50*2%>" y ="<%=50*2%>" width="<%=10*2%>" height="<%=225*2%>" style="fill: #000000"/>
+    <rect x="<%=(shedWidth+50-9.7)*2%>" y ="<%=50*2%>" width="<%=9.7*2%>" height="<%=225*2%>" style="fill: #000000"/>
+    <rect x="<%=50*2%>" y ="<%=50*2%>" width="<%=9.7*2%>" height="<%=225*2%>" style="fill: #000000"/>
     <!--brædderne der går på tværs -->
-    <rect x="<%=50*2%>" y ="<%=50*2+20%>" width="<%=shedWidth*2%>" height="<%=15*2%>" style="fill: #A9A9A9"/>
-    <rect x="<%=50*2%>" y ="<%=50*2+225-15%>" width="<%=shedWidth*2%>" height="<%=15*2%>" style="fill: #A9A9A9"/>
-    <rect x="<%=50*2%>" y ="<%=50*2+225*2-15*2%>" width="<%=shedWidth*2%>" height="<%=15*2%>" style="fill: #A9A9A9"/>
+    <rect x="<%=(50+9.7)*2%>" y ="<%=50*2+20%>" width="<%=(shedWidth-19.4)*2%>" height="<%=10*2%>" style="fill: #A9A9A9"/>
+    <rect x="<%=(50+9.7)*2%>" y ="<%=50*2+225-10%>" width="<%=(shedWidth-19.4)*2%>" height="<%=10*2%>" style="fill: #A9A9A9"/>
+    <rect x="<%=(50+9.7)*2%>" y ="<%=50*2+225*2-10*2%>" width="<%=(shedWidth-19.4)*2%>" height="<%=10*2%>" style="fill: #A9A9A9"/>
     <!--linjer på tegningen -->
-    <line x1="156" y1="65" x2="156" y2="98" stroke="#000" stroke-width="3" />
-    <line x1="150" y1="98" x2="162" y2="98" stroke="#000" stroke-width="3" />
-    <line x1="219" y1="45" x2="219" y2="98" stroke="#000" stroke-width="3" />
-    <line x1="204" y1="98" x2="234" y2="98" stroke="#000" stroke-width="3" />
-    <line x1="110" y1="45" x2="110" y2="98" stroke="#000" stroke-width="3" />
-    <line x1="100" y1="98" x2="120" y2="98" stroke="#000" stroke-width="3" />
-    <line x1="115" y1="85" x2="<%=50*2+shedWidth*2-20%>" y2="85" stroke="#000" stroke-width="3" 
+    <line x1="145.4" y1="65" x2="145.4" y2="98" stroke="#000" stroke-width="3" />
+    <line x1="139.4" y1="98" x2="151.4" y2="98" stroke="#000" stroke-width="3" />
+    <line x1="193.4" y1="45" x2="193.4" y2="98" stroke="#000" stroke-width="3" />
+    <line x1="183.4" y1="98" x2="203.4" y2="98" stroke="#000" stroke-width="3" />
+    <line x1="109.7" y1="45" x2="109.7" y2="98" stroke="#000" stroke-width="3" />
+    <line x1="100" y1="98" x2="119.4" y2="98" stroke="#000" stroke-width="3" />
+    <line x1="114.85" y1="85" x2="<%=50*2+shedWidth*2-20%>" y2="85" stroke="#000" stroke-width="3" 
           marker-end="url(#endarrow)" marker-start="url(#startarrow)" />
      <!--tekst der beskriver målene -->
-    <text x="156" y="60" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  6cm </text> 
-    <text x="219" y="40" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  15cm </text> 
-    <text x="110" y="40" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  10cm </text> 
-    <text x="<%=shedWidth+100%>" y="75" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  <%=shedWidth%>cm </text> 
+    <text x="145.4" y="60" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  6cm </text> 
+    <text x="193.4" y="40" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  10cm </text> 
+    <text x="109.4" y="40" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  9.7cm </text> 
+    <text x="<%=shedWidth+100%>" y="75" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle">  <%=shedWidth%>cm </text>
+    <!--tekst der beskriver tegningen -->
+    <text x="100" y="<%=225*2+120%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">Tegningen viser en af skurets vægge set indefra. De sorte pæle er stolperne i hver ende af</text>
+    <text x="100" y="<%=225*2+140%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">væggen. De mørkegrå lodrette streger er brædderne på ydersiden af skuret, de lysegrå </text>
+    <text x="100" y="<%=225*2+160%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">lodrette streger er brædderne på indersiden. De vanrette streger er brædder som de øvrige  </text>
+    <text x="100" y="<%=225*2+180%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">brædder skal skrues fast i.  </text>
     </svg>
     </div>
 

@@ -12,23 +12,23 @@ package FunctionLayer;
 public class PoleBuilder {
     
     public double getDistanceBetweenPoles(int length) throws CarportException{
-        if (length <= 20) throw new CarportException("carport length is too short to place poles");
+        if (length <= 19.4) throw new CarportException("carport length is too short to place poles");
         //usefullLength er længde - bredden på den første stolpe
-        double usefullLength = length - 10.0;
+        double usefullLength = length - 9.7;
         //usefullLength divideres med 210 fordi minimum mellemrum mellem stolper er 200cm og hver stolpe er 10 cm brede
-        Double numberOfPoles = usefullLength / 210;
+        Double numberOfPoles = usefullLength / 209.7;
         //-10 til sidst for at fjerne stolpernes bredde, så vi sidder tilbage med bredden mellem stolperne
-        double spaceBetweenPoles = usefullLength / numberOfPoles.intValue() - 10.0;
+        double spaceBetweenPoles = usefullLength / numberOfPoles.intValue() - 9.7;
         return spaceBetweenPoles;
     }
     
     public int getAmountOfPoles(int carportLength) throws CarportException{
-        if (carportLength <= 20) throw new CarportException("carport length is too short to place poles");
+        if (carportLength <= 19.4) throw new CarportException("carport length is too short to place poles");
         //man dividere længden med 210 fordi der minimum skal være 200cm mellem hver stolpe og stolperne i sig selv er 10cm
         //man ligger 1 til fordi den ikke tager højde for at side skal starte med en stople
         //man ganger med 2 for at få antal stolper for begge sider af carporten
-        int amountOfPoles = ((carportLength-10)/210+1)*2;
-        return amountOfPoles;
+        Double amountOfPoles = ((carportLength-9.7)/209.7+1)*2;
+        return amountOfPoles.intValue();
     }
     
     public static void main(String[] args) throws CarportException {
