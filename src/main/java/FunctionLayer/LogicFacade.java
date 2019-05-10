@@ -65,4 +65,6 @@ public interface LogicFacade {
     void createLineItem(int materialId, int orderId, int qty, double length, double width, double height, String comment)throws CarportException;
             
     ArrayList<LineItem> getFullListofMaterial (int OrderID) throws CarportException;
+    
+     void createMaterialList(Order o) throws CarportException;
 }

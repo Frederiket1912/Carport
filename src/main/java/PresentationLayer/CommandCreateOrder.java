@@ -58,6 +58,8 @@ public class CommandCreateOrder extends Command {
             Order order = logic.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
             request.setAttribute("order", order);
             Order newestOrder = logic.getNewestOrder();
+            logic.createMaterialList(newestOrder);
+            
             request.setAttribute("newestorder", newestOrder);
         } catch (NumberFormatException ex) {
             request.setAttribute("error", "There was an error in one or more of the input fields, please check them again");

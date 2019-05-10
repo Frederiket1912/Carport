@@ -169,4 +169,10 @@ public class LogicFacadeImplementation implements LogicFacade {
         LT = lim.FullListofMaterial(OrderID);
         return LT;
     }
+    @Override
+    public void createMaterialList(Order o) throws CarportException{
+        CarportMalcBuilder cmb = new CarportMalcBuilder();
+        cmb.BuildItemList(o);
+        
+    }
 }
