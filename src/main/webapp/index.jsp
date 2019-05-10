@@ -21,5 +21,11 @@
             <input type="hidden" name="command" value="login">
             <input type="submit" value="login"/>  
         </form>
+        <% String error = (String) request.getAttribute( "error");
+           if ( error != null) { 
+               out.println("<H2>Error!!</h2>");
+               out.println(error);
+           }
+        %>
     </body>
 </html>

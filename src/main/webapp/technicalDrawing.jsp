@@ -14,6 +14,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+<% if (null == session.getAttribute("employee")) {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+%>
 <html>
     <% Order order = (Order) request.getAttribute("order");
         int length = order.getCarportLength();

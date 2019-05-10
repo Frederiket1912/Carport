@@ -4,13 +4,26 @@
     Author     : frede
 --%>
 
+<%@page import="DBAccess.Employee"%>
 <%@page import="DBAccess.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% if (null == session.getAttribute("employee")) {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+    Employee employee = (Employee) session.getAttribute("employee");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            <% if (!employee.isAdmin()) {
+            %>
+            #materials {display:none;}
+            <%}
+            %>
+        </style>
     </head>
     <body>
         <h1>Hello World!</h1>
@@ -39,7 +52,7 @@
         </form>
         <%  Order newestOrder = (Order) request.getAttribute("newestorder");
             if (null != newestOrder) {
-                out.println("<h3>You just created an order with ID: "+ newestOrder.getOrderId() +"</h3>");
+                out.println("<h3>You just created an order with ID: " + newestOrder.getOrderId() + "</h3>");
             }
         %>
         <h3>Go to see all orders page</h3>
@@ -47,10 +60,12 @@
             <input type="hidden" name="command" value="goToSeeOrders"/>
             <input type="submit" value="Go to see orders page"/>
         </form> <br>
-        <h3>Go to materials page</h3>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToMaterials"/>
-            <input type="submit" value="Go to materials page"/>
-        </form> <br>
+        <div id="materials">
+            <h3>Go to materials page</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command" value="goToMaterials"/>
+                <input type="submit" value="Go to materials page"/>
+            </form> <br>
+        </div>
     </body>
 </html>

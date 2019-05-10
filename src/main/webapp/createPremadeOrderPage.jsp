@@ -6,6 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% if (null == session.getAttribute("employee")) {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -152,8 +156,8 @@
             <input type="submit" value="Save order"/>  
         </form> <br/><br/>
         <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToIndex"/>
-            <input type="submit" value="Go back to index"/>
+            <input type="hidden" name="command" value="goToCarportSelect"/>
+            <input type="submit" value="Go back to menu"/>
         </form> <br>
     </body>
 </html>
