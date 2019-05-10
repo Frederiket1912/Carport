@@ -14,6 +14,11 @@ public class Employee {
     private String password;
     private String email;
     private String name;
+    private boolean admin;
+
+    public boolean isAdmin() {
+        return admin;
+    }
 
     public Employee(String password, String email, String name) {
         this.password = password;
@@ -21,11 +26,12 @@ public class Employee {
         this.name = name;
     }
     
-    public Employee(int employeeId, String password, String email, String name) {
+    public Employee(int employeeId, String password, String email, String name, boolean admin) {
         this.employeeId = employeeId;
         this.password = password;
         this.email = email;
         this.name = name;
+        this.admin = admin;
     }
 
     public int getEmployeeId() {

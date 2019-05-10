@@ -44,7 +44,8 @@ public class EmployeeMapper {
             if ( rs.next() ) {
                 String name = rs.getString( "Name" );
                 int employeeId = rs.getInt("EmployeeID");
-                Employee employee = new Employee(employeeId, password, email, name);
+                boolean admin = rs.getBoolean("Admin");
+                Employee employee = new Employee(employeeId, password, email, name, admin);
                 return employee;
             } else {
                 throw new CarportException( "Could not validate user" );
@@ -69,8 +70,8 @@ public class EmployeeMapper {
     public static void main(String[] args) throws CarportException {
         EmployeeMapper em = new EmployeeMapper();
         try{
-        Employee employee = em.login("wrong", "wrong");
-        System.out.println(employee.getEmployeeId());
+        Employee employee = em.login("admin@admin.dk", "admin");
+            System.out.println(employee.isAdmin());
         }catch (CarportException ex){
             System.out.println(ex.getMessage());
         }
