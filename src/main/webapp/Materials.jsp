@@ -12,10 +12,8 @@
 <% if (null == session.getAttribute("employee")) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-%>
-<% Employee employee = (Employee) session.getAttribute("employee"); %>
-<% if (!employee.isAdmin()) {
-        request.getRequestDispatcher("carportSelectPage.jsp").forward(request, response);
+%><% if (null == session.getAttribute("employee")) {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 %>
 <html>
