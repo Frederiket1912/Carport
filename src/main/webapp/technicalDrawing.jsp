@@ -200,12 +200,30 @@
     <text x="100" y="<%=225*2+180%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">brædder skal skrues fast i.  </text>
     </svg>
     <!--svg der viser konstruktionen af en dør til skuret -->
-    <svg height="400" width="300">
+    <svg height="1200" width="600">
     <!-- loop der placere brædderne på indersiden af døren -->
-     <%for (double i = 0; i < shedWidth+50-9.7; i++) {%>
-          <rect x="<%=i*2%>" y="<%=50*2%>" height="<%=225*2%>" width="<%=6*2%>"  style="fill: #696969" />  
-        <%}
+    <%int boardSpace = 0; %>
+     <%for (int i = 0; i < 6; i++) {%>
+          <rect x="<%=200+boardSpace%>" y="200" height="440" width="20"  style="fill: #C0C0C0" />  
+        <% boardSpace +=32;}
     %>
+    <!-- loop der placere brædderne på ydersiden af døren -->
+    <%int outerBoardSpace = 0; %>
+     <%for (int i = 0; i < 5; i++) {%>
+          <rect x="<%=220+outerBoardSpace%>" y="200" height="440" width="12"  style="fill: #696969" />  
+        <% outerBoardSpace +=32;}
+    %>
+    <!--top og bund af "Z" på døren -->
+    <rect x="200" y="240" height="14.6" width="180" style="fill: #778899" />
+    <rect x="200" y="585.4" height="14.6" width="180" style="fill: #778899" />
+    <!--den skrå side i "Z"'et -->
+    <polygon points='200,254.6 220,254.6 380,585.4 360,585.4' style='fill: #778899'/>
+    <!-- lodret strej i midten af Z'et -->
+    <rect x='200' y='413.2' height='14.6' width='96' style="fill: #778899" />
+    <!--dørhåndtag -->
+    <circle cx='210' cy='420' r='5' fill='#000000'/>
+    <rect x='210' y='417.5' heigh='5' width='40' style="fill: #000000" />
+    <line x1="210" y1="420" x2="230" y2="420" stroke="#000" stroke-width="5" />
     </svg>
     </div>
     
