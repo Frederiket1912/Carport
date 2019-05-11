@@ -199,8 +199,21 @@
     <text x="100" y="<%=225*2+160%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">lodrette streger er brædderne på indersiden. De vanrette streger er brædder som de øvrige  </text>
     <text x="100" y="<%=225*2+180%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">brædder skal skrues fast i.  </text>
     </svg>
+    
+    
     <!--svg der viser konstruktionen af en dør til skuret -->
-    <svg height="1200" width="600">
+    <svg height="750" width="600">
+    <!--enderne på pilene --> 
+        <defs>
+    <marker id="startarrow" markerWidth="5" markerHeight="3" 
+            refX="5" refY="1.5" orient="auto">
+        <polygon points="5 0, 5 3, 0 1.5" fill="black" />
+    </marker>
+    <marker id="endarrow" markerWidth="5" markerHeight="3" 
+            refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+        <polygon points="0 0, 5 1.5, 0 3" fill="black" />
+    </marker>
+    </defs>
     <!-- loop der placere brædderne på indersiden af døren -->
     <%int boardSpace = 0; %>
      <%for (int i = 0; i < 6; i++) {%>
@@ -224,6 +237,21 @@
     <circle cx='210' cy='420' r='5' fill='#000000'/>
     <rect x='210' y='417.5' heigh='5' width='40' style="fill: #000000" />
     <line x1="210" y1="420" x2="230" y2="420" stroke="#000" stroke-width="5" />
+     <!--linjer på tegningen -->
+    <line x1="242" y1="160" x2="242" y2="185" stroke="#000" stroke-width="3" 
+          marker-end="url(#endarrow)"/>
+    <line x1="395" y1="246.8" x2="425" y2="246.8" stroke="#000" stroke-width="3" 
+          marker-start="url(#startarrow)"/>
+    <line x1="170" y1="420" x2="185" y2="420" stroke="#000" stroke-width="3" 
+          marker-end="url(#endarrow)"/>
+    <!-- tekst der beskriver tegningen -->
+    <text x="242" y="150" font-family="Verdana" font-size="15px" text-anchor="middle" alignment-baseline="middle"> 19x100 mm. trykimp. bræt </text>
+    <text x="425" y="246.8" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle"> 38x73 mm. taglægte </text>
+    <text x="10" y="420" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle"> Stalddørsgreb 50x75 </text>
+    <text x="100" y="660" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle"> Tegningen viser døren til skuret set indefra. </text>
+    <text x="100" y="680" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle"> Brædderne sidder med 6cm mellemrum ligesom på </text>
+    <text x="100" y="700" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle"> skurvæggene. "Z"'et er lavet af det samme træ </text>
+    <text x="100" y="720" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle"> som taglægterne. </text>
     </svg>
     </div>
     
