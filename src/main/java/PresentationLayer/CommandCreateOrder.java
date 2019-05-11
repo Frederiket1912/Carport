@@ -47,6 +47,8 @@ public class CommandCreateOrder extends Command {
             shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             shedLength = Integer.parseInt(request.getParameter("shedlength"));
             }
+            System.out.println("shedwidth: " + shedWidth);
+            System.out.println("shedlength: " + shedLength);
             RoofBuilder rb = new RoofBuilder();
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
