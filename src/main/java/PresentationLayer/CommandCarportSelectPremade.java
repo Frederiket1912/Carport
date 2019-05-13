@@ -38,7 +38,6 @@ public class CommandCarportSelectPremade extends Command {
         int roofAngle = order.getRoofAngle();
         request.setAttribute("roofangle", roofAngle);
         int shedWidth = order.getShedWidth();
-        System.out.println("shedwidth: " +shedWidth);
         if (shedWidth == 0){
             session.setAttribute("shed", "noshed");
         }
