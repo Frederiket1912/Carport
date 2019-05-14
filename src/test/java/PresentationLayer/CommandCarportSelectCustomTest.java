@@ -62,7 +62,6 @@ public class CommandCarportSelectCustomTest {
     @Test
     public void testExecute() throws Exception {
     when(request.getParameter("rooftype")).thenReturn("fladt");
-    when(request.getParameter("shed")).thenReturn("shed");
     when(request.getSession()).thenReturn(session);
     doAnswer( 
       invocation -> {
@@ -71,7 +70,8 @@ public class CommandCarportSelectCustomTest {
           assertThat(roofType, is("fladt"));
           return null;
           }
-      ).when(session).setAttribute("rooftype", "roofType");
+      ).when(session).setAttribute("rooftype", "fladt");
+    when(request.getParameter("shed")).thenReturn("shed");
     doAnswer( 
       invocation -> {
           String key = invocation.getArgument(0);

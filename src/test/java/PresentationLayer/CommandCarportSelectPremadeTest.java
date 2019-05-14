@@ -70,7 +70,7 @@ public class CommandCarportSelectPremadeTest {
       invocation -> {
           String key = invocation.getArgument(0);
           int carportLength = invocation.getArgument(1);
-          assertThat(carportLength, is(7201));
+          assertThat(carportLength, is(720));
           return null;
           }
       ).when(request).setAttribute("carportlength",720);

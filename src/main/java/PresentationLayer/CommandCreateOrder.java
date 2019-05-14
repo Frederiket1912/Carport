@@ -13,6 +13,7 @@ import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.RoofBuilder;
 import java.io.IOException;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,12 +51,32 @@ public class CommandCreateOrder extends Command {
             RoofBuilder rb = new RoofBuilder();
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
+            if (!Pattern.matches("^[a-zA-ZæøåÆØÅ@ ]+$", customerName)){
+                request.setAttribute("error", "There was an error in the customer name, please try again");
+                return "createOrderPage.jsp";
+            }
             String customerEmail = request.getParameter("customeremail");
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@]+$", customerEmail)){
+                request.setAttribute("error", "There was an error in the customer email, please try again");
+                return "createOrderPage.jsp";
+            }
             String customerAddress = request.getParameter("customeraddress");
-            int customerZipcode = Integer.parseInt(request.getParameter("customerzipcode"));
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", customerAddress)){
+                request.setAttribute("error", "There was an error in the customer address, please try again");
+                return "createOrderPage.jsp";
+            }
+            String customerZipcode = request.getParameter("customerzipcode");
+            if (!Pattern.matches("[0-9]{4}", customerZipcode)){
+                request.setAttribute("error", "There was an error in the customer zipcode, please try again");
+                return "createOrderPage.jsp";
+            }
             String customerPhonenumber = request.getParameter("customerphonenumber");
+            if (!Pattern.matches("[0-9]{8}", customerPhonenumber)){
+                request.setAttribute("error", "There was an error in the customer phone number, please try again");
+                return "createOrderPage.jsp";
+            }
             String customerComment = request.getParameter("customercomment");
-            logic.createCustomer(customerName, customerEmail, customerAddress, customerZipcode, customerPhonenumber);
+            logic.createCustomer(customerName, customerEmail, customerAddress, Integer.parseInt(customerZipcode), customerPhonenumber);
             Customer customer = logic.getCustomer(request.getParameter("customeremail"));
             int customerId = customer.getCustomerId();
             int totalSale = Integer.parseInt(request.getParameter("salesprice"));
@@ -72,8 +93,7 @@ public class CommandCreateOrder extends Command {
         } catch (NumberFormatException ex) {
             request.setAttribute("error", "There was an error in one or more of the input fields, please check them again");
             return "createOrderPage.jsp";
-            //throw new CarportException("there was an error in one or more of the input fields, please check them again");
-        }
+        } 
         return "carportSelectPage.jsp";
     }
 

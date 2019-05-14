@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,7 +23,8 @@ public class CommandGoToMaterials extends Command{
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
         ArrayList<Material> materials = logic.getAllMaterials();
-        request.setAttribute("materials", materials);
+        HttpSession session = request.getSession();
+        session.setAttribute("materials", materials);
         return "Materials.jsp";
     }
     

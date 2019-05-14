@@ -9,6 +9,7 @@ import DBAccess.Material;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,9 +25,27 @@ public class CommandEditMaterial extends Command {
         try {
             int materialId = Integer.parseInt(request.getParameter("materialid"));
             String newName = request.getParameter("materialname");
-            int newMSRP = Integer.parseInt(request.getParameter("msrp"));
-            int newCostPrice = Integer.parseInt(request.getParameter("costPrice"));
-            logic.editMaterial(materialId, newName, newMSRP, newCostPrice);
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", newName)) {
+                request.setAttribute("error", "There was an error in the material name, please try again");
+                Material material = logic.getMaterial(materialId);
+                request.setAttribute("material", material);
+                return "EditMaterial.jsp";
+            }
+            String newMSRP = request.getParameter("msrp");
+            if (!Pattern.matches("^[0-9]+$", newMSRP)) {
+                request.setAttribute("error", "There was an error in the msrp, please try again");
+                Material material = logic.getMaterial(materialId);
+                request.setAttribute("material", material);
+                return "EditMaterial.jsp";
+            }
+            String newCostPrice = request.getParameter("costPrice");
+            if (!Pattern.matches("^[0-9]+$", newCostPrice)) {
+                request.setAttribute("error", "There was an error in the cost price, please try again");
+                Material material = logic.getMaterial(materialId);
+                request.setAttribute("material", material);
+                return "EditMaterial.jsp";
+            }
+            logic.editMaterial(materialId, newName, Integer.parseInt(newMSRP), Integer.parseInt(newCostPrice));
         } catch (NumberFormatException ex) {
             request.setAttribute("error", "Please check your new inputs again");
             HttpSession session = request.getSession();

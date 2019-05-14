@@ -10,8 +10,19 @@ package FunctionLayer;
  * @author frede
  */
 public class CarportException extends Exception {
+    private String origin;
     
     public CarportException(String msg) {
         super(msg);
     }
+    public CarportException(String msg, String origin) {
+        super(msg);
+        this.origin = origin;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+    
+
 }

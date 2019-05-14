@@ -43,7 +43,7 @@
         <br/><br/>
         <table> 
             <thead><tr><th>Material Id</th><th>Name</th><th>MSRP</th><th>costPrice</th><th>Edit material</th></tr></thead> <tbody>
-                        <% ArrayList<Material> materials = (ArrayList<Material>) request.getAttribute("materials");
+                        <% ArrayList<Material> materials = (ArrayList<Material>) session.getAttribute("materials");
                             for (Material m : materials) {
                         %>
                 <tr>
