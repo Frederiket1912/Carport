@@ -5,6 +5,8 @@
  */
 package FunctionLayer;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  *
  * @author frede
@@ -24,5 +26,8 @@ public class CarportException extends Exception {
         return origin;
     }
     
+//    public String handle(HttpServletRequest request){
+//        
+//    }
 
 }
