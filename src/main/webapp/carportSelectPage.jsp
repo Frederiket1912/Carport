@@ -27,6 +27,11 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <%  Order newestOrder = (Order) request.getAttribute("newestorder");
+            if (null != newestOrder) {
+                out.println("<h3><i>You just created an order with ID: " + newestOrder.getOrderId() + "</i></h3>");
+            }
+        %>
         <form action="FrontController" method="post">
             <h3> Select premade carport </h3>
             <select id="premadeCarport" name="premadeCarport">
@@ -50,11 +55,6 @@
             <input type="hidden" name="command" value="carportSelectCustom">
             <input type="submit" value="Submit"/> 
         </form>
-        <%  Order newestOrder = (Order) request.getAttribute("newestorder");
-            if (null != newestOrder) {
-                out.println("<h3>You just created an order with ID: " + newestOrder.getOrderId() + "</h3>");
-            }
-        %>
         <h3>Go to see all orders page</h3>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToSeeOrders"/>

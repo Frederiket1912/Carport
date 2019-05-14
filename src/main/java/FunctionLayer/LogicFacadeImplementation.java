@@ -175,4 +175,11 @@ public class LogicFacadeImplementation implements LogicFacade {
         cmb.BuildItemList(o);
         
     }
+
+    @Override
+    public Material getNewestMaterial() throws CarportException {
+        MaterialMapper mm = new MaterialMapper();
+        Material m = mm.getNewestMaterial();
+        return m;
+    }
 }

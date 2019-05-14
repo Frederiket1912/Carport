@@ -40,6 +40,11 @@ public class CommandCreateMaterial extends Command {
                 return "Materials.jsp";
             }
             logic.createMaterial(new Material(materialName, Integer.parseInt(msrp), Integer.parseInt(costPrice)));
+            Material newestMaterial = logic.getNewestMaterial();
+            request.setAttribute("newestmaterial", newestMaterial);
+            ArrayList<Material> materials = logic.getAllMaterials();
+            HttpSession session = request.getSession();
+            session.setAttribute("materials", materials);
         } catch (NumberFormatException ex) {
             request.setAttribute("error", "Please check your new inputs again");
             ArrayList<Material> materials = logic.getAllMaterials();

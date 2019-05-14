@@ -80,6 +80,15 @@ public class MaterialMapper {
         }
     }
     
+    public Material getNewestMaterial() throws CarportException{
+        ArrayList<Material> materials = getAllMaterials();
+        Material material = materials.get(0);
+        for (Material m : materials) {
+            if (m.getMaterialId() > material.getMaterialId()) material = m;
+        }
+        return material;
+    }
+    
     
     
     public static void main(String[] args) throws CarportException {

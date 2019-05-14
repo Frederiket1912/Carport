@@ -43,8 +43,8 @@ private LogicFacade logic = new LogicFacadeImplementation();
             request.getRequestDispatcher(t).forward(request, response);
         }
         catch ( CarportException ex ) {
-            request.setAttribute( "error", ex.getMessage() );
-            request.getRequestDispatcher( "carportSelectPage.jsp" ).forward( request, response );
+            String origin = ex.handle(request);
+            request.getRequestDispatcher( origin ).forward( request, response );
         }  
     }
 

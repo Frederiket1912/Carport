@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author frede
  */
-public class CarportException extends Exception {
+public class OrderException extends Exception{
     private String origin;
 
-    public CarportException(String msg) {
+    public OrderException(String msg) {
         super(msg);
     }
 
-    public CarportException(String origin, String message) {
+    public OrderException(String origin, String message) {
         super(message);
         this.origin = origin;
     }
@@ -29,5 +29,4 @@ public class CarportException extends Exception {
         request.setAttribute("error", this.getMessage());
         return origin;
     }
-
 }

@@ -11,6 +11,7 @@ import DBAccess.Material;
 import DBAccess.Order;
 import FunctionLayer.CarportException;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.OrderException;
 import FunctionLayer.RoofBuilder;
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -52,28 +53,23 @@ public class CommandCreateOrder extends Command {
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
             if (!Pattern.matches("^[a-zA-ZæøåÆØÅ@ ]+$", customerName)){
-                request.setAttribute("error", "There was an error in the customer name, please try again");
-                return "createOrderPage.jsp";
+                throw new CarportException("createOrderPage.jsp", "There was an error in the customer name, please try again");
             }
             String customerEmail = request.getParameter("customeremail");
             if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@]+$", customerEmail)){
-                request.setAttribute("error", "There was an error in the customer email, please try again");
-                return "createOrderPage.jsp";
+                throw new CarportException("createOrderPage.jsp", "There was an error in the customer email, please try again");
             }
             String customerAddress = request.getParameter("customeraddress");
             if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", customerAddress)){
-                request.setAttribute("error", "There was an error in the customer address, please try again");
-                return "createOrderPage.jsp";
+                throw new CarportException("createOrderPage.jsp", "There was an error in the customer address, please try again");
             }
             String customerZipcode = request.getParameter("customerzipcode");
             if (!Pattern.matches("[0-9]{4}", customerZipcode)){
-                request.setAttribute("error", "There was an error in the customer zipcode, please try again");
-                return "createOrderPage.jsp";
+                throw new CarportException("createOrderPage.jsp", "There was an error in the customer zipcode, please try again");
             }
             String customerPhonenumber = request.getParameter("customerphonenumber");
             if (!Pattern.matches("[0-9]{8}", customerPhonenumber)){
-                request.setAttribute("error", "There was an error in the customer phone number, please try again");
-                return "createOrderPage.jsp";
+                throw new CarportException("createOrderPage.jsp", "There was an error in the customer phone number, please try again");
             }
             String customerComment = request.getParameter("customercomment");
             logic.createCustomer(customerName, customerEmail, customerAddress, Integer.parseInt(customerZipcode), customerPhonenumber);
@@ -87,12 +83,10 @@ public class CommandCreateOrder extends Command {
             Order order = logic.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
             request.setAttribute("order", order);
             Order newestOrder = logic.getNewestOrder();
-            logic.createMaterialList(newestOrder);
-            
+            logic.createMaterialList(newestOrder);            
             request.setAttribute("newestorder", newestOrder);
         } catch (NumberFormatException ex) {
-            request.setAttribute("error", "There was an error in one or more of the input fields, please check them again");
-            return "createOrderPage.jsp";
+            throw new CarportException("createOrderPage.jsp", "There was an error in one or more of the input fields, please check them again");
         } 
         return "carportSelectPage.jsp";
     }

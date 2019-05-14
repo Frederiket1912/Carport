@@ -67,4 +67,6 @@ public interface LogicFacade {
     ArrayList<LineItem> getFullListofMaterial (int OrderID) throws CarportException;
     
      void createMaterialList(Order o) throws CarportException;
+     
+     Material getNewestMaterial() throws CarportException;
 }
