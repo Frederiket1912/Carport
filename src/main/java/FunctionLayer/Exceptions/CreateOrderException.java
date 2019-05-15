@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionLayer;
+package FunctionLayer.Exceptions;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,23 +11,16 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author frede
  */
-public class CarportException extends ExceptionInterface {
-    private String origin;
+public class CreateOrderException extends AbstractException{
+    private String origin = "createOrderPage.jsp";
 
-    public CarportException(String msg) {
+    public CreateOrderException(String msg) {
         super(msg);
     }
 
-    public CarportException(String origin, String message) {
-        super(message);
-        this.origin = origin;
-    }
-    
-    
-
+    @Override
     public String handle(HttpServletRequest request) {
         request.setAttribute("error", this.getMessage());
         return origin;
     }
-
 }

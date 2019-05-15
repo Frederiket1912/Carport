@@ -6,7 +6,8 @@
 package PresentationLayer;
 
 import DBAccess.Customer;
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandCustomers extends Command{
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         ArrayList<Customer> CL = logic.Customerlist();
         
         request.setAttribute("CL", CL);

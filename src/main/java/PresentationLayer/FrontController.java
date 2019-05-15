@@ -5,7 +5,8 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LogicFacadeImplementation;
 import java.io.IOException;
@@ -33,16 +34,17 @@ private LogicFacade logic = new LogicFacadeImplementation();
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws FunctionLayer.Exceptions.AbstractException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, CarportException {
+            throws ServletException, IOException, AbstractException {
         try
         {
             Command c = Command.from(request);
             String t = c.execute(request, logic);
             request.getRequestDispatcher(t).forward(request, response);
         }
-        catch ( CarportException ex ) {
+        catch ( AbstractException ex ) {
             String origin = ex.handle(request);
             request.getRequestDispatcher( origin ).forward( request, response );
         }  
@@ -62,7 +64,7 @@ private LogicFacade logic = new LogicFacadeImplementation();
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (CarportException ex) {
+        } catch (AbstractException ex) {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -80,7 +82,7 @@ private LogicFacade logic = new LogicFacadeImplementation();
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (CarportException ex) {
+        } catch (AbstractException ex) {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

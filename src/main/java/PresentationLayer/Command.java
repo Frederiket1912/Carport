@@ -5,7 +5,8 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author frede
  */
 public abstract class Command {
-    public abstract String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException;
+    public abstract String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException;
 
     public static Command from(HttpServletRequest request)
     {

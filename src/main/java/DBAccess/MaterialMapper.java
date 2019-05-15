@@ -5,7 +5,7 @@
  */
 package DBAccess;
 
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.CarportException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

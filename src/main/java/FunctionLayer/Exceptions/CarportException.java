@@ -3,24 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionLayer;
+package FunctionLayer.Exceptions;
 
+import FunctionLayer.Exceptions.AbstractException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author frede
  */
-public class OrderException extends ExceptionInterface{
-    private String origin = "createOrderPage.jsp";
+public class CarportException extends AbstractException {
+    private String origin = "carportSelectPage.jsp";
 
-    public OrderException(String msg) {
+    public CarportException(String msg) {
         super(msg);
     }
 
-    @Override
+    public CarportException(String origin, String message) {
+        super(message);
+        this.origin = origin;
+    }
+    
+    
+
     public String handle(HttpServletRequest request) {
         request.setAttribute("error", this.getMessage());
         return origin;
     }
+
 }

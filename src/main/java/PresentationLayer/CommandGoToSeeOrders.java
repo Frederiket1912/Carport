@@ -7,7 +7,8 @@ package PresentationLayer;
 
 import DBAccess.Order;
 import DBAccess.OrderMapper;
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandGoToSeeOrders extends Command {
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         ArrayList<Order> orders = logic.getAllOrders();
         request.setAttribute("orders", orders);
         return "showAllOrdersPage.jsp";

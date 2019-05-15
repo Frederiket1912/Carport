@@ -5,6 +5,8 @@
  */
 package FunctionLayer;
 
+import FunctionLayer.Exceptions.CarportException;
+
 /**
  *
  * @author frede

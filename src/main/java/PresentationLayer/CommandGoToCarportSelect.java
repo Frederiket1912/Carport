@@ -5,7 +5,8 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CommandGoToCarportSelect extends Command {
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         return "carportSelectPage.jsp";
     }
     

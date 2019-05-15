@@ -6,7 +6,8 @@
 package PresentationLayer;
 
 import DBAccess.Material;
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class CommandGoToMaterials extends Command{
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         ArrayList<Material> materials = logic.getAllMaterials();
         HttpSession session = request.getSession();
         session.setAttribute("materials", materials);

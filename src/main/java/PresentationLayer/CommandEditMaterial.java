@@ -6,7 +6,10 @@
 package PresentationLayer;
 
 import DBAccess.Material;
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
+import FunctionLayer.Exceptions.CreateMaterialException;
+import FunctionLayer.Exceptions.EditMaterialException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -21,38 +24,24 @@ import javax.servlet.http.HttpSession;
 public class CommandEditMaterial extends Command {
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         try {
             int materialId = Integer.parseInt(request.getParameter("materialid"));
             String newName = request.getParameter("materialname");
             if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", newName)) {
-                request.setAttribute("error", "There was an error in the material name, please try again");
-                Material material = logic.getMaterial(materialId);
-                request.setAttribute("material", material);
-                return "EditMaterial.jsp";
+                throw new EditMaterialException("There was an error in the material name, please try again");
             }
             String newMSRP = request.getParameter("msrp");
             if (!Pattern.matches("^[0-9]+$", newMSRP)) {
-                request.setAttribute("error", "There was an error in the msrp, please try again");
-                Material material = logic.getMaterial(materialId);
-                request.setAttribute("material", material);
-                return "EditMaterial.jsp";
+                throw new EditMaterialException("There was an error in the msrp, please try again");
             }
             String newCostPrice = request.getParameter("costPrice");
             if (!Pattern.matches("^[0-9]+$", newCostPrice)) {
-                request.setAttribute("error", "There was an error in the cost price, please try again");
-                Material material = logic.getMaterial(materialId);
-                request.setAttribute("material", material);
-                return "EditMaterial.jsp";
+                throw new EditMaterialException("There was an error in the cost price, please try again");
             }
             logic.editMaterial(materialId, newName, Integer.parseInt(newMSRP), Integer.parseInt(newCostPrice));
         } catch (NumberFormatException ex) {
-            request.setAttribute("error", "Please check your new inputs again");
-            HttpSession session = request.getSession();
-            Integer materialId = (Integer) session.getAttribute("materialid");
-            Material material = logic.getMaterial(materialId);
-            request.setAttribute("material", material);
-            return "EditMaterial.jsp";
+            throw new EditMaterialException("Please check your new inputs again");
         }
         return "Materials.jsp";
     }

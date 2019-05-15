@@ -8,7 +8,8 @@ package PresentationLayer;
 import DBAccess.Customer;
 import DBAccess.LineItem;
 import DBAccess.Order;
-import FunctionLayer.CarportException;
+import FunctionLayer.Exceptions.AbstractException;
+import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.PoleBuilder;
 import FunctionLayer.RoofBuilder;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CommandSeeDrawing extends Command {
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, CarportException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         Order order = logic.getOrder(orderId);
         request.setAttribute("order", order);

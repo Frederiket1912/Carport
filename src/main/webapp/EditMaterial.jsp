@@ -25,6 +25,12 @@
         int msrp = material.getMsrp();
         int costPrice = material.getCostPrice();
         %>
+        <% String error = (String) request.getAttribute("error");
+            if (error != null) {
+                out.println("<H2>Error!!</h2>");
+                out.println(error);
+            }
+        %> <br/><br/>
         <form action="FrontController" method="post">
         <h4>Name: <%=name%></h4>
         <h4>New name:</h4>
@@ -40,12 +46,7 @@
         <input type="hidden" name="materialid" value="<%=materialId%>"/>
         <input type="submit" value="Submit changes"/>
         </form><br/><br/>
-        <% String error = (String) request.getAttribute("error");
-            if (error != null) {
-                out.println("<H2>Error!!</h2>");
-                out.println(error);
-            }
-        %> <br/><br/>
+        
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToMaterials"/>
             <input type="submit" value ="Go back to materials"/>
