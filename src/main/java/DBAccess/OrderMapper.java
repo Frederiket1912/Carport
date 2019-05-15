@@ -52,10 +52,12 @@ public class OrderMapper {
             ArrayList<Order> orders = new ArrayList<>();
             ResultSet rs = con.createStatement().executeQuery(SQL);
             while (rs.next()) {
-                orders.add(new Order(rs.getInt("OrderID"), rs.getInt("EmployeeID"), rs.getInt("CustomerID"), rs.getInt("carport-height"),
+                Order o = new Order(rs.getInt("OrderID"), rs.getInt("EmployeeID"), rs.getInt("CustomerID"), rs.getInt("carport-height"),
                         rs.getInt("carport-width"), rs.getInt("carport-length"), rs.getString("rooftype"), rs.getInt("roofangle"),
                         rs.getInt("shed-width"), rs.getInt("shed-length"), rs.getString("CustomerComment"), rs.getInt("totalCost"),
-                        rs.getInt("TotalSale"), rs.getString("Status")));
+                        rs.getInt("TotalSale"), rs.getString("Status"));
+                o.setStatus(rs.getString("OrderStatus"));
+                orders.add(o);
             }
             return orders;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -73,8 +75,29 @@ public class OrderMapper {
                     rs.getInt("carport-width"), rs.getInt("carport-length"), rs.getString("rooftype"), rs.getInt("roofangle"),
                     rs.getInt("shed-width"), rs.getInt("shed-length"), rs.getString("CustomerComment"), rs.getInt("totalCost"),
                     rs.getInt("TotalSale"), rs.getString("Status"));
+            order.setStatus(rs.getString("OrderStatus"));
             return order;
         } catch (SQLException | ClassNotFoundException ex) {
+            throw new CarportException(ex.getMessage());
+        }
+    }
+    
+    public void setTotalSalesPrice(int TotalSalesPrice, Order o) throws CarportException{
+        try{
+             Connection con = DBConnector.connection();
+             String SQL = "UPDATE `Order` SET `TotalSale` = " + TotalSalesPrice + " WHERE OrderID = " + o.getOrderId() + ";";
+             con.createStatement().execute(SQL);
+        }catch(SQLException | ClassNotFoundException ex){
+            throw new CarportException(ex.getMessage());
+        }
+    }
+    
+        public void setTotalCostPrice(int TotalCostPrice, Order o) throws CarportException{
+        try{
+             Connection con = DBConnector.connection();
+             String SQL = "UPDATE `Order` SET `totalCost` = " + TotalCostPrice + " WHERE OrderID = " + o.getOrderId() + ";";
+             con.createStatement().execute(SQL);
+        }catch(SQLException | ClassNotFoundException ex){
             throw new CarportException(ex.getMessage());
         }
     }
@@ -86,10 +109,12 @@ public class OrderMapper {
             ArrayList<Order> orders = new ArrayList<>();
             ResultSet rs = con.createStatement().executeQuery(SQL);
             while (rs.next()) {
-                orders.add(new Order(rs.getInt("OrderID"), rs.getInt("EmployeeID"), rs.getInt("CustomerID"), rs.getInt("carport-height"),
+                Order o = new Order(rs.getInt("OrderID"), rs.getInt("EmployeeID"), rs.getInt("CustomerID"), rs.getInt("carport-height"),
                         rs.getInt("carport-width"), rs.getInt("carport-length"), rs.getString("rooftype"), rs.getInt("roofangle"),
                         rs.getInt("shed-width"), rs.getInt("shed-length"), rs.getString("CustomerComment"), rs.getInt("totalCost"),
-                        rs.getInt("TotalSale"), rs.getString("Status")));
+                        rs.getInt("TotalSale"), rs.getString("Status"));
+                o.setStatus(rs.getString("OrderStatus"));
+                orders.add(o);
             }
             return orders;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -107,6 +132,8 @@ public class OrderMapper {
                     rs.getInt("carport-width"), rs.getInt("carport-length"), rs.getString("rooftype"), rs.getInt("roofangle"),
                     rs.getInt("shed-width"), rs.getInt("shed-length"), rs.getString("CustomerComment"), rs.getInt("totalCost"),
                     rs.getInt("TotalSale"), rs.getString("Status"));
+            order.setStatus(rs.getString("OrderStatus"));
+               
             return order;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException(ex.getMessage());
@@ -125,7 +152,10 @@ public class OrderMapper {
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
         Order o = om.getNewestOrder();
+        om.setTotalSalesPrice(3323, o);
+        om.setTotalCostPrice(43124, o);
         System.out.println(o.getOrderId());
+        
 
 
     }

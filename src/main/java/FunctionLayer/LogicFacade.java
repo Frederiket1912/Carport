@@ -70,4 +70,10 @@ public interface LogicFacade {
      void createMaterialList(Order o) throws CarportException;
      
      Material getNewestMaterial() throws CarportException;
+     
+     int setTotalCostPrice(ArrayList<LineItem> LT, Order o) throws CarportException;
+     
+     int setTotalSalePrice(ArrayList<LineItem> LT, Order o) throws CarportException;
+     
+     Employee getEmployeeByID(int EmployeeID) throws CarportException;
 }

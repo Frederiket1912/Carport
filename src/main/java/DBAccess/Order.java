@@ -54,9 +54,17 @@ public class Order {
         this.shedLength = shedLength;
         this.customerComment = customerComment;
         this.totalCost = totalCost;
-        this.totalSale = totalSale;;
+        this.totalSale = totalSale;
     }
-
+    
+    public void setTotalSale(int totalSale){
+        this.totalSale = totalSale;
+    }
+    
+    public void setTotalCost(int totalCost){
+        this.totalCost = totalCost;
+    }
+    
     public int getTotalSale() {
         return totalSale;
     }
@@ -111,5 +119,8 @@ public class Order {
 
     public String getStatus() {
         return status;
+    }
+    public void setStatus(String Status){
+        this.status = Status;
     }
 }

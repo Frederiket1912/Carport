@@ -10,6 +10,11 @@ package DBAccess;
  * @author frede
  */
 public class Employee {
+
+    @Override
+    public String toString() {
+        return "Employee{" + "employeeId=" + employeeId + ", password=" + password + ", email=" + email + ", name=" + name + ", admin=" + admin + '}';
+    }
     private int employeeId;
     private String password;
     private String email;

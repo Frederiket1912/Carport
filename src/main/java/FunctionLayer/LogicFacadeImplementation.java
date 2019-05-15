@@ -183,4 +183,38 @@ public class LogicFacadeImplementation implements LogicFacade {
         Material m = mm.getNewestMaterial();
         return m;
     }
+
+    @Override
+    public int setTotalCostPrice(ArrayList<LineItem> LT, Order o) throws CarportException {
+        int TotalCostPrice = 0;
+        MaterialMapper mm = new MaterialMapper();
+        OrderMapper om = new OrderMapper();
+        for(LineItem LI : LT){
+            Material m = mm.getMaterial(LI.getMaterialId());
+            TotalCostPrice += m.getMsrp() * LI.getQty();
+        }
+        om.setTotalCostPrice(TotalCostPrice, o);
+        return TotalCostPrice;
+    }
+
+    @Override
+    public int setTotalSalePrice(ArrayList<LineItem> LT, Order o) throws CarportException {
+        int TotalSalesPrice = 0;
+        MaterialMapper mm = new MaterialMapper();
+        OrderMapper om = new OrderMapper();
+        for(LineItem LI : LT){
+            Material m = mm.getMaterial(LI.getMaterialId());
+            TotalSalesPrice += m.getCostPrice() * LI.getQty();
+        }
+        om.setTotalSalesPrice(TotalSalesPrice, o);
+        return TotalSalesPrice;
+    }
+
+    @Override
+    public Employee getEmployeeByID(int EmployeeID) throws CarportException {
+        EmployeeMapper em = new EmployeeMapper();
+        Employee Employee = em.getEmployeeByID(EmployeeID);
+        return Employee;
+    }
+
 }

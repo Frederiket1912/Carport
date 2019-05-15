@@ -78,15 +78,17 @@ public class CommandCreateOrder extends Command {
             logic.createCustomer(customerName, customerEmail, customerAddress, Integer.parseInt(customerZipcode), customerPhonenumber);
             Customer customer = logic.getCustomer(request.getParameter("customeremail"));
             int customerId = customer.getCustomerId();
-            int totalSale = Integer.parseInt(request.getParameter("salesprice"));
+            //int totalSale = Integer.parseInt(request.getParameter("salesprice"));
             Employee employee = (Employee) session.getAttribute("employee");
             int employeeId = employee.getEmployeeId();
             //placeholder værdier
-            int totalCost = 100;
-            Order order = logic.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, totalCost, totalSale);
+            //int totalCost = 100;
+            Order order = logic.createOrder(employeeId, customerId, carportHeight, carportWidth, carportLength, roofType, roofAngle, shedWidth, shedLength, customerComment, 0, 0);
             request.setAttribute("order", order);
             Order newestOrder = logic.getNewestOrder();
-            logic.createMaterialList(newestOrder);            
+            logic.createMaterialList(newestOrder);
+            logic.setTotalCostPrice(logic.getFullListofMaterial(newestOrder.getOrderId()), newestOrder);
+            logic.setTotalSalePrice(logic.getFullListofMaterial(newestOrder.getOrderId()), newestOrder);
             request.setAttribute("newestorder", newestOrder);
         } catch (NumberFormatException ex) {
             throw new CreateOrderException("There was an error in one or more of the input fields, please check them again");

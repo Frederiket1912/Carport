@@ -67,14 +67,25 @@ public class EmployeeMapper {
         }
     }
     
+    public Employee getEmployeeByID(int EmployeeID) throws CarportException{
+        try{
+             Connection con = DBConnector.connection();
+             String SQL = "Select * FROM Employee WHERE EmployeeID = " + EmployeeID + ";";
+             ResultSet rs = con.createStatement().executeQuery(SQL);
+             if(rs.next()){
+             return new Employee(rs.getString("password"), rs.getString("Email"), rs.getString("Name"));
+             }else{
+                throw new CarportException("Not Found");
+                }
+        }catch( SQLException | ClassNotFoundException ex ){
+            throw new CarportException( ex.getMessage() );
+        }
+    }
+    
     public static void main(String[] args) throws CarportException {
         EmployeeMapper em = new EmployeeMapper();
-        try{
-        Employee employee = em.login("admin@admin.dk", "admin");
-            System.out.println(employee.isAdmin());
-        }catch (CarportException ex){
-            System.out.println(ex.getMessage());
-        }
+        System.out.println(em.getEmployeeByID(1));
+        
     }
             
             

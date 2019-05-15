@@ -4,6 +4,7 @@
     Author     : frede
 --%>
 
+<%@page import="FunctionLayer.LogicFacadeImplementation"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DBAccess.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,6 +12,7 @@
 <% if (null == session.getAttribute("employee")) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
+    LogicFacadeImplementation logic = new LogicFacadeImplementation();
 %>
 <html>
     <head>
@@ -20,12 +22,12 @@
     <body>
         <h1>Hello All Orders Page!</h1>
         <table> 
-            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Customer Id</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
+            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Employee Name</th><th>Customer Id</th><th>Customer Name</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
                 <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
                             for (Order order : orders) {
                         %>
                 <tr>
-                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= order.getCustomerId()%></td> <td><%= order.getStatus()%></td> <td><%= order.getTotalSale()%></td> 
+                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= logic.getEmployeeByID(order.getEmployeeId()).getName() %></td><td><%= order.getCustomerId()%></td> <td><%= logic.getCustomerID(order.getCustomerId()).getName() %></td> <td><%= order.getStatus()%></td> <td><%= order.getTotalSale()%></td> 
                     <td>
                         <form action="FrontController" method="post">
                         <input type="hidden" name="command" value="seeDrawing">
