@@ -37,7 +37,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>JSP Page</title>
+         <title>JSP Page</title>
         <style>
             <% if (shedLength == 0) {
             %>
@@ -47,6 +47,9 @@
             %>
         </style>
     </head>
+    <a href="#" onclick="HTMLtoPDF()">Download PDF</a>
+    <button>Save image</button><br><br>
+    <div id="HTMLtoPDF">
     <body>
         Customer name: <%=customer.getName()%><br><br>
         <!--svg der viser carporten set oppefra -->
@@ -103,7 +106,6 @@
     <!--tekst der beskriver tegningen -->
     <text x="10" y="<%=width+50%>" font-family="Verdana" font-size="15px" text-anchor="left" alignment-baseline="middle">Tegningen viser en grundplan af carporten. De sorte fikanter er stolperne.  </text>
     </svg><br/><br/><br/>
-    <button>Save image</button><br><br>
     <canvas id="canvas" height="<%= width + 50%>" width="<%= length + 150%>" display:none></canvas>
 
     
@@ -278,8 +280,7 @@
         </table> <br/><br/>
             
     </body>
-</table>
-
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script>
         window.onload = function () {
@@ -336,5 +337,26 @@
         });
 
     </script>
+    <script>
+    var doc = new jsPDF();          
+var elementHandler = {
+  '#ignorePDF': function (element, renderer) {
+    return true;
+  }
+};
+var source = window.document.getElementsByTagName("body")[0];
+doc.fromHTML(
+    source,
+    15,
+    15,
+    {
+      'width': 180,'elementHandlers': elementHandler
+    });
+
+doc.output("dataurlnewwindow");
+</script>
+        <script src="js/jspdf.js"></script>
+	<script src="js/jquery-2.1.3.js"></script>
+	<script src="js/pdfFromHTML.js"></script>
 </body>
 </html>
