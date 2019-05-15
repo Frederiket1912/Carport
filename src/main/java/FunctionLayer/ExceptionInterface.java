@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author frede
  */
-//public interface ExceptionInterface extends Exception {
-//    
-//    
-//    public String handle(HttpServletRequest request);
-//    
-//}
+public abstract class ExceptionInterface extends Exception {
+    
+    public ExceptionInterface(String msg){
+        super(msg);
+    }
+    
+    public abstract String handle(HttpServletRequest request);
+    
+}

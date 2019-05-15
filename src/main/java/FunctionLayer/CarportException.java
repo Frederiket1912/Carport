@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author frede
  */
-public class CarportException extends Exception {
+public class CarportException extends ExceptionInterface {
     private String origin;
 
     public CarportException(String msg) {

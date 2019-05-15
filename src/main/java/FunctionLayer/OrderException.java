@@ -11,20 +11,14 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author frede
  */
-public class OrderException extends Exception{
-    private String origin;
+public class OrderException extends ExceptionInterface{
+    private String origin = "createOrderPage.jsp";
 
     public OrderException(String msg) {
         super(msg);
     }
 
-    public OrderException(String origin, String message) {
-        super(message);
-        this.origin = origin;
-    }
-    
-    
-
+    @Override
     public String handle(HttpServletRequest request) {
         request.setAttribute("error", this.getMessage());
         return origin;
