@@ -30,7 +30,7 @@
         </style>
     </head>
     <body>
-        <h1>Hello createOrderPage!</h1>
+        <h1>Create Order Page</h1>
         <% String error = (String) request.getAttribute("error");
             if (error != null) {
                 out.println("<H2>Error!!</h2>");

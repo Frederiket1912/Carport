@@ -30,7 +30,7 @@
         </style>
     </head>
     <body>
-        <h1>Hello createOrderPage!</h1>
+        <h1>Create Order Page</h1>
         <form action="FrontController" method="post">
             <h3> Please add carport specifications </h3>
             Carport length:<select name="carportlength">

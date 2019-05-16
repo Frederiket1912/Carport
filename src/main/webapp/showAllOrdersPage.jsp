@@ -20,7 +20,7 @@
         <title>All Orders Page</title>
     </head>
     <body>
-        <h1>Hello All Orders Page!</h1>
+        <h1>All Orders Page</h1>
         <table> 
             <thead><tr><th>Order Id</th><th>Employee Id</th><th>Employee Name</th><th>Customer Id</th><th>Customer Name</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
                 <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");

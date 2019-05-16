@@ -22,7 +22,7 @@
         <title>Materials Page</title>
     </head>
     <body>
-        <h1>Hello Materials Page!</h1>
+        <h1>Materials Page</h1>
         <%  Material newestMaterial = (Material) request.getAttribute("newestmaterial");
             if (null != newestMaterial) {
                 out.println("<h3><i>You just created a new material with ID: " + newestMaterial.getMaterialId() + "</i></h3>");

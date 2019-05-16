@@ -26,7 +26,7 @@
         </style>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Main Menu</h1>
         <%  Order newestOrder = (Order) request.getAttribute("newestorder");
             if (null != newestOrder) {
                 out.println("<h3><i>You just created an order with ID: " + newestOrder.getOrderId() + "</i></h3>");

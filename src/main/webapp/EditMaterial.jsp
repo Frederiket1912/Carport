@@ -17,7 +17,7 @@
         <title>Edit Material Page</title>
     </head>
     <body>
-        <h1>Hello Edit Material Page!</h1>
+        <h1>Edit Material Page</h1>
         <% 
         Material material = (Material) request.getAttribute("material");
         int materialId = material.getMaterialId();

@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello Login Page!</h1>
+        <h1>Login Page</h1>
         <h3>Login </h3> <br>
         <form action="FrontController" method="post">
             Email:<input type="text" name="email"/><br/><br/>
