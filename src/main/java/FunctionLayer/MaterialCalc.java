@@ -23,8 +23,7 @@ public class MaterialCalc {
         lf.createLineItem(4, o.getOrderId(), pb.getAmountOfPoles(o.getCarportLength()), 300, 0, 0, "Stolper til carport");
         lf.createLineItem(5, o.getOrderId(), 2, o.getCarportLength(), 0, 0, "Remme til siderne");
         lf.createLineItem(23, o.getOrderId(), pb.getAmountOfPoles(o.getCarportLength())*2, 0, 0, 0, "Bolt til Rem på stolper");
-        lf.createLineItem(24, o.getOrderId(), pb.getAmountOfPoles(o.getCarportLength())*2, 0, 0, 0, "Skive til bolt");
-  
+        lf.createLineItem(24, o.getOrderId(), pb.getAmountOfPoles(o.getCarportLength())*2, 0, 0, 0, "Skive til bolt");  
     }
     
     public void BuildDoor(Order o) throws CarportException{

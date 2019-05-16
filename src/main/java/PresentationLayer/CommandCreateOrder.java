@@ -59,7 +59,7 @@ public class CommandCreateOrder extends Command {
                 throw new CreateOrderException("There was an error in the customer name, please try again");
             }
             String customerEmail = request.getParameter("customeremail");
-            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@]+$", customerEmail)){
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@.]+$", customerEmail)){
                 throw new CreateOrderException("There was an error in the customer email, please try again");
             }
             String customerAddress = request.getParameter("customeraddress");

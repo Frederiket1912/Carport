@@ -151,7 +151,6 @@
             Customer zipcode:<input type="text" name="customerzipcode"/><br/><br/>
             Customer phonenumber:<input type="text" name="customerphonenumber"/><br/><br/>
             Customer comment:<br/> <textarea name="customercomment" rows="6" cols="50"></textarea><br/><br/>
-            Price:<input type="text" name ="salesprice" value="<%= request.getAttribute("totalsale")%>"/><br/><br/>
             <input type="hidden" name="command" value="createOrder">
             <input type="submit" value="Save order"/>  
         </form> <br/><br/>

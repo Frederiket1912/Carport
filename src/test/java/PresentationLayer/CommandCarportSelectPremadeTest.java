@@ -66,7 +66,7 @@ public class CommandCarportSelectPremadeTest {
      *
      * @throws java.lang.Exception
      */
-    /*
+    
     @Test
     public void testExecute() throws Exception {
         when(request.getParameter("premadeCarport")).thenReturn("1");
@@ -80,7 +80,70 @@ public class CommandCarportSelectPremadeTest {
         when(order.getShedWidth()).thenReturn(360);
         when(order.getShedLength()).thenReturn(225);
         when(order.getTotalSale()).thenReturn(7000);
+        int carportLength = order.getCarportLength();
         doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(720));
+                    return null;
+                }
+        ).when(request).setAttribute("carportlength", carportLength);
+        int carportWidth = order.getCarportWidth();
+        doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(360));
+                    return null;
+                }
+        ).when(request).setAttribute("carportwidth", carportWidth);
+        int carportHeight = order.getCarportHeight();
+        doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(305));
+                    return null;
+                }
+        ).when(request).setAttribute("carportheight", carportHeight);
+        int roofAngle = order.getRoofAngle();
+        doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(25));
+                    return null;
+                }
+        ).when(request).setAttribute("roofangle", roofAngle);
+        int shedWidth = order.getShedWidth();
+        doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(360));
+                    return null;
+                }
+        ).when(request).setAttribute("shedwidth", shedWidth);
+        int shedLength = order.getShedLength();
+        doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(225));
+                    return null;
+                }
+        ).when(request).setAttribute("shedlength", shedLength);
+        int totalSale = order.getTotalSale();
+        doAnswer(
+                invocation -> {
+                    String key = invocation.getArgument(0);
+                    int value = invocation.getArgument(1);
+                    assertThat(value, is(7000));
+                    return null;
+                }
+        ).when(request).setAttribute("totalsale", totalSale);
+        /*doAnswer(
                 invocation -> {
                     String key = invocation.getArgument(0);
                     switch (key) {
@@ -118,18 +181,19 @@ public class CommandCarportSelectPremadeTest {
                     }
                     return null;
                 }
-        ).when(request).setAttribute(any(String.class), anyInt());
+        ).when(request).setAttribute(any(String.class), anyInt());*/
+        String roofType = order.getRoofType();
         doAnswer(
                 invocation -> {
                     String key = invocation.getArgument(0);
-                    String roofType = invocation.getArgument(1);
-                    assertThat(roofType, is("med rejsning"));
+                    String value = invocation.getArgument(1);
+                    assertThat(value, is("med rejsning"));
                     return null;
                 }
-        ).when(session).setAttribute(any(String.class), any(String.class));
+        ).when(session).setAttribute("rooftype", roofType);
         Command command = new CommandCarportSelectPremade();
         System.out.println(command.getClass());
         String target = command.execute(request, logic);
         assertThat(target, is("createPremadeOrderPage.jsp"));
-    }*/
+    }
 }

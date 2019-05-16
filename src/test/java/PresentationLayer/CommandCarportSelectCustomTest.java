@@ -59,13 +59,14 @@ public class CommandCarportSelectCustomTest {
      * Test of execute method, of class CommandCarportSelectCustom.
      * @throws java.lang.Exception
      */
-    /*
+    
     @Test
     public void testExecute() throws Exception {
     when(request.getParameter("rooftype")).thenReturn("fladt");
     when(request.getParameter("shed")).thenReturn("shed");
+    when(request.getParameter("shed")).thenReturn("shed");
     when(request.getSession()).thenReturn(session);
-    doAnswer( 
+    /*doAnswer( 
       invocation -> {
           String key = invocation.getArgument(0);
           switch(key) {
@@ -80,20 +81,29 @@ public class CommandCarportSelectCustomTest {
           }
           return null;
           }
-      ).when(session).setAttribute(any(String.class), any(String.class));
-    when(request.getParameter("shed")).thenReturn("shed");
+      ).when(session).setAttribute(any(String.class), any(String.class));*/
+    String roofType = request.getParameter("rooftype");
     doAnswer( 
       invocation -> {
           String key = invocation.getArgument(0);
-          String shed = invocation.getArgument(1);
-          assertThat(shed, is("shed"));
+          String value = invocation.getArgument(1);
+          assertThat(value, is("fladt"));
           return null;
           }
-      ).when(session).setAttribute("shed", "shed");
+      ).when(session).setAttribute("rooftype", roofType);
+    String shed = request.getParameter("shed");
+    doAnswer( 
+      invocation -> {
+          String key = invocation.getArgument(0);
+          String value = invocation.getArgument(1);
+          assertThat(value, is("shed"));
+          return null;
+          }
+      ).when(session).setAttribute("shed", shed);
     Command command = new CommandCarportSelectCustom();
     String target = command.execute(request, logic);
     assertThat(target, is("createOrderPage.jsp"));
     }
-    */
+    
     
 }
