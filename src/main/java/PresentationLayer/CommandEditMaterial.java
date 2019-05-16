@@ -29,19 +29,19 @@ public class CommandEditMaterial extends Command {
             int materialId = Integer.parseInt(request.getParameter("materialid"));
             String newName = request.getParameter("materialname");
             if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", newName)) {
-                throw new EditMaterialException("There was an error in the material name, please try again");
+                throw new EditMaterialException("There was an error in the material name, please try again.");
             }
             String newMSRP = request.getParameter("msrp");
             if (!Pattern.matches("^[0-9]+$", newMSRP)) {
-                throw new EditMaterialException("There was an error in the msrp, please try again");
+                throw new EditMaterialException("There was an error in the msrp, please try again.");
             }
             String newCostPrice = request.getParameter("costPrice");
             if (!Pattern.matches("^[0-9]+$", newCostPrice)) {
-                throw new EditMaterialException("There was an error in the cost price, please try again");
+                throw new EditMaterialException("There was an error in the cost price, please try again.");
             }
             logic.editMaterial(materialId, newName, Integer.parseInt(newMSRP), Integer.parseInt(newCostPrice));
         } catch (NumberFormatException ex) {
-            throw new EditMaterialException("Please check your new inputs again");
+            throw new EditMaterialException("Please check your new inputs again.");
         }
         return "Materials.jsp";
     }

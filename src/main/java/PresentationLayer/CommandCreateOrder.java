@@ -56,23 +56,23 @@ public class CommandCreateOrder extends Command {
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
             if (!Pattern.matches("^[a-zA-ZæøåÆØÅ@ ]+$", customerName)){
-                throw new CreateOrderException("There was an error in the customer name, please try again");
+                throw new CreateOrderException("There was an error in the customer name, please try again.");
             }
             String customerEmail = request.getParameter("customeremail");
             if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@.]+$", customerEmail)){
-                throw new CreateOrderException("There was an error in the customer email, please try again");
+                throw new CreateOrderException("There was an error in the customer email, please try again.");
             }
             String customerAddress = request.getParameter("customeraddress");
             if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", customerAddress)){
-                throw new CreateOrderException("There was an error in the customer address, please try again");
+                throw new CreateOrderException("There was an error in the customer address, please try again.");
             }
             String customerZipcode = request.getParameter("customerzipcode");
             if (!Pattern.matches("[0-9]{4}", customerZipcode)){
-                throw new CreateOrderException("There was an error in the customer zipcode, please try again");
+                throw new CreateOrderException("There was an error in the customer zipcode, please try again.");
             }
             String customerPhonenumber = request.getParameter("customerphonenumber");
             if (!Pattern.matches("[0-9]{8}", customerPhonenumber)){
-                throw new CreateOrderException("There was an error in the customer phone number, please try again");
+                throw new CreateOrderException("There was an error in the customer phone number, please try again.");
             }
             String customerComment = request.getParameter("customercomment");
             logic.createCustomer(customerName, customerEmail, customerAddress, Integer.parseInt(customerZipcode), customerPhonenumber);
@@ -91,7 +91,7 @@ public class CommandCreateOrder extends Command {
             logic.setTotalSalePrice(logic.getFullListofMaterial(newestOrder.getOrderId()), newestOrder);
             request.setAttribute("newestorder", newestOrder);
         } catch (NumberFormatException ex) {
-            throw new CreateOrderException("There was an error in one or more of the input fields, please check them again");
+            throw new CreateOrderException("There was an error in one or more of the input fields, please check them again.");
         }
         return "carportSelectPage.jsp";
     }
