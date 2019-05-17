@@ -31,11 +31,11 @@
         <form action="FrontController" method="post">
             <h4>Add new material: </h4>
             <h4>Name:</h4>
-            <input type="text" name="materialname"/>
+            <input type="text" name="materialname"/> (Danish letters, numbers and whitespaces accepted)
             <h4>MSRP:</h4>
-            <input type="text" name="msrp"/>
+            <input type="text" name="msrp"/> (Only numbers accepted)
             <h4>Cost price:</h4>
-            <input type="text" name="costprice"/><br/><br/>
+            <input type="text" name="costprice"/> (Only numbers accepted)<br/><br/>
             <input type="hidden" name="command" value="createMaterial"/>
             <input type="submit" value ="Create new material"/>
         </form>

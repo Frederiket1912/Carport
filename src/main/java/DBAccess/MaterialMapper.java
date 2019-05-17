@@ -89,6 +89,18 @@ public class MaterialMapper {
         return material;
     }
     
+    public void deleteMaterial(int materialId) throws CarportException{
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "delete from Material where Material_ID=?;";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setInt( 1, materialId);
+            ps.executeUpdate();
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new CarportException( ex.getMessage() );
+        }
+    }
+    
     
     
     public static void main(String[] args) throws CarportException {

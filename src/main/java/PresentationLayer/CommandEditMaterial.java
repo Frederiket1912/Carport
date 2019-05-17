@@ -12,6 +12,7 @@ import FunctionLayer.Exceptions.CreateMaterialException;
 import FunctionLayer.Exceptions.EditMaterialException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,7 @@ public class CommandEditMaterial extends Command {
         try {
             int materialId = Integer.parseInt(request.getParameter("materialid"));
             String newName = request.getParameter("materialname");
-            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", newName)) {
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ ]+$", newName)) {
                 throw new EditMaterialException("There was an error in the material name, please try again.");
             }
             String newMSRP = request.getParameter("msrp");
@@ -40,6 +41,9 @@ public class CommandEditMaterial extends Command {
                 throw new EditMaterialException("There was an error in the cost price, please try again.");
             }
             logic.editMaterial(materialId, newName, Integer.parseInt(newMSRP), Integer.parseInt(newCostPrice));
+            ArrayList<Material> materials = logic.getAllMaterials();
+            HttpSession session = request.getSession();
+            session.setAttribute("materials", materials);
         } catch (NumberFormatException ex) {
             throw new EditMaterialException("Please check your new inputs again.");
         }

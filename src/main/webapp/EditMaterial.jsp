@@ -30,23 +30,27 @@
                 out.println("<H2>Error!!</h2>");
                 out.println(error);
             }
-        %> <br/><br/>
+        %><br/><br/>
         <form action="FrontController" method="post">
         <h4>Name: <%=name%></h4>
         <h4>New name:</h4>
-        <input type="text" name="materialname"/>
+        <input type="text" name="materialname"/> (Danish letters, numbers and whitespaces accepted)
         <h4>MSRP: <%=msrp%></h4>
         <h4>New MSRP:</h4>
-        <input type="text" name="msrp"/>
+        <input type="text" name="msrp"/> (Only numbers accepted)
         <h4>Cost price: <%=costPrice%></h4>
         <h4>New cost price:</h4>
-        <input type="text" name="costPrice"/>
+        <input type="text" name="costPrice"/> (Only numbers accepted)
         <br/><br/>
         <input type="hidden" name="command" value="editMaterial"/>
         <input type="hidden" name="materialid" value="<%=materialId%>"/>
         <input type="submit" value="Submit changes"/>
-        </form><br/><br/>
-        
+        </form><br/>
+        <form action="FrontController" method="post">
+        <input type="hidden" name="command" value="deleteMaterial"/>
+        <input type="hidden" name="materialid" value="<%=materialId%>"/>
+        <input type="submit" value="Delete material"/><br/><br/>
+        </form>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToMaterials"/>
             <input type="submit" value ="Go back to materials"/>

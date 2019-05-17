@@ -216,5 +216,11 @@ public class LogicFacadeImplementation implements LogicFacade {
         Employee Employee = em.getEmployeeByID(EmployeeID);
         return Employee;
     }
+    
+    @Override
+    public void deleteMaterial(int materialId) throws CarportException {
+        MaterialMapper mm = new MaterialMapper();
+        mm.deleteMaterial(materialId);
+    }
 
 }

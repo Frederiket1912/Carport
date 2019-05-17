@@ -5,30 +5,30 @@
  */
 package PresentationLayer;
 
-import DBAccess.Customer;
-import DBAccess.Order;
+import DBAccess.Material;
 import FunctionLayer.Exceptions.AbstractException;
-import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
+import PresentationLayer.Command;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author frede
  */
-public class CommandGetCustomer extends Command{
+public class CommandDeleteMaterial extends Command {
 
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
-        Customer c = logic.getCustomer(request.getParameter("customeremail"));
-        ArrayList<Order> OfC = logic.getOrdersFromCustomer(c.getCustomerId());        
-        request.setAttribute("oc", OfC);
-        request.setAttribute("c", c);
-        return "CustomerView.jsp";
+        int materialId = Integer.parseInt(request.getParameter("materialid"));
+        logic.deleteMaterial(materialId);
+        ArrayList<Material> materials = logic.getAllMaterials();
+        HttpSession session = request.getSession();
+        session.setAttribute("materials", materials);
+        return "Materials.jsp";
     }
-    
+
 }

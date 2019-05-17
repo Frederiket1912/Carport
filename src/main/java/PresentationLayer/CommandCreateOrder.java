@@ -55,7 +55,7 @@ public class CommandCreateOrder extends Command {
             RoofBuilder rb = new RoofBuilder();
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
-            if (!Pattern.matches("^[a-zA-ZæøåÆØÅ@ ]+$", customerName)){
+            if (!Pattern.matches("^[a-zA-ZæøåÆØÅ ]+$", customerName)){
                 throw new CreateOrderException("There was an error in the customer name, please try again.");
             }
             String customerEmail = request.getParameter("customeremail");
@@ -63,7 +63,7 @@ public class CommandCreateOrder extends Command {
                 throw new CreateOrderException("There was an error in the customer email, please try again.");
             }
             String customerAddress = request.getParameter("customeraddress");
-            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", customerAddress)){
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ ]+$", customerAddress)){
                 throw new CreateOrderException("There was an error in the customer address, please try again.");
             }
             String customerZipcode = request.getParameter("customerzipcode");

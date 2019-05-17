@@ -45,6 +45,7 @@ public abstract class Command {
         commands.put("goToCarportSelect", new CommandGoToCarportSelect());
         commands.put("createMaterial", new CommandCreateMaterial());
         commands.put("logout", new CommandLogout());
+        commands.put("deleteMaterial", new CommandDeleteMaterial());
         
         
 

@@ -22,7 +22,7 @@ public class CommandUnknown extends Command{
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         request.setAttribute("error", "unknown command");
-        return "index.jsp";
+        return "carportSelectPage.jsp";
     }
     
 }

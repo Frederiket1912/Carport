@@ -27,7 +27,7 @@ public class CommandCreateMaterial extends Command {
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         try {
             String materialName = request.getParameter("materialname");
-            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ@ ]+$", materialName)) {
+            if (!Pattern.matches("^[a-zA-Z0-9æøåÆØÅ ]+$", materialName)) {
                 throw new CreateMaterialException("There was an error in the material name, please try again.");
             }
             String msrp = request.getParameter("msrp");

@@ -26,8 +26,7 @@ public class CommandLogin extends Command {
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
-        EmployeeMapper em = new EmployeeMapper();
-        Employee employee = em.login(email, password);
+        Employee employee = logic.login(email, password);
         HttpSession session = request.getSession();
         session.setAttribute( "employee", employee );
         return "carportSelectPage.jsp";

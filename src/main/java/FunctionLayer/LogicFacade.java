@@ -76,4 +76,6 @@ public interface LogicFacade {
      int setTotalSalePrice(ArrayList<LineItem> LT, Order o) throws CarportException;
      
      Employee getEmployeeByID(int EmployeeID) throws CarportException;
+     
+     void deleteMaterial(int materialId) throws CarportException;
 }
