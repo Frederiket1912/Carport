@@ -7,6 +7,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,6 +30,9 @@ public class CommandEditMaterialTest {
 
     @Mock
     private HttpServletRequest request;
+
+    @Mock
+    private HttpSession session;
 
     public CommandEditMaterialTest() {
     }
@@ -59,6 +63,7 @@ public class CommandEditMaterialTest {
         when(request.getParameter("materialname")).thenReturn("material");
         when(request.getParameter("msrp")).thenReturn("50");
         when(request.getParameter("costPrice")).thenReturn("40");
+        when(request.getSession()).thenReturn(session);
         Command command = new CommandEditMaterial();
         String target = command.execute(request, logic);
         assertThat(target, is("Materials.jsp"));
