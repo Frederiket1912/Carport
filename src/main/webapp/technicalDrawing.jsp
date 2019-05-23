@@ -298,10 +298,10 @@
 
 <script>
     document.getElementById("download").addEventListener("click", function () {
-
+        //selects div, containing entire webpage
         html2canvas(document.querySelector('#HTMLtoPDF')).then(function (canvas) {
 
-  
+        
             saveAs(canvas.toDataURL(), 'CarportGuide.png');
         });
     });
