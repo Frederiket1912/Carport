@@ -79,7 +79,7 @@ public class MaterialCalc {
     }
     
     public int[] buildGable(Order o) throws CarportException{
-        int area = sb.getTotalSurfaceLength(o.getCarportWidth(), o.getCarportHeight());
+        int area = sb.getTotalSurfaceLength(o.getCarportWidth(), o.getCarportHeight()-200);
         int amountofBoards = sb.getNumberOfBoards(area);
         lf.createLineItem(7, o.getOrderId(), amountofBoards, 240, 0, 0, "beklædning af gavle 1 på 2");
         //returnere antal 4,5x50mm skruer og 4,5x70mm skruer.
