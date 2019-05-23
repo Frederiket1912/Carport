@@ -28,8 +28,9 @@ public class PoleBuilder {
         //man dividere længden med 209.7 fordi der minimum skal være 200cm mellem hver stolpe og stolperne i sig selv er 9.7cm
         //man ligger 1 til fordi den ikke tager højde for at side skal starte med en stople
         //man ganger med 2 for at få antal stolper for begge sider af carporten
-        Double amountOfPoles = ((carportLength-9.7)/209.7+1)*2;
-        return amountOfPoles.intValue();
+        Double amountOfPolesForOneSide = ((carportLength-9.7)/209.7)+1;
+        int amountOfPoles = amountOfPolesForOneSide.intValue()*2;
+        return amountOfPoles;
     }
     
     
