@@ -273,12 +273,12 @@
         </form>
 
         <table id=order class="table table-striped">
-            <thead><tr><th>Item ID</th><th>Material ID</th><th>Order ID</th><th>Qty</th><th>Length</th><th>Comment</th></tr></thead> <tbody>
+            <thead><tr><th>Unit price</th><th>Material ID</th><th>Order ID</th><th>Qty</th><th>Length</th><th>Comment</th></tr></thead> <tbody>
                         <% ArrayList<LineItem> LT = (ArrayList<LineItem>) request.getAttribute("LT");
                             for (LineItem LineItem : LT) {
                         %>
                 <tr>
-                    <td><%= LineItem.getLineItemId()%></td> <td><%= lf.getMaterial(LineItem.getMaterialId()).getName()%></td> <td><%= LineItem.getOrderId()%></td> <td><%= LineItem.getQty()%></td> <td><%= LineItem.getLength()%></td><td><%= LineItem.getComment()%></td> 
+                    <td><%= lf.getMaterial(LineItem.getMaterialId()).getCostPrice() + "kr" %></td> <td><%= lf.getMaterial(LineItem.getMaterialId()).getName()%></td> <td><%= LineItem.getOrderId()%></td> <td><%= LineItem.getQty()%></td> <td><%= LineItem.getLength()%></td><td><%= LineItem.getComment()%></td> 
 
                 </tr>
                 <%

@@ -60,8 +60,12 @@
             
     </body>
 </table>
-<script>
 
-</script>
+        <br/><br/>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToCarportSelect"/>
+            <input type="submit" value ="Go back to menu"/>
+        </form>
+
 </body>
 </html>

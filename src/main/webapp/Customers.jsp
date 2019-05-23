@@ -33,7 +33,12 @@
             <input type="hidden" name="command" value="Customers">
             <input type="submit" value="See All Customers">
         </form>
-
+        
+        <br/><br/>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="goToCarportSelect"/>
+            <input type="submit" value ="Go back to menu"/>
+        </form>
     </body>
 
 </html>
