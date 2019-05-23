@@ -57,10 +57,10 @@ public class ShedBuilderTest {
     @Test
     public void testGetNumberOfBoards() {
         System.out.println("getNumberOfBoards");
-        int shedArea = 400;
+        int totalSurfaceLength = 400;
         ShedBuilder instance = new ShedBuilder();
         int expResult = 67;
-        int result = instance.getNumberOfBoards(shedArea);
+        int result = instance.getNumberOfBoards(totalSurfaceLength);
         assertEquals(expResult, result);
     }
     

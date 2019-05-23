@@ -21,7 +21,8 @@ import javax.servlet.http.HttpSession;
 public class CommandCarportSelectCustom extends Command {
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
+    public String execute(HttpServletRequest request, LogicFacade logic) 
+            throws ServletException, IOException, AbstractException {
         String roofType = request.getParameter("rooftype");
         HttpSession session = request.getSession();
         session.setAttribute("rooftype", roofType);
