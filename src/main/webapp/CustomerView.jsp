@@ -63,8 +63,8 @@
 
         <br/><br/>
         <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="goToCarportSelect"/>
-            <input type="submit" value ="Go back to menu"/>
+            <input type="hidden" name="command" value="Customers"/>
+            <input type="submit" value ="Go back"/>
         </form>
 
 </body>
