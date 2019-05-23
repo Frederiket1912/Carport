@@ -67,5 +67,21 @@
                 <input type="submit" value="Go to materials page"/>
             </form> <br>
         </div>
+        <br/>
+        <h3>Søg efter kunde (E-mail)</h3>
+        <br/>
+        <form name="SearchCustomer" action="FrontController" method="POST">
+            <input type="text" name="customeremail" value="Søg">
+            <input type="hidden" name="command" value="SearchCustomers">
+            <input type="submit" value="Søg">
+        </form>
+
+        <br/><br/>
+
+        <form name="Customers" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="Customers">
+            <input type="submit" value="See All Customers">
+        </form>
+
     </body>
 </html>
