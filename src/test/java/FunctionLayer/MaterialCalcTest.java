@@ -92,14 +92,14 @@ public class MaterialCalcTest {
      */
     @Test
     public void testBuildGable() throws Exception {
-        when(sb.getTotalSurfaceLength(350, 250)).thenReturn(1200);
-        int surfaceLength = sb.getTotalSurfaceLength(250, 250);
-        when(sb.getNumberOfBoards(surfaceLength)).thenReturn(200);
+        int carportWidth = 300;
+        int surfaceLength = carportWidth*2;
+        when(sb.getNumberOfBoards(surfaceLength)).thenReturn(100);
         int amountofBoards = sb.getNumberOfBoards(surfaceLength);
         int[] result ={24 * 8, ((amountofBoards/2)*3), ((amountofBoards/2)*6)};
         assertThat(result[0], is(192));
-        assertThat(result[1], is(300));
-        assertThat(result[2], is(600));
+        assertThat(result[1], is(150));
+        assertThat(result[2], is(300));
     }
 
     /**

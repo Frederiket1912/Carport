@@ -27,8 +27,7 @@ public class ShedBuilder {
     
     public static void main(String[] args) {
         ShedBuilder bs = new ShedBuilder();
-        int area = bs.getTotalSurfaceLength(700, 450);
-        System.out.println(bs.getNumberOfBoards(area));
+        System.out.println(bs.getNumberOfBoards(600));
         
     }
 }

@@ -42,7 +42,7 @@ public class PoleBuilderTest {
      * Test of getDistanceBetweenPoles method, of class PoleBuilder.
      */
     @Test
-    public void testGetDistanceBetweenPolesLength420() throws CarportException {
+    public void testGetDistanceBetweenPolesLength420() throws Exception {
         System.out.println("getDistanceBetweenPoles");
         int length = 420;
         PoleBuilder instance = new PoleBuilder();
@@ -52,7 +52,7 @@ public class PoleBuilderTest {
     }
     
     @Test
-    public void testGetDistanceBetweenPolesLength430() throws CarportException {
+    public void testGetDistanceBetweenPolesLength430() throws Exception {
         System.out.println("getDistanceBetweenPoles");
         int length = 430;
         PoleBuilder instance = new PoleBuilder();
@@ -67,7 +67,7 @@ public class PoleBuilderTest {
      * Test of getAmountOfPoles method, of class PoleBuilder.
      */
     @Test
-    public void testGetAmountOfPolesLength420() throws CarportException {
+    public void testGetAmountOfPolesLength420() throws Exception {
         System.out.println("getAmountOfPoles");
         int carportLength = 420;
         PoleBuilder instance = new PoleBuilder();
@@ -77,7 +77,7 @@ public class PoleBuilderTest {
     }
     
     @Test
-    public void testGetAmountOfPolesLength430() throws CarportException{
+    public void testGetAmountOfPolesLength430() throws Exception{
         System.out.println("getAmountOfPoles");
         int carportLength = 430;
         PoleBuilder instance = new PoleBuilder();
