@@ -40,6 +40,7 @@
                             <select name="status">
                                 <option value="Sent">Sent </option>
                                 <option value="Received">Received </option>
+                                <option value="Cancelled">Cancelled </option>
                                 <input type="hidden" name="OrderID" value="<%=order.getOrderId()%>"/>
                                 <input type="hidden" name="command" value="SendOrder"/>
                                 <input type="submit" value="Set status"/>
