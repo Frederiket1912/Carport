@@ -337,24 +337,6 @@
         });
 
     </script>
-    <script>
-    var doc = new jsPDF();          
-var elementHandler = {
-  '#ignorePDF': function (element, renderer) {
-    return true;
-  }
-};
-var source = window.document.getElementsByTagName("body")[0];
-doc.fromHTML(
-    source,
-    15,
-    15,
-    {
-      'width': 180,'elementHandlers': elementHandler
-    });
-
-doc.output("dataurlnewwindow");
-</script>
         <script src="js/jspdf.js"></script>
 	<script src="js/jquery-2.1.3.js"></script>
 	<script src="js/pdfFromHTML.js"></script>

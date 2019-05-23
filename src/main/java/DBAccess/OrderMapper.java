@@ -101,6 +101,16 @@ public class OrderMapper {
             throw new CarportException(ex.getMessage());
         }
     }
+        
+    public void setOrderStatus(String status, Order o) throws CarportException{
+        try{
+             Connection con = DBConnector.connection();
+             String SQL = "UPDATE `Order` SET `OrderStatus` = \" "+ status + "\" WHERE OrderID = " + o.getOrderId() + ";";
+             con.createStatement().execute(SQL);
+        }catch(SQLException | ClassNotFoundException ex){
+            throw new CarportException(ex.getMessage());
+        }
+    }    
     
     public ArrayList<Order> getOrdersFromCustomer(int customerId) throws CarportException{
         try {
@@ -152,12 +162,15 @@ public class OrderMapper {
     public static void main(String[] args) throws CarportException {
         OrderMapper om = new OrderMapper();
         Order o = om.getNewestOrder();
-        om.setTotalSalesPrice(3323, o);
-        om.setTotalCostPrice(43124, o);
-        System.out.println(o.getOrderId());
+        om.setOrderStatus("noget", o);
+  
         
 
 
+    }
+
+    public void setOrderStatus(String hej, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

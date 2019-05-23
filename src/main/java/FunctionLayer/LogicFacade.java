@@ -78,4 +78,6 @@ public interface LogicFacade {
      Employee getEmployeeByID(int EmployeeID) throws CarportException;
      
      void deleteMaterial(int materialId) throws CarportException;
+     
+     void setOrderStatus(String status, Order o) throws CarportException;
 }

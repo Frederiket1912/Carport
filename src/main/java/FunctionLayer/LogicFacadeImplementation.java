@@ -223,4 +223,10 @@ public class LogicFacadeImplementation implements LogicFacade {
         mm.deleteMaterial(materialId);
     }
 
+    @Override
+    public void setOrderStatus(String status, Order o) throws CarportException {
+       OrderMapper om = new OrderMapper();
+       om.setOrderStatus(status, o);
+    }
+
 }

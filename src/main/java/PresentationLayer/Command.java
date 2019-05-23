@@ -46,7 +46,7 @@ public abstract class Command {
         commands.put("createMaterial", new CommandCreateMaterial());
         commands.put("logout", new CommandLogout());
         commands.put("deleteMaterial", new CommandDeleteMaterial());
-        
+        commands.put("SendOrder", new CommandSetStatus());
         
 
        c = commands.getOrDefault(origin, new CommandUnknown());

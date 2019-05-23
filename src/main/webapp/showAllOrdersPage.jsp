@@ -22,7 +22,7 @@
     <body>
         <h1>All Orders Page</h1>
         <table> 
-            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Employee Name</th><th>Customer Id</th><th>Customer Name</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
+            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Employee Name</th><th>Customer Id</th><th>Customer Name</th><th>Status</th><th>Sales price</th><th>Technical drawing</th><th>Set Order Status</th></tr></thead> <tbody>
                 <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
                             for (Order order : orders) {
                         %>
@@ -35,6 +35,16 @@
                         <input type="submit" value="See drawing">
                         </form>
                     </td>
+                  <td>  
+                <form action="FrontController" method="post">
+                <select name="status">
+                <option value="Sent">Sent </option>
+                <option value="Received">Received </option>
+                <input type="hidden" name="OrderID" value="<%=order.getOrderId()%>"/>
+                <input type="hidden" name="command" value="SendOrder"/>
+                <input type="submit" value="Set status"/>
+                </form>
+                  </td>
                 </tr>
                 <%
                     }
