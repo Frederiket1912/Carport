@@ -14,29 +14,57 @@
     }
     LogicFacadeImplementation logic = new LogicFacadeImplementation();
 %>
-<html>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>All Orders Page</title>
-    </head>
-    <body>
-        <h1>All Orders Page</h1>
-        <table> 
-            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Employee Name</th><th>Customer Id</th><th>Customer Name</th><th>Status</th><th>Sales price</th><th>Technical drawing</th><th>Set Order Status</th></tr></thead> <tbody>
-                        <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
-                            for (Order order : orders) {
-                        %>
-                <tr>
-                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= logic.getEmployeeByID(order.getEmployeeId()).getName()%></td><td><%= order.getCustomerId()%></td> <td><%= logic.getCustomerID(order.getCustomerId()).getName()%></td> <td><%= order.getStatus()%></td> <td><%= order.getTotalSale()%></td> 
-                    <td>
-                        <form action="FrontController" method="post">
+        <jsp:include page='siteHeader.jsp'></jsp:include>
+        <h1>Hello All Orders Page!</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <script>
+                    $(document).ready(function () {
+                        $('#showAllOrdersPage').DataTable();
+                    });
+                </script>
+
+                <table border="3" width="2" cellspacing="2" cellpadding="2" id="showAllOrdersPage" class="display">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Employee_ID</th>
+                            <th>Employee Name</th>
+                            <th>Customer_ID</th>
+                            <th>Customer Name</th>
+                            <th>Status</th>
+                            <th>Sales_Price</th>
+                            <th>Technical_Drawing</th>
+                            <th>Set Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("orders");
+                        for (Order order : orders) {
+                            out.println("<tr>");
+
+                            out.println("<td>" + order.getOrderId() + "</td>");
+                            out.println("<td>" + order.getEmployeeId() + "</td>");
+                            out.println("<td>" + logic.getEmployeeByID(order.getEmployeeId()).getName() + "</td>");
+                            out.println("<td>" + order.getCustomerId() + "</td>");
+                            out.println("<td>" + logic.getCustomerID(order.getCustomerId()).getName() + "</td>");
+                            out.println("<td>" + order.getStatus() + "</td>");
+                            out.println("<td>" + order.getTotalSale() + "$</td>");
+                            out.println("<td>");
+                            %>
+                    <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="seeDrawing">
                             <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
                             <input type="submit" value="See drawing">
                         </form>
-                    </td>
-                    <td>  
-                        <form action="FrontController" method="post">
+                    <%
+                        
+                            out.println("</td>");
+                            out.println("<td>");
+                            %>
+                            <form action="FrontController" method="post">
                             <select name="status">
                                 <option value="Sent">Sent </option>
                                 <option value="Received">Received </option>
@@ -45,13 +73,20 @@
                                 <input type="hidden" name="command" value="SendOrder"/>
                                 <input type="submit" value="Set status"/>
                         </form>
-                    </td>
+                                <%
+                                    out.println("</td>");
+
+                    out.println("</tr>");
+                    %>
+                    </tbody>
                 </tr>
                 <%
                     }
-                %>
-            </tbody>
-        </table> <br/><br/>
+                    %>
+
+                </tbody>
+
+            </table><br/><br/>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToCarportSelect"/>
             <input type="submit" value ="Go back to menu"/>

@@ -16,6 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page='siteHeader.jsp'></jsp:include>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <title>JSP Page</title>
@@ -29,35 +30,58 @@
         %>
         <h1>Kunde: <%=c.getName()%> ID: <%=c.getCustomerId()%></h1>
         
-        <table class="table table-striped">
+        <div class="row">
+            <div class="col-sm-6">
+                <script>
+                    $(document).ready(function () {
+                        $('#showAllOrdersPage').DataTable();
+                    });
+                </script>
 
-            <thead><tr><th>CustomerID</th><th>Name</th><th>Email</th><th>Adresse</th><th>Zipcode</th><th>Phonenumber</th></tr></thead><body>
-            <tr>
-                <td><%=c.getCustomerId()%> </td><td><%=c.getName()%></td><td><%=c.getEmail()%></td><td><%=c.getAddress()%></td><td><%=c.getZipcode()%></td><td><%=c.getPhonenumber()%></td>
+                <table border="3" width="2" cellspacing="2" cellpadding="2" id="customerView" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Zip Code</th>
+                            <th>Phone Number</th>
+                            <th>See More</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        List<Customer> customers = (ArrayList<Customer>) request.getAttribute("CL");
+                        for (Customer customer : customers) {
+                            out.println("<tr>");
 
-            </tr>
-            
-        <table id=order class="table table-striped">
-            <thead><tr><th>Order Id</th><th>Employee Id</th><th>Customer Id</th><th>Status</th><th>Sales price</th><th>Technical drawing</th></tr></thead> <tbody>
-                <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
-                            for (Order order : orders) {
-                        %>
-                <tr>
-                    <td><%= order.getOrderId()%></td> <td><%= order.getEmployeeId()%></td> <td><%= order.getCustomerId()%></td> <td><%= order.getStatus()%></td> <td><%= order.getTotalSale()%></td> 
-                    <td>
-                        <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="seeDrawing">
-                        <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
-                        <input type="submit" value="See drawing">
-                        </form>
-                    </td>
+                            out.println("<td>" + customer.getCustomerId() + "</td>");
+                            out.println("<td>" + customer.getName() + "</td>");
+                            out.println("<td>" + customer.getEmail() + "</td>");
+                            out.println("<td>" + customer.getAddress() + "</td>");
+                            out.println("<td>" + customer.getPhonenumber() + "</td>");
+                            out.println("<td>");
+                            %>
+                    <form name="SearchCustomer" action="FrontController" method="POST">
+                        <input type="hidden" name="command" value="SearchCustomers">
+                        <input type="hidden" name="customeremail" value="<%=customer.getEmail()%>" />
+                        <input type="submit" value="Se mere">
+                    </form>
+                    <%
+                        
+                            out.println("</td>");
+                    out.println("</tr>");
+                    %>
+                    </tbody>
                 </tr>
                 <%
                     }
-                %>
-            </tbody>
-        </table> <br/><br/>
-            
+                    %>
+
+                </tbody>
+
+            </table><br/><br/>
     </body>
 </table>
 

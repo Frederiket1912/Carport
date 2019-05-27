@@ -63,7 +63,7 @@
                             <a class="navbar-brand" href="#">FOG</a>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="FrontController?Command=link&link=createOrder">Menu</a></li>
+                            <li><a href="FrontController?Command=carportSelectPage">Menu</a></li>
                             <li><a href="FrontController?Command=goToSeeOrders">Orders</a></li><br>
                         </ul>
                     </div>
