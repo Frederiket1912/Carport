@@ -52,6 +52,7 @@
                             out.println("<td>" + customer.getName() + "</td>");
                             out.println("<td>" + customer.getEmail() + "</td>");
                             out.println("<td>" + customer.getAddress() + "</td>");
+                            out.println("<td>" + customer.getZipcode() + "</td>");
                             out.println("<td>" + customer.getPhonenumber() + "</td>");
                             out.println("<td>");
                             %>

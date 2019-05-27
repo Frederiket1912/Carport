@@ -24,11 +24,53 @@
     <body>
         
 
-        <%
+        <%--
             Customer c = (Customer) request.getAttribute("c");
 
-        %>
-        <h1>Kunde: <%=c.getName()%> ID: <%=c.getCustomerId()%></h1>
+        --%>
+        <%--<h1>Kunde: <%=c.getName()%> ID: <%=c.getCustomerId()%></h1>--%>
+        <div class="row">
+            <div class="col-sm-6">
+                <script>
+                    $(document).ready(function () {
+                        $('#showAllOrdersPage').DataTable();
+                    });
+                </script>
+
+                <table border="3" width="2" cellspacing="2" cellpadding="2" id="customerView" class="display">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Zip Code</th>
+                            <th>Phone Number</th>
+                            <th>See More</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
+                        for (Order order : orders) {
+                            out.println("<tr>");
+
+                            out.println("<td>" + order.getOrderId() + "</td>");
+                            out.println("<td>" + order.toString(order.) + "</td>");
+                            out.println("<td>" + customer.getEmail() + "</td>");
+                            out.println("<td>" + customer.getAddress() + "</td>");
+                            out.println("<td>" + customer.getPhonenumber() + "</td>");
+                    out.println("</tr>");
+                    %>
+                    </tbody>
+                </tr>
+                <%
+                    }
+                    %>
+
+                </tbody>
+
+            </table><br/><br/>
         
         <div class="row">
             <div class="col-sm-6">
@@ -41,7 +83,7 @@
                 <table border="3" width="2" cellspacing="2" cellpadding="2" id="customerView" class="display">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Customer ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Address</th>
@@ -52,22 +94,22 @@
                     </thead>
                     <tbody>
                     <%
-                        List<Customer> customers = (ArrayList<Customer>) request.getAttribute("CL");
-                        for (Customer customer : customers) {
+                        ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
+                        for (Order order : orders) {
                             out.println("<tr>");
 
-                            out.println("<td>" + customer.getCustomerId() + "</td>");
-                            out.println("<td>" + customer.getName() + "</td>");
+                            out.println("<td>" + order.getOrderId() + "</td>");
+                            out.println("<td>" + order.toString(order.) + "</td>");
                             out.println("<td>" + customer.getEmail() + "</td>");
                             out.println("<td>" + customer.getAddress() + "</td>");
                             out.println("<td>" + customer.getPhonenumber() + "</td>");
                             out.println("<td>");
                             %>
-                    <form name="SearchCustomer" action="FrontController" method="POST">
-                        <input type="hidden" name="command" value="SearchCustomers">
-                        <input type="hidden" name="customeremail" value="<%=customer.getEmail()%>" />
-                        <input type="submit" value="Se mere">
-                    </form>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="command" value="seeDrawing">
+                        <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
+                        <input type="submit" value="See drawing">
+                        </form>
                     <%
                         
                             out.println("</td>");
