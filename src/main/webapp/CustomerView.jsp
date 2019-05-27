@@ -4,6 +4,8 @@
     Author     : frederik
 --%>
 
+
+<%@page import="FunctionLayer.LogicFacadeImplementation"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DBAccess.Order"%>
 <%@page import="DBAccess.Customer"%>
@@ -24,11 +26,12 @@
     <body>
         
 
-        <%--
-            Customer c = (Customer) request.getAttribute("c");
+        <%
+            Customer customer = (Customer) request.getAttribute("c");
+            LogicFacadeImplementation logic = new LogicFacadeImplementation();
 
-        --%>
-        <%--<h1>Kunde: <%=c.getName()%> ID: <%=c.getCustomerId()%></h1>--%>
+        %>
+        Kunde: <%=customer.getName()%> ID: <%=customer.getCustomerId()%>
         <div class="row">
             <div class="col-sm-6">
                 <script>
@@ -46,27 +49,21 @@
                             <th>Address</th>
                             <th>Zip Code</th>
                             <th>Phone Number</th>
-                            <th>See More</th>
                         </tr>
                     </thead>
                     <tbody>
                     <%
-                        ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
-                        for (Order order : orders) {
                             out.println("<tr>");
-
-                            out.println("<td>" + order.getOrderId() + "</td>");
-                            out.println("<td>" + order.toString(order.) + "</td>");
+                            out.println("<td>" + customer.getCustomerId()+ "</td>");
+                            out.println("<td>" + customer.getName() + "</td>");
                             out.println("<td>" + customer.getEmail() + "</td>");
                             out.println("<td>" + customer.getAddress() + "</td>");
+                            out.println("<td>" + customer.getZipcode() + "</td>");
                             out.println("<td>" + customer.getPhonenumber() + "</td>");
                     out.println("</tr>");
                     %>
                     </tbody>
                 </tr>
-                <%
-                    }
-                    %>
 
                 </tbody>
 
@@ -82,33 +79,36 @@
 
                 <table border="3" width="2" cellspacing="2" cellpadding="2" id="customerView" class="display">
                     <thead>
-                        <tr>
-                            <th>Customer ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Zip Code</th>
-                            <th>Phone Number</th>
-                            <th>See More</th>
+                         <tr>
+                            <th>Order ID</th>
+                            <th>Employee_ID</th>
+                            <th>Employee Name</th>
+                            <th>Customer_ID</th>
+                            <th>Customer Name</th>
+                            <th>Status</th>
+                            <th>Sales_Price</th>
+                            <th>Technical_Drawing</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <%
+                     <%
                         ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("oc");
                         for (Order order : orders) {
                             out.println("<tr>");
 
                             out.println("<td>" + order.getOrderId() + "</td>");
-                            out.println("<td>" + order.toString(order.) + "</td>");
-                            out.println("<td>" + customer.getEmail() + "</td>");
-                            out.println("<td>" + customer.getAddress() + "</td>");
-                            out.println("<td>" + customer.getPhonenumber() + "</td>");
+                            out.println("<td>" + order.getEmployeeId() + "</td>");
+                            out.println("<td>" + logic.getEmployeeByID(order.getEmployeeId()).getName() + "</td>");
+                            out.println("<td>" + order.getCustomerId() + "</td>");
+                            out.println("<td>" + logic.getCustomerID(order.getCustomerId()).getName() + "</td>");
+                            out.println("<td>" + order.getStatus() + "</td>");
+                            out.println("<td>" + order.getTotalSale() + "$</td>");
                             out.println("<td>");
                             %>
                     <form action="FrontController" method="post">
-                        <input type="hidden" name="command" value="seeDrawing">
-                        <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
-                        <input type="submit" value="See drawing">
+                            <input type="hidden" name="command" value="seeDrawing">
+                            <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
+                            <input type="submit" value="See drawing">
                         </form>
                     <%
                         
