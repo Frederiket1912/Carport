@@ -64,7 +64,7 @@
         <br/><br/>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="Customers"/>
-            <input type="submit" value ="Go back"/>
+            <input type="submit" value ="Go back to customer list"/>
         </form>
 
 </body>
