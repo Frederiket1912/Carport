@@ -8,7 +8,6 @@ package PresentationLayer;
 import DBAccess.Material;
 import FunctionLayer.Exceptions.AbstractException;
 import FunctionLayer.LogicFacade;
-import PresentationLayer.Command;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;

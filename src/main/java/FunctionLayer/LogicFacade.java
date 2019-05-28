@@ -7,14 +7,10 @@ package FunctionLayer;
 
 import FunctionLayer.Exceptions.CarportException;
 import DBAccess.Customer;
-import DBAccess.CustomerMapper;
 import DBAccess.Employee;
-import DBAccess.EmployeeMapper;
 import DBAccess.LineItem;
 import DBAccess.Material;
-import DBAccess.MaterialMapper;
 import DBAccess.Order;
-import DBAccess.OrderMapper;
 import java.util.ArrayList;
 
 /**

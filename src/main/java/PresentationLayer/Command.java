@@ -6,13 +6,11 @@
 package PresentationLayer;
 
 import FunctionLayer.Exceptions.AbstractException;
-import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *

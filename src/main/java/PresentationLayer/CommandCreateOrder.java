@@ -7,20 +7,15 @@ package PresentationLayer;
 
 import DBAccess.Customer;
 import DBAccess.Employee;
-import DBAccess.Material;
 import DBAccess.Order;
 import FunctionLayer.Exceptions.AbstractException;
-import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.Exceptions.CreateOrderException;
 import FunctionLayer.RoofBuilder;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
