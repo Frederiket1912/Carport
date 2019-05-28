@@ -26,7 +26,7 @@
             <div class="col-sm-6">
                 <script>
                     $(document).ready(function () {
-                        $('#showAllOrdersPage').DataTable();
+                        $('#customerList').DataTable();
                     });
                 </script>
 

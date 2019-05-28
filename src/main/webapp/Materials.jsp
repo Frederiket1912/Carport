@@ -48,7 +48,7 @@
             <div class="col-sm-6">
                 <script>
                     $(document).ready(function () {
-                        $('#showAllOrdersPage').DataTable();
+                        $('#materials').DataTable();
                     });
                 </script>
 

@@ -23,11 +23,4 @@ public class ShedBuilder {
             return (int)surface +1;
         }
     }
-    
-    
-    public static void main(String[] args) {
-        ShedBuilder bs = new ShedBuilder();
-        System.out.println(bs.getNumberOfBoards(600));
-        
-    }
 }

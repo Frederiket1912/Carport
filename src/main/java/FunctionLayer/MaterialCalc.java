@@ -108,20 +108,6 @@ public class MaterialCalc {
             lf.createLineItem(25, o.getOrderId(), skruer / 200 + 1, 0, 0, 0, "til montering af stern & spær");
         }
     }
-    
-    
-    public static void main(String[] args) throws CarportException {
-        LogicFacade lf = new LogicFacadeImplementation();
-        MaterialCalc ms = new MaterialCalc();
-         RoofBuilder rb = new RoofBuilder();
-        Order o = lf.getOrder(55);
-        ms.buildFlatRoofStructure(o);
-        int hej[] = ms.buildGable(o);
-        System.out.println(hej[0]);
-        System.out.println(hej[1]);
-        //System.out.println(hej[2]);
-        
-    }
 }
 
 

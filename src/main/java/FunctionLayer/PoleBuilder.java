@@ -32,10 +32,4 @@ public class PoleBuilder {
         int amountOfPoles = amountOfPolesForOneSide.intValue()*2;
         return amountOfPoles;
     }
-    
-    
-    public static void main(String[] args) throws CarportException {
-        PoleBuilder pb = new PoleBuilder();
-        System.out.println(pb.getAmountOfPoles(720));
-    }
 }

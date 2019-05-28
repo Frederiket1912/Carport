@@ -100,15 +100,4 @@ public class MaterialMapper {
             throw new CarportException( ex.getMessage() );
         }
     }
-    
-    
-    
-    public static void main(String[] args) throws CarportException {
-        MaterialMapper mm = new MaterialMapper();
-//        Material material = mm.getMaterial(1);
-//        System.out.println(material.getName());
-//        ArrayList<Material> materials = mm.getAllMaterials();
-//        System.out.println(materials.size());
-    mm.editMaterial(1, "test", 3, 3);
-    }
 }

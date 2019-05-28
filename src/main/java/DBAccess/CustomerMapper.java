@@ -107,18 +107,4 @@ public class CustomerMapper {
             throw new CarportException( ex.getMessage() );
         }
     }
-
-    public static void main(String[] args) {
-
-        try {
-            CustomerMapper cm = new CustomerMapper();
-            Customer customer = new Customer("name", "1", "address", 0, "phonenumber");
-            //ArrayList<Customer> Customerlist = cm.Customerlist();
-            int i = cm.getCustomerId(customer);
-            System.out.println(i);
-            // System.out.println(cm.getCustomerId(customer));
-        } catch (CarportException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 }
