@@ -10,10 +10,8 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 %>
-<html>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create Order Page</title>
+        <jsp:include page='siteHeader.jsp'></jsp:include>
         <style>
             <%  String roofType = (String) session.getAttribute("rooftype");
                 if (roofType.equals("fladt")) {
@@ -28,8 +26,6 @@
             <%}
             %>
         </style>
-    </head>
-    <body>
         <h1>Create Order Page</h1>
         <% String error = (String) request.getAttribute("error");
             if (error != null) {

@@ -10,10 +10,8 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 %>
-<html>
-    <head>
+    <jsp:include page='siteHeader.jsp'></jsp:include>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create Order Page</title>
         <style>
             <%  String roofType = (String) session.getAttribute("rooftype");
                 if (roofType.equals("fladt")) {
@@ -28,8 +26,6 @@
             <%}
             %>
         </style>
-    </head>
-    <body>
         <h1>Create Order Page</h1>
         <form action="FrontController" method="post">
             <h3> Please add carport specifications </h3>

@@ -18,7 +18,6 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 %>
-<html>
     <% Order order = (Order) request.getAttribute("order");
         int length = order.getCarportLength();
         int width = order.getCarportWidth();
@@ -34,14 +33,13 @@
         int roofAngle = order.getRoofAngle();
         LogicFacadeImplementation lf = new LogicFacadeImplementation();
     %>
-    <head>
+        <jsp:include page='siteHeader.jsp'></jsp:include>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="js/jspdf.js"></script>
         <script src="js/jquery-2.1.3.js"></script>
         <script src="js/pdfFromHTML.js"></script>
         <script src="js/html2canvas.js"></script>
-        <title>JSP Page</title>
         <style>
             <% if (shedLength == 0) {
             %>

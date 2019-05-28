@@ -13,11 +13,8 @@
     }
     Employee employee = (Employee) session.getAttribute("employee");
 %>
-<html>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page='siteHeader.jsp'></jsp:include>
-        <title>JSP Page</title>
         <style>
             <% if (!employee.isAdmin()) {
             %>
@@ -25,8 +22,6 @@
             <%}
             %>
         </style>
-    </head>
-    <body>
         <h1>Main Menu</h1>
         <%  Order newestOrder = (Order) request.getAttribute("newestorder");
             if (null != newestOrder) {

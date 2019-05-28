@@ -35,8 +35,10 @@
                             <th>Customer Name</th>
                             <th>Status</th>
                             <th>Sales_Price</th>
+                            <%--
                             <th>Technical_Drawing</th>
                             <th>Set Status</th>
+                            --%>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,8 +54,15 @@
                             out.println("<td>" + logic.getCustomerID(order.getCustomerId()).getName() + "</td>");
                             out.println("<td>" + order.getStatus() + "</td>");
                             out.println("<td>" + order.getTotalSale() + "$</td>");
+                            out.println("</tr>");
+                    %>
+                    </tbody>
+                </tr>
+                <%
+                    }
+                    %><%--
                             out.println("<td>");
-                            %>
+                        %>
                     <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="seeDrawing">
                             <input type="hidden" name="orderId" value="<%=order.getOrderId()%>" />
@@ -75,7 +84,7 @@
                         </form>
                                 <%
                                     out.println("</td>");
-
+                        
                     out.println("</tr>");
                     %>
                     </tbody>
@@ -83,7 +92,7 @@
                 <%
                     }
                     %>
-
+                    --%>
                 </tbody>
 
             </table><br/><br/>
