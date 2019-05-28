@@ -49,7 +49,7 @@
         <div id ="everything">
 
             <img src="https://i.imgur.com/kpHB4BY.png" 
-                 alt="FOG Banner" style="float: top; margin: auto; display: table;" >
+                 alt="FOG Banner" style="float: top; margin: auto; display: table;">
 
             <div id="sitemenus" >
                 <form action="FrontController" method="post">
@@ -60,7 +60,7 @@
                 <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="FrontController?command=carportSelectPag">FOG</a>
+                            <a class="navbar-brand">FOG</a>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="FrontController?command=carportSelectPage">Menu</a></li>
