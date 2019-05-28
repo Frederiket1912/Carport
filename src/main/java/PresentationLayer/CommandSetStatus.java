@@ -9,6 +9,7 @@ import DBAccess.Order;
 import FunctionLayer.Exceptions.AbstractException;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,9 @@ public class CommandSetStatus extends Command {
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, AbstractException {
         Order o = logic.getOrder(Integer.parseInt(request.getParameter("OrderID")));
         logic.setOrderStatus(request.getParameter("status"), o);
-        return "carportSelectPage.jsp";
+        ArrayList<Order> orders = logic.getAllOrders();
+        request.setAttribute("orders", orders);
+        return "showAllOrdersPage.jsp";
     }
     
 }
