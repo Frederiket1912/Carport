@@ -69,13 +69,5 @@ public class LineItemMapper {
             throw new CarportException(ex.getMessage());
         }
     }
-     
-     
-     
-    public static void main(String[] args) throws CarportException {
-        LineItemMapper lim = new LineItemMapper();
-        System.out.println(lim.FullListofMaterial(8));
-        
-    }
 }
 

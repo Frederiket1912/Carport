@@ -86,12 +86,4 @@ public class CarportMalcBuilder {
         }
 
     }
-
-    public static void main(String[] args) throws CarportException {
-        LogicFacade lf = new LogicFacadeImplementation();
-        MaterialCalc ms = new MaterialCalc();
-        Order o = lf.getOrder(8);
-        CarportMalcBuilder cb = new CarportMalcBuilder();
-        cb.BuildItemList(o);
-    }
 }

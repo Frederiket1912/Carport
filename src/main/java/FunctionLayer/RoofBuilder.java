@@ -71,9 +71,4 @@ public class RoofBuilder {
         double height = Math.sin(Math.toRadians(roofAngle))*hypotenuse+225;
         return height;
     }
-    
-    public static void main(String[] args) {
-        RoofBuilder rb = new RoofBuilder();
-        System.out.println(rb.getAmountOfPlastmo(600*300));
-    }
 }

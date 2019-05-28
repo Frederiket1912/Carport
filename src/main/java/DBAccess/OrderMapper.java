@@ -158,19 +158,4 @@ public class OrderMapper {
         }
         return order;
     }
-
-    public static void main(String[] args) throws CarportException {
-        OrderMapper om = new OrderMapper();
-        Order o = om.getNewestOrder();
-        om.setOrderStatus("noget", o);
-  
-        
-
-
-    }
-
-    public void setOrderStatus(String hej, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
