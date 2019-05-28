@@ -46,28 +46,14 @@
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     </head>
     <body>
-        <div id ="everything">
-
-            <img src="https://i.imgur.com/kpHB4BY.png" 
-                 alt="FOG Banner" style="float: top; margin: auto; display: table;" >
+        <div id ="loginPage">
 
             <div id="sitemenus" >
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="command" value="logout">
-                    <input type="submit" value="Log Out"/>
-                </form>
-
                 <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">FOG</a>
                         </div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="FrontController?command=carportSelectPage">Menu</a></li>
-                            <li><a href="FrontController?command=goToSeeOrders">Orders</a></li><br>
-                        </ul>
                     </div>
                 </nav>
             </div>
         </div>
-

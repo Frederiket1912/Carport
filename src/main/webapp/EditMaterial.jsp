@@ -11,11 +11,8 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 %>
-<html>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page='siteHeader.jsp'></jsp:include>
-        <title>Edit Material Page</title>
     </head>
     <body>
         <h1>Edit Material Page</h1>
