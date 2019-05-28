@@ -16,7 +16,6 @@
 %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page='siteHeader.jsp'></jsp:include>
-        <h1>Hello All Orders Page!</h1>
         <div class="row">
             <div class="col-sm-6">
                 <script>
@@ -35,10 +34,8 @@
                             <th>Customer Name</th>
                             <th>Status</th>
                             <th>Sales_Price</th>
-                            <%--
                             <th>Technical_Drawing</th>
                             <th>Set Status</th>
-                            --%>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,14 +50,7 @@
                             out.println("<td>" + order.getCustomerId() + "</td>");
                             out.println("<td>" + logic.getCustomerID(order.getCustomerId()).getName() + "</td>");
                             out.println("<td>" + order.getStatus() + "</td>");
-                            out.println("<td>" + order.getTotalSale() + "$</td>");
-                            out.println("</tr>");
-                    %>
-                    </tbody>
-                </tr>
-                <%
-                    }
-                    %><%--
+                            out.println("<td>" + order.getTotalSale() + "kr</td>");
                             out.println("<td>");
                         %>
                     <form action="FrontController" method="post">
@@ -87,15 +77,15 @@
                         
                     out.println("</tr>");
                     %>
-                    </tbody>
                 </tr>
                 <%
                     }
                     %>
-                    --%>
                 </tbody>
 
             </table><br/><br/>
+            </div>
+        </div>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToCarportSelect"/>
             <input type="submit" value ="Go back to menu"/>

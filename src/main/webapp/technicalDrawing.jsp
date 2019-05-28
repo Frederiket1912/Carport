@@ -270,20 +270,49 @@
             <input type="submit" value="Go to see orders page"/>
         </form>
 
-        <table id=order class="table table-striped">
-            <thead><tr><th>Unit price</th><th>Material ID</th><th>Order ID</th><th>Qty</th><th>Length</th><th>Comment</th></tr></thead> <tbody>
-                        <% ArrayList<LineItem> LT = (ArrayList<LineItem>) request.getAttribute("LT");
-                            for (LineItem LineItem : LT) {
-                        %>
-                <tr>
-                    <td><%= lf.getMaterial(LineItem.getMaterialId()).getCostPrice() + "kr" %></td> <td><%= lf.getMaterial(LineItem.getMaterialId()).getName()%></td> <td><%= LineItem.getOrderId()%></td> <td><%= LineItem.getQty()%></td> <td><%= LineItem.getLength()%></td><td><%= LineItem.getComment()%></td> 
+        <div class="row">
+            <div class="col-sm-6">
+                <script>
+                    $(document).ready(function () {
+                        $('#showAllOrdersPage').DataTable();
+                    });
+                </script>
 
+                <table border="3" width="2" cellspacing="2" cellpadding="2" id="customerView" class="display">
+                    <thead>
+                         <tr>
+                            <th>Unit Price</th>
+                            <th>Material ID</th>
+                            <th>Order ID</th>
+                            <th>Qty</th>
+                            <th>Length</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <%
+                        ArrayList<LineItem> lineitems = (ArrayList<LineItem>) request.getAttribute("LT");
+                        for (LineItem lineitem : lineitems) {
+                            out.println("<tr>");
+
+                            out.println("<td>" + lf.getMaterial(lineitem.getMaterialId()).getCostPrice() + "kr</td>");
+                            out.println("<td>" + lf.getMaterial(lineitem.getMaterialId()).getName() + "</td>");
+                            out.println("<td>" + lineitem.getOrderId() + "</td>");
+                            out.println("<td>" + lineitem.getQty() + "</td>");
+                            out.println("<td>" + lineitem.getLength() + "</td>");
+                            out.println("<td>" + lineitem.getComment() + "</td>");
+                            out.println("</tr>");
+                    %>
                 </tr>
                 <%
                     }
-                %>
-            </tbody>
-        </table> <br/><br/>
+                    %>
+
+                </tbody>
+
+            </table><br/><br/>
+            </div>
+        </div>
 
     </body>
 </div>

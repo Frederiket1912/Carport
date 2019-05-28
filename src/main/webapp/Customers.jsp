@@ -11,13 +11,10 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 %>
-<html>
-    <head>
+        <jsp:include page='siteHeader.jsp'></jsp:include>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
         <h1>Kunde oversigt</h1>
+        
 
 
         <form name="SearchCustomer" action="FrontController" method="POST">

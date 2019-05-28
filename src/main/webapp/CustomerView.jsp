@@ -57,12 +57,13 @@
                             out.println("<td>" + customer.getPhonenumber() + "</td>");
                     out.println("</tr>");
                     %>
-                    </tbody>
                 </tr>
 
                 </tbody>
 
             </table><br/><br/>
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-sm-6">
@@ -110,7 +111,6 @@
                             out.println("</td>");
                     out.println("</tr>");
                     %>
-                    </tbody>
                 </tr>
                 <%
                     }
@@ -119,6 +119,8 @@
                 </tbody>
 
             </table><br/><br/>
+            </div>
+        </div>
     </body>
 </table>
 

@@ -84,13 +84,14 @@
                             out.println("</td>");
                     out.println("</tr>");
                     %>
-                    </tbody>
                 </tr>
                 <%
                     }
                     %>
 
                 </tbody>
+                </div>
+            </div>
 
             </table><br/><br/>
         <form action="FrontController" method="post">
