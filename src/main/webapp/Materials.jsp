@@ -12,13 +12,11 @@
 <% if (null == session.getAttribute("employee")) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-%><% if (null == session.getAttribute("employee")) {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-    }
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page='siteHeader.jsp'></jsp:include>
         <title>Materials Page</title>
     </head>
     <body>
@@ -46,26 +44,55 @@
             }
         %>
         <br/><br/>
-        <table> 
-            <thead><tr><th>Material Id</th><th>Name</th><th>MSRP</th><th>costPrice</th><th>Edit material</th></tr></thead> <tbody>
-                        <% ArrayList<Material> materials = (ArrayList<Material>) session.getAttribute("materials");
-                            for (Material m : materials) {
-                        %>
-                <tr>
-                    <td><%= m.getMaterialId()%></td> <td><%= m.getName()%></td> <td><%= m.getMsrp()%></td> <td><%= m.getCostPrice()%></td> 
-                    <td>
-                        <form action="FrontController" method="post">
+        <div class="row">
+            <div class="col-sm-6">
+                <script>
+                    $(document).ready(function () {
+                        $('#showAllOrdersPage').DataTable();
+                    });
+                </script>
+
+                <table border="3" width="2" cellspacing="2" cellpadding="2" id="materials" class="display">
+                    <thead>
+                        <tr>
+                            <th>Material ID</th>
+                            <th>Name</th>
+                            <th>MSRP</th>
+                            <th>Cost Price</th>
+                            <th>Edit Material</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        ArrayList<Material> materials = (ArrayList<Material>) session.getAttribute("materials");
+                        for (Material material : materials) {
+                            out.println("<tr>");
+
+                            out.println("<td>" + material.getMaterialId() + "</td>");
+                            out.println("<td>" + material.getName() + "</td>");
+                            out.println("<td>" + material.getMsrp() + "</td>");
+                            out.println("<td>" + material.getCostPrice() + "</td>");
+                            out.println("<td>");
+                            %>
+                    <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="goToEditMaterial">
-                            <input type="hidden" name="materialId" value="<%=m.getMaterialId()%>" />
+                            <input type="hidden" name="materialId" value="<%=material.getMaterialId()%>" />
                             <input type="submit" value="Edit Material">
                         </form>
-                    </td>
+                    <%
+                        
+                            out.println("</td>");
+                    out.println("</tr>");
+                    %>
+                    </tbody>
                 </tr>
                 <%
                     }
-                %>
-            </tbody>
-        </table><br/>
+                    %>
+
+                </tbody>
+
+            </table><br/><br/>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToCarportSelect"/>
             <input type="submit" value ="Go back to menu"/>
