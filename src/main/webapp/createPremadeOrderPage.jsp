@@ -141,11 +141,11 @@
                 </select><br/><br/>
             </div>
             <h3> Please add customer information </h3>
-            Customer name:<input type="text" name="customername"/><br/><br/>
-            Customer email:<input type="text" name="customeremail"/><br/><br/>
-            Customer address:<input type="text" name="customeraddress"/><br/><br/>
-            Customer zipcode:<input type="text" name="customerzipcode"/><br/><br/>
-            Customer phonenumber:<input type="text" name="customerphonenumber"/><br/><br/>
+            Customer name:<input type="text" name="customername"/>(Only danish letters and whitespaces accepted)<br/><br/>
+            Customer email:<input type="text" name="customeremail"/>(Danish letters, numbers, dots and @ accepted)<br/><br/>
+            Customer address:<input type="text" name="customeraddress"/>(Danish letters, numbers and whitespaces accepted)<br/><br/>
+            Customer zipcode:<input type="text" name="customerzipcode"/>(Only numbers accepted, must be 4 digits long)<br/><br/>
+            Customer phonenumber:<input type="text" name="customerphonenumber"/>(Only numbers accepted, must be 8 digits long)<br/><br/>
             Customer comment:<br/> <textarea name="customercomment" rows="6" cols="50"></textarea><br/><br/>
             <input type="hidden" name="command" value="createOrder">
             <input type="submit" value="Save order"/>  
