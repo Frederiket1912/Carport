@@ -98,7 +98,7 @@
                             out.println("<td>" + order.getCustomerId() + "</td>");
                             out.println("<td>" + logic.getCustomerID(order.getCustomerId()).getName() + "</td>");
                             out.println("<td>" + order.getStatus() + "</td>");
-                            out.println("<td>" + order.getTotalSale() + "$</td>");
+                            out.println("<td>" + order.getTotalSale() + "kr</td>");
                             out.println("<td>");
                             %>
                     <form action="FrontController" method="post">

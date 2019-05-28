@@ -37,7 +37,7 @@
             </select><br/><br/>
             <input type="hidden" name="command" value="carportSelectPremade">
             <input type="submit" value="Submit"/>
-        </form>
+        </form> </br>
         <form action="FrontController" method="post">
             <h3> Select for carport with custom values </h3>
             Roof type:<select id="rooftype" name="rooftype">
@@ -50,7 +50,7 @@
             </select><br/><br/>
             <input type="hidden" name="command" value="carportSelectCustom">
             <input type="submit" value="Submit"/> 
-        </form>
+        </form> </br>
         <h3>Go to see all orders page</h3>
         <form action="FrontController" method="post">
             <input type="hidden" name="command" value="goToSeeOrders"/>
@@ -63,7 +63,6 @@
                 <input type="submit" value="Go to materials page"/>
             </form> <br>
         </div>
-        <br/>
         <h3>Søg efter kunde (E-mail)</h3>
         <br/>
         <form name="SearchCustomer" action="FrontController" method="POST">
@@ -72,7 +71,7 @@
             <input type="submit" value="Søg">
         </form>
 
-        <br/><br/>
+        <br/>
 
         <form name="Customers" action="FrontController" method="POST">
             <input type="hidden" name="command" value="Customers">
