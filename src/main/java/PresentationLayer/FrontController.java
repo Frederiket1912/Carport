@@ -6,11 +6,9 @@
 package PresentationLayer;
 
 import FunctionLayer.Exceptions.AbstractException;
-import FunctionLayer.Exceptions.CarportException;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LogicFacadeImplementation;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;

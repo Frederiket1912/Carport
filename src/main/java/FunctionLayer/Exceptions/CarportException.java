@@ -5,7 +5,6 @@
  */
 package FunctionLayer.Exceptions;
 
-import FunctionLayer.Exceptions.AbstractException;
 import javax.servlet.http.HttpServletRequest;
 
 /**

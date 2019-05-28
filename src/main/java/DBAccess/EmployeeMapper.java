@@ -80,13 +80,5 @@ public class EmployeeMapper {
         }catch( SQLException | ClassNotFoundException ex ){
             throw new CarportException( ex.getMessage() );
         }
-    }
-    
-    public static void main(String[] args) throws CarportException {
-        EmployeeMapper em = new EmployeeMapper();
-        System.out.println(em.getEmployeeByID(1));
-        
-    }
-            
-            
+    }            
 }
