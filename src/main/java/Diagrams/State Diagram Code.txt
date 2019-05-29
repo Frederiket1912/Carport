@@ -1,0 +1,74 @@
+@startuml
+
+'Log In also start screen'
+state Login{
+'Where the login function is located'
+Login : index.jsp
+}
+
+'After you are logged In'
+state LoggedIn{
+
+state Admin
+
+'Create custom Order or choose a constant Order'
+state MainMenu{
+MainMenu : carportSelectPage.jsp
+}
+
+'Depends on the User. Normal can see the ones they made. Admins all orders'
+state Orders{
+Orders : showAllOrders.jsp
+}
+
+'Attached to main menu'
+state Carport{
+Carport : Custom
+Carport : Constant
+}
+
+'Contains list of materials needed to build the carport'
+state Materials{
+Materials : materials.jsp
+}
+
+'View more details about one order'
+state SpecificOrder{
+}
+
+state EditMaterials
+
+state EditOrder
+
+'Normal User Route'
+[*] --> MainMenu
+'Their Orders'
+MainMenu --> Orders
+'More Information about a specific Order'
+Orders --> SpecificOrder
+
+MainMenu --> Carport
+
+Admin --> Orders
+
+Admin --> Materials
+
+Materials --> EditMaterials
+
+'Admin only'
+SpecificOrder --> EditOrder
+}
+
+'User starts here and need to login'
+[*] --> Login
+
+'Wrong input when logging in'
+Login --> Login : Failed
+
+'Logged in'
+Login --> LoggedIn
+
+'Logged in as admin'
+Login -> Admin
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+'Set so i class names can be followed with .jsp'
+set namespaceSeparator ::
+
+'Starting page with login'
+class index.jsp{
+Login
+Admin eller almindelig bruger
+}
+
+'Make a custom carport or choose a constant'
+class carportSelectPage.jsp{
+Height, Width, Length
+Flat or Angled roof
+Custom carport
+Constant carport
+}
+
+'Orders table sorts with JS'
+class Orders.jsp{
+Table over ordrer
+Stykliste, SVG billeder og guide
+}
+
+'Entered wrong login information'
+index.jsp <-- index.jsp : Failed Login
+
+'Normal User logged in'
+index.jsp --> carportSelectPage.jsp
+
+'Logged in as Admin'
+index.jsp --> Admin
+
+'Admin's can also create orders'
+Admin --> carportSelectPage.jsp
+
+'Admin's can see all orders'
+Admin --> Orders.jsp
+
+'Normal User can watch only the orders he made'
+carportSelectPage.jsp --> Orders.jsp
+
+'Logs out the User/Admin'
+Orders.jsp --> index.jsp : Log Out 
+
+@enduml
