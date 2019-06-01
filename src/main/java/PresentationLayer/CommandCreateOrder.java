@@ -47,6 +47,8 @@ public class CommandCreateOrder extends Command {
             shedWidth = Integer.parseInt(request.getParameter("shedwidth"));
             shedLength = Integer.parseInt(request.getParameter("shedlength"));
             }
+            if (shedWidth > carportWidth) throw new CreateOrderException("Shed width must be same or less than carpor width.");
+            if (shedLength > carportLength) throw new CreateOrderException("Shed length must be same or less than carpor length.");
             RoofBuilder rb = new RoofBuilder();
             int carportHeight = rb.getCarportHeight(carportWidth, roofAngle).intValue();
             String customerName = request.getParameter("customername");
