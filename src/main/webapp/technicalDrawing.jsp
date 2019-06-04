@@ -25,8 +25,8 @@
         int shedWidth = order.getShedWidth();
         double distance = (Double) request.getAttribute("distance");
         double x = 10 + distance;
-        Double boards = (length / 209.7 - 1);
-        int numberOfBoards = boards.intValue();
+        Double poles = length / 209.7 - 1;
+        int numberOfPoles = poles.intValue();
         Double carportHeight = (Double) request.getAttribute("carportheight");
         Customer customer = (Customer) request.getAttribute("customer");
         Double sideRafterLength = (Double) request.getAttribute("siderafterlength");
@@ -100,7 +100,7 @@
               marker-end="url(#endarrow)" marker-start="url(#startarrow)" />
         <!--loop der placere stolperne -->
         <%
-            for (int i = 0; i < numberOfBoards; i++) {%>      
+            for (int i = 0; i < numberOfPoles; i++) {%>      
         <rect x="<%= x%>" y="0" height="9.7" width="9.7" style="fill: #000000"/>
         <rect x="<%= x%>" y="<%= width - 10%>" height="9.7" width="9.7" style="fill: #000000"/>
         <% x += (distance + 9.7);
