@@ -102,7 +102,7 @@
         <%
             for (int i = 0; i < numberOfPoles; i++) {%>      
         <rect x="<%= x%>" y="0" height="9.7" width="9.7" style="fill: #000000"/>
-        <rect x="<%= x%>" y="<%= width - 10%>" height="9.7" width="9.7" style="fill: #000000"/>
+        <rect x="<%= x%>" y="<%= width - 9.7%>" height="9.7" width="9.7" style="fill: #000000"/>
         <% x += (distance + 9.7);
             }%>
         <!--tekst der beskriver tegningen -->
