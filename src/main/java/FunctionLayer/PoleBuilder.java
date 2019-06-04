@@ -13,13 +13,17 @@ import FunctionLayer.Exceptions.CarportException;
  */
 public class PoleBuilder {
     
-    public double getDistanceBetweenPoles(int length) throws CarportException{
-        if (length <= 19.4) throw new CarportException("carport length is too short to place poles");
+    public double getDistanceBetweenPoles(int carportLength) throws CarportException{
+        if (carportLength <= 19.4) {
+            throw new CarportException("carport length is too short to place poles");
+        }
         //usefullLength er længde - bredden på den første stolpe
-        double usefullLength = length - 9.7;
-        //usefullLength divideres med 210 fordi minimum mellemrum mellem stolper er 200cm og hver stolpe er 10 cm brede
+        double usefullLength = carportLength - 9.7;
+        //usefullLength divideres med 209.7 fordi minimum mellemrum mellem
+        //stolper er 200cm og hver stolpe er 9.7 cm brede
         Double numberOfPoles = usefullLength / 209.7;
-        //-10 til sidst for at fjerne stolpernes bredde, så vi sidder tilbage med bredden mellem stolperne
+        //-9.7 til sidst for at fjerne stolpernes bredde, så vi sidder tilbage
+        //med bredden mellem stolperne
         double spaceBetweenPoles = usefullLength / numberOfPoles.intValue() - 9.7;
         return spaceBetweenPoles;
     }
